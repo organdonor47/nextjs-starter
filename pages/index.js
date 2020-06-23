@@ -1,6 +1,10 @@
 import Head from 'next/head';
 
-export default function Home() {
+import { getSortedPostsData } from '../lib/posts';
+
+import { H1 } from '@components/heading/Heading';
+
+export default function Home({ allPostsData }) {
   return (
     <>
     <Head>
@@ -8,8 +12,32 @@ export default function Home() {
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <h1>home</h1>
+    <H1>home</H1>
+
+    <section>
+        <h2>Blog</h2>
+        <ul>
+          {allPostsData.map(({ id, date, title }) => (
+            <li key={id}>
+              {title}
+              <br />
+              {id}
+              <br />
+              {date}
+            </li>
+          ))}
+        </ul>
+      </section>
 
     </>
   )
+}
+
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData()
+  return {
+    props: {
+      allPostsData
+    }
+  }
 }

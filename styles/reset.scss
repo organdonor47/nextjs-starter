@@ -20,7 +20,11 @@ html, body, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, ab
   width: device-width;
 }
 
-/* Handle box-sizing */
+html,
+body {
+	height: 100%;
+}
+
 html {
 	all: revert;
 
@@ -35,8 +39,6 @@ html {
 }
 
 body {
-	height: 100%;
-
 	text-size-adjust: 100%; // iOS on orientation change
 }
 

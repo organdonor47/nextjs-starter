@@ -1,17 +1,23 @@
-@import url('reset.scss');
+@import 'reset';
+@import 'config';
 
 :root {
-  //
+  --gutter: #{$gutter};
+  --section-padding: #{$section-padding};
+
+  --color-background: #{$color-background};
+  --color-font: #{$color-font};
+}
+
+html {
+  color: var(--color-font);
+  background: var(--color-background);
 }
 
 body {
-  // @include responsive-font($font-size-min, $font-size);
-
-  // font-family: $font-family;
+  font-family: $font-family;
   // line-height: $line-height;
-  // color: $color-font;
 
-  background: #c00;
 }
 
 // placeholders
