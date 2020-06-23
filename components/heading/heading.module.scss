@@ -1,15 +1,15 @@
-// @import '@styles/config.scss';
+@import 'styles/config.scss';
 
 .h1 {
-  // @include heading;
+  @include heading;
 
   background: #c0a;
 }
 
 .h2 {
-
+  @include heading;
 }
 
 .h3 {
-
+  @include heading;
 }

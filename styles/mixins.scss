@@ -1,5 +1,37 @@
-@mixin heading {
-  font-family: $font-family-heading;
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
 
-  background: #c00;
+  @return $number;
+}
+
+@mixin responsive-font(
+  $min-size: $font-size-min,
+  $max-size: $font-size,
+  $viewport-min: 480px,
+  $viewport-max: $page-width) {
+
+  $min: strip-unit($min-size);
+  $max: strip-unit($max-size);
+  $v-min: strip-unit($viewport-min);
+  $v-max: strip-unit($viewport-max);
+
+  $fluid-size: calc(#{$min * 1px}
+    + (#{$max - $min})
+    * (100vw - #{$viewport-min}) / (#{$v-max} - #{$v-min}));
+
+  @supports (font-size: clamp(1px, 2px, 3px)) {
+    font-size: clamp(#{$min * 1px}, $fluid-size, #{$max * 1px});
+  }
+}
+
+
+@mixin heading {
+  @include responsive-font(60, 90);
+  font-family: $font-family-heading;
+}
+
+@mixin h1 {
+  @include heading;
 }
