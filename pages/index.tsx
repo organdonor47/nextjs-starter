@@ -2,12 +2,13 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { GetStaticProps } from 'next';
 
-import { parseISO, format } from 'date-fns';
-
 import { getSortedPostsData } from 'lib/posts';
 
-import { H1 } from 'components/heading/Heading';
 import Date from 'components/date/Date';
+
+import { Container } from 'components/container/Container';
+import { H1, H2 } from 'components/heading/Heading';
+import { Section } from 'components/section/Section';
 
 export default function Home({
   allPostsData
@@ -21,33 +22,34 @@ export default function Home({
 
   return (
     <>
-    <Head>
-      <title>Create Next App</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+      <Head>
+        <title>Next-js starter</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-    <H1>home</H1>
-
-    <section>
-        <h2>Blog</h2>
-        <ul>
-          {allPostsData.map(({ id, date, title }) => (
-            <li key={id}>
-              <Link href="/posts/[id]" as={`/posts/${id}`}>
-                <a>{title}</a>
-              </Link>
-              
-              <br />
-              {id}
-              <br />
-              <Date dateString={date} />
-            </li>
-          )
-          )}
-          
-        </ul>
-      </section>
-
+      <Section container>
+        <H1>Next-js starter</H1>
+      
+        <Container>
+          <H2>Blog</H2>
+          <ul>
+            {allPostsData.map(({ id, date, title }) => (
+              <li key={id}>
+                <Link href="/posts/[id]" as={`/posts/${id}`}>
+                  <a>{title}</a>
+                </Link>
+                
+                <br />
+                {id}
+                <br />
+                <Date dateString={date} />
+              </li>
+            )
+            )}
+            
+          </ul>
+        </Container>
+      </Section>
     </>
   )
 }

@@ -6,4 +6,8 @@
   min-height: 100vh;
 
   color: #fff;
+
+  &__content {
+    flex-grow: 1;
+  }
 }

@@ -75,11 +75,6 @@ q {
 	}
 }
 
-a {
-	vertical-align: baseline;
-	text-decoration: underline;
-}
-
 del {
 	text-decoration:
 	line-through;
@@ -176,4 +171,12 @@ button,
 input[type=button] {
 	width: auto;
 	overflow: visible;
+}
+
+/* kill animations where required */
+@media (prefers-reduced-motion: reduce) {
+	* {
+    animation: none !important;
+    transition: none !important;
+  }
 }

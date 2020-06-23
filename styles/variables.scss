@@ -3,21 +3,32 @@ $gutter: 30px;
 
 // container
 $container-gutter-mobile: 20px;
-$container-gutter-tablet: 40px;
-$container-gutter-desktop: 60px;
+$container-gutter-tablet: 50px;
+$container-gutter-desktop: 70px;
 
-// section
-$section-padding: 200px;
+// spacing between sections
+$section-padding: 150px;
 $section-padding-mobile: 90px;
 
-// dimensions
+// DIMENSIONS
+$header-height: 90px;
+$header-height-mobile: 60px;
 $page-width: 1440px;
 
+// breakpoints
+$min-mobile: 480px;
+$min-tablet: 720px;
+$min-desktop: 1080px;
+
+$max-tablet: $min-tablet - 1px;
+$max-desktop: $min-desktop - 1px;
+
 //  colors
-$color-font: #000;
 $color-background: rgba(#c09, 0.3);
+$color-border: #c0a;
+$color-font: #000;
+$color-placeholder: #eee;
 $color-primary: #00c;
-$color-border: #ccc;
 
 // type
 $font-family: sans-serif;
@@ -26,8 +37,9 @@ $font-family-heading: serif, -apple-system, BlinkMacSystemFont, 'Helvetica Neue'
 // font-sizes
 $font-size: 20px;
 $font-size-min: 16px;
-$h1-size: 50px;
-$h1-size-min: 40px;
+
+$h1-size: 90px;
+$h1-size-min: 60px;
 $h2-size: 40px;
 $h2-size-min: 30px;
 $h3-size: 36px;

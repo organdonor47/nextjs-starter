@@ -1,12 +1,27 @@
+// project-specific global css should go here
 @import 'reset';
 @import 'config';
 
 :root {
-  --gutter: #{$gutter};
-  --section-padding: #{$section-padding};
-
   --color-background: #{$color-background};
+  --color-background: #{$color-border};
   --color-font: #{$color-font};
+  --color-placeholder: #{$color-placeholder};
+  --color-primary: #{$color-primary};
+  --container-gutter: #{$container-gutter-mobile};
+  --gutter: #{$gutter};
+
+  @media (prefers-color-scheme: dark) {
+    // dark?
+  }
+
+  @media (min-width: $min-tablet) {
+    --container-gutter: #{$container-gutter-tablet};
+  }
+
+  @media (min-width: $min-desktop) {
+    --container-gutter: #{$container-gutter-desktop};
+  }
 }
 
 html {
@@ -20,20 +35,30 @@ body {
 
 }
 
+a {
+  text-decoration: underline;
+
+  @media (pointer: fine) {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
 // placeholders
 input,
 textarea,
 select {
-  // &::-webkit-input-placeholder {
-  //   color: $color-placeholder;
-  // }
+  &::-webkit-input-placeholder {
+    color: var(--color-placeholder);
+  }
 
-  // &::-moz-placeholder {
-  //   opacity: 1;
-  //   color: $color-placeholder;
-  // }
+  &::-moz-placeholder {
+    opacity: 1;
+    color: var(--color-placeholder);
+  }
 
-  // &:-ms-input-placeholder {
-  //   color: $color-placeholder;
-  // }
+  &:-ms-input-placeholder {
+    color: var(--color-placeholder);
+  }
 }

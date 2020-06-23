@@ -1,0 +1,17 @@
+
+@mixin heading($size-min: $h1-size-min, $size: $h1-size) {
+  @include responsive-font($size-min, $size);
+  font-family: $font-family-heading;
+}
+
+@mixin h1 {
+  @include heading($h1-size-min, $h1-size);
+}
+
+@mixin h2 {
+  @include heading($h2-size-min, $h2-size);
+}
+
+@mixin h3 {
+  @include heading($h3-size-min, $h3-size);
+}

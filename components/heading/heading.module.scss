@@ -1,15 +1,14 @@
-@import 'styles/config.scss';
+@import 'styles/config';
 
 .h1 {
-  @include heading;
-
-  background: #c0a;
+  @include h1;
+  line-height: 1.15;
 }
 
 .h2 {
-  @include heading;
+  @include h2;
 }
 
 .h3 {
-  @include heading;
+  @include h3;
 }
