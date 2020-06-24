@@ -27,7 +27,17 @@
   @return $number;
 }
 
+// css fit position 
+@mixin  fit($position: absolute) {
+  position: $position;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 // RESPONSIVE FONT
+
 // scale font-size according to viewport
 @mixin responsive-font($min-size: $font-size-min, $max-size: $font-size, $viewport-min: 480px, $viewport-max: $page-width) {
 
@@ -101,7 +111,7 @@
   }
 }
 
-// Section top & bottom padding
+// <Section>: top & bottom padding
 @mixin section( $padding-top: $section-padding, $padding-bottom: $section-padding, $padding-top-mobile: $section-padding-mobile, $padding-bottom-mobile: $section-padding-mobile) {
 
   flex: none;

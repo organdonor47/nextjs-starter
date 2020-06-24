@@ -4,7 +4,7 @@
 
 :root {
   --color-background: #{$color-background};
-  --color-background: #{$color-border};
+  --color-border: #{$color-border};
   --color-font: #{$color-font};
   --color-placeholder: #{$color-placeholder};
   --color-primary: #{$color-primary};
@@ -12,7 +12,8 @@
   --gutter: #{$gutter};
 
   @media (prefers-color-scheme: dark) {
-    // dark?
+    --color-font: #{$color-font-dark-mode};
+    --color-background: #{$color-background-dark-mode};
   }
 
   @media (min-width: $min-tablet) {

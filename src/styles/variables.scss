@@ -26,11 +26,13 @@ $max-tablet: $min-tablet - 1px;
 $max-desktop: $min-desktop - 1px;
 
 //  colors
-$color-background: rgba(#c09, 0.3);
-$color-border: #c0a;
+$color-background: #fff;
+$color-background-dark-mode: #000;
+$color-border: rgba(#c09, 0.3);
 $color-font: #000;
+$color-font-dark-mode: #ddd;
 $color-placeholder: #eee;
-$color-primary: #00c;
+$color-primary: #c0a;
 
 // type
 $font-family: sans-serif;

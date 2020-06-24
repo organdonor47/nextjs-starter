@@ -1,35 +1,43 @@
 @import 'styles/config';
 
 .grid {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 10000;
+  $color-gap: rgba(#000, 0.025);
+  $color-highlight: rgba(#fff, 0.15);
+
+  position: relative;
+  z-index: 1000;
 
   overflow: hidden;
-  pointer-events: none;
 
-  transform-origin: 50% 0%;
+  pointer-events: none;
 
   &__container {
     @include container;
-
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    @include fit(fixed);
 
     height: 100%;
   }
 
   &__visual {
+    position: relative;
+
+    width: 100%;
     height: 100%;
 
-    position: relative;
+    pointer-events: none;
+  
     opacity: 0;
     animation: fade-in 200ms forwards;
+      
+    background-image: repeating-linear-gradient(
+      to right,
+      $color-highlight,
+      $color-highlight calc((100% / #{$grid-column-count}) - var(--gutter)),
+      calc((100% / #{$grid-column-count}) - var(--gutter)),
+      $color-gap calc(100% / #{$grid-column-count})
+    );
+    background-size: calc(100% + var(--gutter)) 100%;
+    background-position: 0 0;
 
     @keyframes fade-in {
       to {
@@ -37,32 +45,26 @@
       }
     }
 
-    &::before {
+    &::before,
+    &::after {
+      content: '';
+
       position: absolute;
       top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      min-height: 100vh;
-      content: '';
-      background-image: repeating-linear-gradient(
-        to right,
-        rgba(#fff, 0.2),
-        rgba(#fff, 0.2) calc((100% / #{$grid-column-count}) - var(--gutter)),
-        calc((100% / #{$grid-column-count}) - var(--gutter)),
-        rgba(#000, 0.05) calc(100% / #{$grid-column-count})
-      );
+      left: 100%;
       
-      background-size: calc(100% + var(--gutter)) 100%;
-      background-position: 0 0;
-      pointer-events: none;
+      background: $color-gap;
+
+      width: 50vw;
+      height: 100%;
+    }
+
+    &::after {
+      right: 100%;
     }
   }
 
   &__button {
-    display: block;
-
     position: fixed;
     right: 75px;
     top: 0;
@@ -73,18 +75,13 @@
     height: 24px;
     width: 40px;
     
-    border-radius: 0 0 2px 2px;
+    border-radius: 0 0 3px 3px;
 
     cursor: pointer;
-    pointer-events: all;
-
-    text-transform: uppercase;
+    pointer-events: auto;
 
     color: #999;
     background-color: #fff;
-    opacity: 1;
-
-    transition: opacity 0.25s, transform 0.1s;
 
     &:hover {
       color: #000;
