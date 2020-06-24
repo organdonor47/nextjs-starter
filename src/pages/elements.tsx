@@ -1,8 +1,10 @@
 import Head from 'next/head';
 
 import Link from 'next/link';
+import { Section } from 'components/section/Section';
+import { H1 } from 'components/heading/Heading';
 
-export default function Test() {
+export default function Elements() {
   return (
     <div className="container">
       <Head>
@@ -10,11 +12,11 @@ export default function Test() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1 className="title">
+      <Section container>
+        <H1>
           Read <Link href="/"><a>go home!</a></Link>
-        </h1>
-      </main>
+        </H1>
+      </Section>
     </div>
   )
 }
