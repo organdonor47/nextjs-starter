@@ -1,3 +1,5 @@
+//HELPERS 
+
 // fix css max / min, override scss min / max
 @function max($values...) {
   @return m#{a}x(#{$values});
@@ -16,12 +18,18 @@
   @return $number;
 }
 
+// convert straight number to percentage
+@function make-percentage($number) {
+  @if type-of($number) == 'number' and unitless($number) {
+    @return percentage($number / $grid-column-count);
+  }
+
+  @return $number;
+}
+
+// RESPONSIVE FONT
 // scale font-size according to viewport
-@mixin responsive-font(
-  $min-size: $font-size-min,
-  $max-size: $font-size,
-  $viewport-min: 480px,
-  $viewport-max: $page-width) {
+@mixin responsive-font($min-size: $font-size-min, $max-size: $font-size, $viewport-min: 480px, $viewport-max: $page-width) {
 
   $min: strip-unit($min-size);
   $max: strip-unit($max-size);
@@ -40,13 +48,34 @@
   }
 }
 
-// center & left/right pad elements
+// GRID
+// <Row> grid wrapper
+@mixin grid-row($direction: ltr, $grid-gutter: $gutter) {
+  display: grid;
+  grid-column-gap: $grid-gutter;
+  grid-template-columns: repeat($grid-column-count, 1fr);
+
+  direction: $direction;
+}
+
+// individual column
+@mixin grid-col($col-width: 12, $offset: 0) {
+  grid-column: span $col-width;
+
+  @if ($offset > 0) {
+    grid-column: ($offset + 1) / span #{$col-width};
+  }
+}
+
+// <Container>: center & left/right pad elements
 @mixin container($fluid: false) {
   flex-grow: 1;
 
   margin: 0 auto;
   padding-left: $container-gutter-mobile;
   padding-right: $container-gutter-mobile;
+
+  width: 100%;
   
   @if $fluid == false {
     max-width: $page-width + $container-gutter-mobile * 2;
@@ -61,9 +90,6 @@
     }
   }
 
-  width: 100%;
-
-
   @media (min-width: $min-tablet) {
     padding-left: $container-gutter-tablet;
     padding-right: $container-gutter-tablet;
@@ -76,11 +102,7 @@
 }
 
 // Section top & bottom padding
-@mixin section(
-  $padding-top: $section-padding,
-  $padding-bottom: $section-padding,
-  $padding-top-mobile: $section-padding-mobile,
-  $padding-bottom-mobile: $section-padding-mobile) {
+@mixin section( $padding-top: $section-padding, $padding-bottom: $section-padding, $padding-top-mobile: $section-padding-mobile, $padding-bottom-mobile: $section-padding-mobile) {
 
   flex: none;
   width: 100%;
