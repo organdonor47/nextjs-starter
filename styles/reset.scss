@@ -171,6 +171,8 @@ button,
 input[type=button] {
 	width: auto;
 	overflow: visible;
+
+	border: 0;
 }
 
 /* kill animations where required */
