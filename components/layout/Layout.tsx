@@ -2,8 +2,8 @@ import s from './layout.module.scss';
 
 import { Header } from 'components/header/Header';
 import { Footer } from 'components/footer/Footer';
-// import { GridOverlay } from 'components/devtools/GridOverlay';
 import { Devtools } from 'components/devtools/Devtools';
+import Link from 'next/link';
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
 
@@ -13,7 +13,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
     <>
       <div className={s.layout}>
         <Header>
-          header!
+          <Link href="/"><a>header!</a></Link>
         </Header>
         <div className={s.layout__content}>
           {children}
