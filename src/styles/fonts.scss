@@ -15,6 +15,8 @@
   font-family: Poppins;
   font-style: italic;
   font-weight: 400;
+  font-display: swap;
+
   src: local('Poppins Italic'), local('Poppins-Italic'),
     url('/fonts/poppins-v9-latin-italic.woff2') format('woff2'),
     url('/fonts/poppins-v9-latin-italic.woff') format('woff');
@@ -24,7 +26,31 @@
   font-family: Poppins;
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
+
   src: local('Poppins Bold'), local('Poppins-Bold'),
     url('/fonts/poppins-v9-latin-700.woff2') format('woff2'),
     url('/fonts/poppins-v9-latin-700.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Gentium Basic';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+
+  src: local('Gentium Basic'), local('GentiumBasic'),
+       url('/fonts/gentium-basic-v11-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/fonts/gentium-basic-v11-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+@font-face {
+  font-family: 'Gentium Basic';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+
+  src: local('Gentium Basic Bold'), local('GentiumBasic-Bold'),
+       url('/fonts/gentium-basic-v11-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/fonts/gentium-basic-v11-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
