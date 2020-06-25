@@ -1,0 +1,28 @@
+@import 'styles/config';
+
+.grid {
+  @include grid-row;
+
+  // $min: min(unquote('(#{$min-tablet} - 100%) * 999'),
+  //   100%);
+}
+
+@function make-columns($i) {
+  @return repeat($grid-column-count / ($grid-column-count / $i), minmax(0, 1fr));
+}
+
+$breakpoints: ('Mobile': $min-mobile, 'Tablet': $min-tablet, 'Desktop': $min-desktop);
+
+@each $name, $breakpoint in $breakpoints {
+  @media (min-width: $breakpoint) {
+    @for $i from 1 through $grid-column-count {
+      .grid#{$name}#{$i} {
+        grid-template-columns: make-columns($i);
+      }
+    }
+  }
+}
+
+.column {
+  @include grid-col;
+}

@@ -2,10 +2,12 @@
 @mixin heading($size-min: $h1-size-min, $size: $h1-size) {
   @include responsive-font($size-min, $size);
   font-family: $font-family-heading;
+  font-weight: 700;
 }
 
 @mixin h1 {
   @include heading($h1-size-min, $h1-size);
+  line-height: 1.1;
 }
 
 @mixin h2 {

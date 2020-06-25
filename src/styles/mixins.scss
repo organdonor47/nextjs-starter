@@ -68,8 +68,9 @@
 // <Row> grid wrapper
 @mixin grid-row($direction: ltr, $grid-gutter: $gutter) {
   display: grid;
-  grid-column-gap: $grid-gutter;
-  grid-template-columns: repeat($grid-column-count, 1fr);
+  grid-gap: $grid-gutter;
+  grid-template-columns: repeat($grid-column-count, minmax(0, 1fr));
+  grid-template-rows: auto;
 
   direction: $direction;
 }
