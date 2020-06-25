@@ -3,6 +3,8 @@ import Head from 'next/head';
 import { GetStaticProps, GetStaticPaths } from 'next';
 
 import { getAllPostIds, getPostData } from '../../lib/posts';
+import { H1 } from 'components/heading/Heading';
+import { Section } from 'components/section/Section';
 
 export default function Post({
   postData
@@ -20,13 +22,13 @@ export default function Post({
       <Head>
         <title>{postData.title}</title>
       </Head>
-      <article>
-        <h1>{postData.title}</h1>
+      <Section as="article" container>
+        <H1>{postData.title}</H1>
         <div>
           <time dateTime={dateString.toString()}>{format(dateString, 'LLLL d, yyyy')}</time>
         </div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-      </article>
+      </Section>
     </>
   )
 }

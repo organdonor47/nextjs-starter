@@ -79,7 +79,8 @@
 
 // <Container>: center & left/right pad elements
 @mixin container($fluid: false) {
-  flex-grow: 1;
+  display: block;
+  flex: none;
 
   margin: 0 auto;
   padding-left: $container-gutter-mobile;
@@ -113,9 +114,8 @@
 
 // <Section>: top & bottom padding
 @mixin section( $padding-top: $section-padding, $padding-bottom: $section-padding, $padding-top-mobile: $section-padding-mobile, $padding-bottom-mobile: $section-padding-mobile) {
-
+  display: block;
   flex: none;
-  width: 100%;
 
 // Set up unitless values
   $top-mobile: strip-unit($padding-top-mobile);
@@ -125,6 +125,8 @@
 
   padding-top: $top-mobile * 1px;
   padding-bottom: $bottom-mobile * 1px;
+
+  width: 100%;
 
   overflow: hidden;
 

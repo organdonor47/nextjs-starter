@@ -7,7 +7,7 @@ import { getSortedPostsData } from 'lib/posts';
 import Date from 'components/date/Date';
 
 import { Container } from 'components/container/Container';
-import { H1, H2 } from 'components/heading/Heading';
+import { H1, H2, H3 } from 'components/heading/Heading';
 import { Section } from 'components/section/Section';
 
 export default function Home({
@@ -27,7 +27,7 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Section container>
+      <Section container as="span">
         <H1>Next-js starter</H1>
       
         <Container>
@@ -35,9 +35,11 @@ export default function Home({
           <ul>
             {allPostsData.map(({ id, date, title }) => (
               <li key={id}>
-                <Link href="/posts/[id]" as={`/posts/${id}`}>
-                  <a>{title}</a>
-                </Link>
+                <H3>
+                  <Link href="/posts/[id]" as={`/posts/${id}`}>
+                    <a>{title}</a>
+                  </Link>
+                </H3>
                 
                 <br />
                 {id}

@@ -1,25 +1,38 @@
+import { HeadingTags } from 'types/html-types';
+
 import s from './heading.module.scss';
 
-export const H1 = ({children}: { children: React.ReactNode }) => {
-  return (
-    <h1 className={s.h1}>
-      {children}
-    </h1>
-  )
+interface IProps {
+  as?: HeadingTags;
+  children: React.ReactNode;
 }
 
-export const H2 = ({children}: { children: React.ReactNode }) => {
+export const H1 = ({children, as}: IProps) => {
+  const Wrap = as ?? 'h1';
+
   return (
-    <h2 className={s.h2}>
+    <Wrap className={s.h1}>
       {children}
-    </h2>
-  )
+    </Wrap>
+  );
 }
 
-export const H3 = ({children}: { children: React.ReactNode }) => {
+export const H2 = ({children, as}: IProps) => {
+  const Wrap = as ?? 'h2';
+
   return (
-    <h2 className={s.h3}>
+    <Wrap className={s.h2}>
       {children}
-    </h2>
-  )
+    </Wrap>
+  );
+}
+
+export const H3 = ({children, as}: IProps) => {
+  const Wrap = as ?? 'h3';
+
+  return (
+    <Wrap className={s.h3}>
+      {children}
+    </Wrap>
+  );
 }
