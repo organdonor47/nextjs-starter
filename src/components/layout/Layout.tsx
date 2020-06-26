@@ -1,4 +1,4 @@
-import s from './layout.module.scss';
+import s from './Layout.module.scss';
 
 import { Header } from 'components/header/Header';
 import { Footer } from 'components/footer/Footer';

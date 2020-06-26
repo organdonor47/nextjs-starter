@@ -2,7 +2,7 @@
 
 import { HTMLElementList } from 'types/html-types';
 import c from 'classnames';
-import s from './grid.module.scss';
+import s from './Grid.module.scss';
 
 interface IProps {
   as?: HTMLElementList;

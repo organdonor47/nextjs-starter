@@ -1,6 +1,6 @@
 import { Grid } from 'components/grid/Grid';
 import { H2 } from 'components/heading/Heading';
-import s from './cards.module.scss';
+import s from './Cards.module.scss';
 
 // use <Grid /> component with defualt column options to build an even grid
 export const Cards = ({children }: {

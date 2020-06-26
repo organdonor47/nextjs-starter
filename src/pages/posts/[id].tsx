@@ -4,6 +4,7 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 import { getAllPostIds, getPostData } from 'lib/posts';
 import { H1 } from 'components/heading/Heading';
 import { Section } from 'components/section/Section';
+import { RichText } from 'components/rich-text/RichText';
 
 export default function Post({
   postData
@@ -21,10 +22,8 @@ export default function Post({
       </Head>
       <Section as="article" container>
         <H1>{postData.title}</H1>
-        <div>
-          <time>{postData.date}</time>
-        </div>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        <time>{postData.date}</time>
+        <RichText html={postData.contentHtml} />
       </Section>
     </>
   )

@@ -1,6 +1,6 @@
 import { Container } from 'components/container/Container';
 
-import s from './footer.module.scss';
+import s from './Footer.module.scss';
 
 export const Footer = ({children}: { children: React.ReactNode }) => {
   return (

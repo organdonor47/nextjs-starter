@@ -3,17 +3,40 @@
   @include responsive-font($size-min, $size);
   font-family: $font-family-heading;
   font-weight: 700;
+  line-height: 1.1;
 }
 
 @mixin h1 {
   @include heading($h1-size-min, $h1-size);
-  line-height: 1.1;
+
+  margin-bottom: clamp(20px, 0.5em, 60px);
 }
 
 @mixin h2 {
   @include heading($h2-size-min, $h2-size);
+
+  margin-bottom: clamp(20px, 0.5em, 40px);
+
 }
 
 @mixin h3 {
   @include heading($h3-size-min, $h3-size);
+
+  margin-bottom: clamp(20px, 0.5em, 30px);
+}
+
+@mixin h4 {
+  @include heading($h4-size-min, $h4-size);
+}
+
+@mixin h5 {
+  @include heading($h5-size-min, $h5-size);
+
+  line-height: inherit;
+}
+
+@mixin h6 {
+  @include heading($h6-size-min, $h6-size);
+
+  line-height: inherit;
 }

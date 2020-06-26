@@ -1,4 +1,4 @@
-import s from './container.module.scss';
+import s from './Container.module.scss';
 
 export const Container = ({children}: { children: React.ReactNode }) => {
   return (

@@ -9,7 +9,7 @@ $container-gutter-tablet: 50px;
 $container-gutter-desktop: 70px;
 
 // spacing between sections
-$section-padding: 150px;
+$section-padding: 140px;
 $section-padding-mobile: 90px;
 
 // DIMENSIONS
@@ -48,5 +48,13 @@ $h1-size: 60px;
 $h1-size-min: 40px;
 $h2-size: 40px;
 $h2-size-min: 32px;
-$h3-size: 34px;
+$h3-size: 32px;
 $h3-size-min: 26px;
+$h4-size: 26px;
+$h4-size-min: 22px;
+$h5-size: 22px;
+$h5-size-min: 20px;
+$h6-size: $font-size;
+$h6-size-min: $font-size-min;
+
+$line-height: 1.5;

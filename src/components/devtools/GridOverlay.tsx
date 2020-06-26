@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { useKeyDown } from 'hooks/useKeyDown';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 
-import s from './grid-overlay.module.scss';
+import s from './GridOverlay.module.scss';
 
 const LOCAL_STORAGE_KEY_ACTIVE = '_devtoolsActiveGrid';
 

@@ -2,18 +2,24 @@
 
 .h1 {
   @include h1;
-
-  margin-bottom: clamp(20px, 0.5em, 50px);
-
-  line-height: 1.15;
 }
 
 .h2 {
   @include h2;
-
-  margin-bottom: clamp(20px, 0.5em, 40px);
 }
 
 .h3 {
   @include h3;
+}
+
+.h4 {
+  @include h4;
+}
+
+.h5 {
+  @include h5;
+}
+
+.h6 {
+  @include h6;
 }

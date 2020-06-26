@@ -34,8 +34,13 @@ html {
 
 body {
   font-family: $font-family;
-  // line-height: $line-height;
+  line-height: $line-height;
 
+}
+
+
+hr {
+  border-color: var(--color-border, $color-border);
 }
 
 a {

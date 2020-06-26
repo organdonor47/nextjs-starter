@@ -3,7 +3,7 @@ import { HTMLElementList } from 'types/html-types';
 import { Container } from 'components/container/Container';
 
 import c from 'classnames';
-import s from './section.module.scss';
+import s from './Section.module.scss';
 
 interface IProps {
   children: React.ReactNode;

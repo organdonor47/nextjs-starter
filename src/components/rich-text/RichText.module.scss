@@ -1,0 +1,97 @@
+@import 'styles/config';
+
+// handle default html tags as article styles 
+.richText {
+  
+  h1 {
+    @include h1;
+  }
+
+  h2 {
+    @include h2;
+  }
+
+  h3 {
+    @include h3;
+  }
+
+  h4 {
+    @include h4;
+  }
+
+  h5 {
+    @include h5;
+  }
+
+  h6 {
+    @include h5;
+  }
+
+  p,
+  ul,
+  ol,
+  dl,
+  blockquote,
+  pre {
+    all: revert;
+    margin-top: 2em;
+    margin-bottom: 2em;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  hr {
+    margin-top: 3.5em;
+    margin-bottom: 3.5em;
+
+
+  }
+
+  ul,
+  ol {
+    padding-left: (50px/$font-size) * 1em;
+
+    list-style-position: outside;
+  }
+
+  ul {
+    
+    li {
+      display: list-item;
+      list-style-type: disc;
+    }
+  }
+
+  ol {
+    li {
+      list-style-type: decimal;
+    }
+  }
+
+  dt {
+    font-weight: 700;
+  }
+
+  dd {
+    margin-bottom: 1.5em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  b,
+  strong {
+    font-weight: 700;
+  }
+
+  em, i {
+    font-style: italic;
+  }
+}
