@@ -32,7 +32,7 @@ export default function Home({
       </Head>
 
       <Section container as="div">
-        <H1>Next-js starter</H1>
+        <H1 style={{ marginBottom: 0 }}>Next-js starter</H1>
       </Section>
 
       <Section container>

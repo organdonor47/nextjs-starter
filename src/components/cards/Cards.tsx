@@ -1,5 +1,5 @@
 import { Grid } from 'components/grid/Grid';
-import { H3 } from 'components/heading/Heading';
+import { H2 } from 'components/heading/Heading';
 import s from './cards.module.scss';
 
 // use <Grid /> component with defualt column options to build an even grid
@@ -25,7 +25,7 @@ export const Card = ({heading, date, children }: ICardProps) => {
 
   return (
     <li className={s.card}>
-      <H3 className={s.card__heading}>{heading}</H3>
+      <H2 as="h3" className={s.card__heading}>{heading}</H2>
       {children}
       <div className={s.card__date}>{date}</div>
     </li>
