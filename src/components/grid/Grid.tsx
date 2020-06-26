@@ -1,3 +1,5 @@
+//  used to make an evenly-sized set of columns only. use scss mixins for different-sized column spans 
+
 import { HTMLElementList } from 'types/html-types';
 import c from 'classnames';
 import s from './grid.module.scss';

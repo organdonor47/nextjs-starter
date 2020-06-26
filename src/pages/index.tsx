@@ -4,8 +4,6 @@ import { GetStaticProps } from 'next';
 
 import { getSortedPostsData } from 'lib/posts';
 
-import Date from 'components/date/Date';
-
 import { Container } from 'components/container/Container';
 import { H1, H2, H3 } from 'components/heading/Heading';
 import { Section } from 'components/section/Section';

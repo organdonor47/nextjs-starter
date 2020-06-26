@@ -1,4 +1,3 @@
-import { parseISO, format } from 'date-fns';
 import Head from 'next/head';
 import { GetStaticProps, GetStaticPaths } from 'next';
 
@@ -15,8 +14,6 @@ export default function Post({
     contentHtml: string
   }
 }) {
-  const dateString = parseISO(postData.date);
-
   return (
     <>
       <Head>
@@ -25,7 +22,7 @@ export default function Post({
       <Section as="article" container>
         <H1>{postData.title}</H1>
         <div>
-          <time dateTime={dateString.toString()}>{format(dateString, 'LLLL d, yyyy')}</time>
+          <time>{postData.date}</time>
         </div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </Section>
