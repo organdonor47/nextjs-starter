@@ -24,33 +24,45 @@
   }
 
   h6 {
-    @include h5;
+    @include h6;
   }
 
-  p,
-  ul,
-  ol,
-  dl,
-  blockquote,
-  pre {
-    all: revert;
-    margin-top: 2em;
-    margin-bottom: 2em;
+  $block-elements: p, ul, ol, dl, blockquote, pre;
 
-    &:first-child {
+  @each $el in $block-elements {
+    
+    #{$el} {
+      all: revert;
+      margin-top: 2em;
+      margin-bottom: 2em;
+
+      &:first-child {
+        margin-top: 0;
+      }
+  
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    h4 + #{$el} {
+      margin-top: 1em;
+    }
+
+    h5 + #{$el},
+    h6 + #{$el} {
       margin-top: 0;
     }
+  }
 
-    &:last-child {
-      margin-bottom: 0;
-    }
+  h5 + &,
+  h6 + & {
+    margin-top: 0;
   }
 
   hr {
     margin-top: 3.5em;
     margin-bottom: 3.5em;
-
-
   }
 
   ul,
