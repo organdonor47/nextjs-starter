@@ -2,7 +2,7 @@ import { parseISO, format } from 'date-fns';
 import Head from 'next/head';
 import { GetStaticProps, GetStaticPaths } from 'next';
 
-import { getAllPostIds, getPostData } from '../../lib/posts';
+import { getAllPostIds, getPostData } from 'lib/posts';
 import { H1 } from 'components/heading/Heading';
 import { Section } from 'components/section/Section';
 

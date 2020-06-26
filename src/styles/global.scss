@@ -1,7 +1,8 @@
-// project-specific global css should go here
 @import 'reset';
 @import 'fonts';
 @import 'config';
+
+// project-specific global / reset css should go here
 
 :root {
   --color-background: #{$color-background};

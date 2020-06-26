@@ -1,7 +1,7 @@
 ---
-title: 'a bew post thing in the thing'
-date: '2020-01-20'
-description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rhoncus ipsum.'
+title: 'this is the oldest post in the list'
+date: '2019-01-20'
+description: 'Fusce felis urna, lacinia volutpat cursus ut, tempus sit amet est. Donec feugiat magna vel orci ultricies, non mollis neque dictum. Interdum et malesuada fames ac ante ipsum primis in faucibus...'
 ---
 
 We recommend using **Static Generation** (with and without data) whenever possible because your page can be built once and served by CDN, which makes it much faster than having a server render the page on every request.

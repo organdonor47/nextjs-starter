@@ -66,9 +66,9 @@
 
 // GRID
 // <Row> grid wrapper
-@mixin grid-row($direction: ltr, $grid-gutter: $gutter) {
+@mixin grid($direction: ltr, $grid-gutter: var(--gutter)) {
   display: grid;
-  grid-gap: $grid-gutter;
+  gap: $grid-gutter;
   grid-template-columns: repeat($grid-column-count, minmax(0, 1fr));
   grid-template-rows: auto;
 
