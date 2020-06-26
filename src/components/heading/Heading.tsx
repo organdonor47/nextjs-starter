@@ -4,7 +4,7 @@ import c from 'classnames';
 import s from './heading.module.scss';
 
 interface IProps {
-  type?: HeadingTags;
+  type: HeadingTags;
   as?: HeadingTags;
   className?: string;
   children: React.ReactNode;
