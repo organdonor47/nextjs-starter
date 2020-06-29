@@ -20,14 +20,7 @@ html, body, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, ab
   width: device-width;
 }
 
-html,
-body {
-	height: 100%;
-}
-
 html {
-	all: revert;
-
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -38,8 +31,13 @@ html {
   box-sizing: border-box;
 }
 
+html,
 body {
-	text-size-adjust: 100%; // iOS on orientation change
+	height: 100%;
+}
+
+body {
+	text-size-adjust: 100%;
 }
 
 *,
@@ -169,7 +167,9 @@ button {
 
 button, input, select, textarea {
 	margin: 0;
+	
 	font-family: inherit;
+	font-size: inherit;
 }
 
 button,
@@ -177,6 +177,9 @@ input[type=button] {
 	padding: 0;
 
 	border: 0;
+
+	background: transparent;
+	color: inherit;
 }
 
 /* kill animations where required */

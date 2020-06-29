@@ -2,14 +2,58 @@
 
 .nav {
   @media (max-width: $max-desktop) {
-    // mobile
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+
+      width: 100%;
+
+      max-width: 400px;
+
+      pointer-events: none;
+
+      backface-visibility: hidden;
+
+    &__inner {
+      padding: var(--gutter);
+
+      height: 100%;
+
+      pointer-events: auto;
+
+      background: #fff;
+
+      transform: translate3d(105%, 0, 0);
+
+      .open & {
+        transform: none;
+        transition: transform var(--transition-duration) var(--default-ease);
+      }
+    }
+
+    &__backdrop {
+      cursor: pointer;
+    }
   }
 
   @media (min-width: $min-desktop) {
     display: flex;
 
+    &__close {
+      display: none;
+    }
+
     &__list {
       display: flex;
+    }
+
+    &__item {
+      margin-right: var(--gutter);
+
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 }

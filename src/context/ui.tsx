@@ -18,8 +18,8 @@ export const UIContext = createContext<IUIContext>({
 export const UIProvider = ({ children }: IProps) => {
   const [navOpen, setNavOpen] = useState(false);
 
-  const preventScroll = (prevent: boolean) => {
-    const htmlClassName = 'scroll-disabled';
+  const preventScroll = (prevent: boolean, isNavOpen?: boolean) => {
+    const htmlClassName = isNavOpen ? 'nav-open' : 'scroll-disabled';
 
     prevent
       ? document.documentElement.classList.add(htmlClassName)
@@ -27,7 +27,7 @@ export const UIProvider = ({ children }: IProps) => {
   };
 
   const toggleNav = (open: boolean) => {
-    preventScroll(open);
+    preventScroll(open, true);
     setNavOpen(open);
   };
 

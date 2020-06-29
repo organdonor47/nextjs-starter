@@ -15,13 +15,13 @@ export const Nav = ({children}: IProps) => {
 
   return (
     <nav className={c(s.nav, {[s.open]: navOpen})}>
-      <ul className={s.nav__list}>
-        {Children.map(children, (child, i) => (
-          <li className={s.nav__item} key={i}>{child}</li>
-        ))}
-      </ul>
-      <div className={s.nav__controls}>
-        <button onClick={() => toggleNav(!navOpen)}>menu</button>
+      <div className={s.nav__inner}>
+        <button className={s.nav__close} onClick={() => toggleNav(false)}>close</button>
+        <ul className={s.nav__list}>
+          {Children.map(children, (child, i) => (
+            <li className={s.nav__item} key={i}>{child}</li>
+          ))}
+        </ul>
       </div>
     </nav>
   );

@@ -14,7 +14,7 @@ export default function Elements() {
 
       <Section container>
         <H1>
-          Read <Link href="/"><a>go home!</a></Link>
+          Elements page <br /><Link href="/"><a>go home!</a></Link>
         </H1>
       </Section>
     </div>

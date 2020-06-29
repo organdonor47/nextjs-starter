@@ -17,7 +17,7 @@ $header-height: 90px;
 $header-height-mobile: 60px;
 $page-width: 1440px;
 
-// breakpoints
+// BREAKPOINTS
 $min-mobile: 480px;
 $min-tablet: 720px;
 $min-desktop: 1080px;
@@ -25,7 +25,10 @@ $min-desktop: 1080px;
 $max-tablet: $min-tablet - 1px;
 $max-desktop: $min-desktop - 1px;
 
-//  colors
+// STACK
+$zindex-header: 1;
+
+// COLORS
 $color-background: #fff;
 $color-background-dark-mode: #000;
 $color-border: rgba(#c09, 0.3);
@@ -35,7 +38,7 @@ $color-placeholder: #eee;
 $color-primary: #c0a;
 $color-link: #c00;
 
-// type
+// TYPE
 $font-family-serif: 'Gentium Basic', Times, "Times New Roman", serif;
 $font-family-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
 $font-family: $font-family-sans;
@@ -59,3 +62,28 @@ $h6-size: $font-size;
 $h6-size-min: $font-size-min;
 
 $line-height: 1.5;
+
+
+// ANIMATION [power1, 2, 3, 4] in gsap;
+
+// ease-in
+$ease-in-quad: cubic-bezier(0.11, 0, 0.5, 0);
+$ease-in-cubic: cubic-bezier(0.32, 0, 0.67, 0);
+$ease-in-quart: cubic-bezier(0.5, 0, 0.75, 0);
+$ease-in-quint: cubic-bezier(0.64, 0, 0.78, 0);
+
+// ease-out
+$ease-out-quad: cubic-bezier(0.5, 1, 0.89, 1);
+$ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
+$ease-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+$ease-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+
+// ease-in-out
+$ease-in-out-quad: cubic-bezier(0.45, 0, 0.55, 1);
+$ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
+$ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+$ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+
+$default-ease: $ease-in-out-quint;
+
+$transition-duration: 300ms;

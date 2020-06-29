@@ -1,5 +1,9 @@
 
+import { useEffect, useContext } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
+
+import { UIContext } from 'context/ui';
 
 import { Header } from 'components/header/Header';
 import { Footer } from 'components/footer/Footer';
@@ -9,7 +13,16 @@ import s from './Layout.module.scss';
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
 
-  const isDev = process.env.NODE_ENV === 'development';
+  const { navOpen, toggleNav } = useContext(UIContext);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (navOpen) {
+      toggleNav(false);
+    }
+
+  }, [router]);
 
   return (
     <>
@@ -17,7 +30,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
         <Header>
           <Nav>
             <Link href="/elements"><a>elements</a></Link>
-            <span>boing</span>
+            <Link href="/"><a>another link</a></Link>
           </Nav>
         </Header>
         <div className={s.layout__content}>

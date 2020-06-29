@@ -5,6 +5,10 @@
 // project-specific global / reset css should go here
 
 :root {
+  // ANIMATION / TRANSITION
+  --default-ease: #{$default-ease};
+  --transition-duration: #{$transition-duration};
+
   // COLORS
   --color-background: #{$color-background};
   --color-border: #{$color-border};
@@ -38,6 +42,10 @@
       --color-link: #{$color-link-dark-mode};
     }
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    --transition-duration: 1ms;
+  }
 }
 
 html {
@@ -48,6 +56,33 @@ html {
 
   color: var(--color-font, $color-font);
   background: var(--color-background, $color-background);
+
+
+  @mixin html-overflow-hidden {
+    overflow-y: hidden;
+
+    body {
+      touch-action: none;
+    }
+  }
+  
+  &.scroll-disabled {
+    // if nav is open
+    @include html-overflow-hidden;
+  }
+
+
+  &.nav-open {
+    // if nav is open
+    @media (max-width: $max-desktop) {
+      @include html-overflow-hidden;
+    }
+    
+  }
+}
+
+body {
+  color: var(--color-font);
 }
 
 

@@ -1,6 +1,8 @@
 @import 'styles/config';
 
 .header {
+  position: relative;
+  z-index: $zindex-header;
   height: $header-height;
 
   background: #caa;
@@ -17,5 +19,13 @@
   &__nav {
     margin-left: auto;
     padding-left: var(--gutter);
+  }
+
+  &__controls {
+    margin-left: var(--gutter);
+
+    @media (min-width: $min-desktop) {
+      display: none;
+    }
   }
 }
