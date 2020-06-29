@@ -1,0 +1,15 @@
+@import 'styles/config';
+
+.nav {
+  @media (max-width: $max-desktop) {
+    // mobile
+  }
+
+  @media (min-width: $min-desktop) {
+    display: flex;
+
+    &__list {
+      display: flex;
+    }
+  }
+}

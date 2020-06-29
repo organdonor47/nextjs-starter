@@ -1,4 +1,3 @@
-import { CSSProperties } from 'react';
 import { HeadingTags } from 'types/html-types';
 
 import c from 'classnames';
@@ -8,7 +7,7 @@ interface IProps {
   type?: HeadingTags;
   as?: HeadingTags;
   className?: string;
-  style?: CSSProperties;
+  style?: React.CSSProperties;
   children: React.ReactNode;
 }
 

@@ -5,6 +5,7 @@
 // project-specific global / reset css should go here
 
 :root {
+  // COLORS
   --color-background: #{$color-background};
   --color-border: #{$color-border};
   --color-font: #{$color-font};
@@ -12,6 +13,7 @@
   --color-placeholder: #{$color-placeholder};
   --color-primary: #{$color-primary};
 
+  // LAYOUT
   --container-gutter: #{$container-gutter-mobile};
   --gutter: #{$gutter};
 
@@ -23,7 +25,7 @@
     --container-gutter: #{$container-gutter-desktop};
   }
 
-  // DARK MODE?
+  // DARK MODE
   @media (prefers-color-scheme: dark) {
     @if variable-exists(color-background-dark-mode) {
       --color-background: #{$color-background-dark-mode};

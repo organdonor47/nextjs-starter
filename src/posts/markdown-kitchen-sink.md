@@ -12,9 +12,21 @@ Lorem markdownum fruges durum Tirynthius redolentia apud, nescit quinque est
 inputat undis. Quod cum natum opportuna speratque ista nexilibus terra, externo,
 modo. In tenus quidve prodis, adgnovitque parum: ultroque dextro fronde.
 
+* Item 1
+* Item 2
+* Item 3
+    * Item 3a
+    * Item 3b
+    * Item 3c
+
 1. Nec aetas sacri nescius
 2. Nostro et in iustius exturbare tumefecit inque
 3. Condidit et ista
+    1. Step 3.1
+    2. Step 3.2
+    3. Step 3.3
+4. Ascac
+5. Ascac (again)
 
 ### Rapidum vaticinos neque de undas versus cognoscenda
 

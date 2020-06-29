@@ -1,10 +1,11 @@
 //HELPERS 
 
-// fix css max / min, override scss min / max
+// fix css max, override scss min / max
 @function max($values...) {
   @return m#{a}x(#{$values});
 }
 
+// fix css min, override scss min / max
 @function min($values...) {
   @return m#{i}n(#{$values});
 }
@@ -87,7 +88,6 @@
 
 // <Container>: center & left/right pad elements
 @mixin container($fluid: false) {
-  display: block;
   flex: none;
 
   margin: 0 auto;
@@ -112,7 +112,6 @@
 
 // <Section>: top & bottom padding
 @mixin section( $padding-top: $section-padding, $padding-bottom: $section-padding, $padding-top-mobile: $section-padding-mobile, $padding-bottom-mobile: $section-padding-mobile) {
-  display: block;
   flex: none;
 
 // Set up unitless values

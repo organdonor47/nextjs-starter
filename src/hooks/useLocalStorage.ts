@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 type TValue = string | boolean | object;
 
@@ -12,7 +12,7 @@ export const useLocalStorage = (key: string, initialValue?: TValue) => {
     return [initialValue, undefined];
   }
 
-  const [state, setState] = React.useState(() => {
+  const [state, setState] = useState(() => {
     try {
       const local = localStorage.getItem(key);
 

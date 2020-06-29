@@ -10,6 +10,14 @@
   //   }
   // }
 
+  > :first-child {
+    margin-top: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
   // use rem here for consistent spacing rules?
   $block-margin: 2rem;
   
@@ -46,14 +54,6 @@
       all: revert;
       margin-top: $block-margin;
       margin-bottom: $block-margin;
-
-      &:first-child {
-        margin-top: 0;
-      }
-  
-      &:last-child {
-        margin-bottom: 0;
-      }
     }
 
     h4 + #{$el} {
@@ -87,22 +87,42 @@
 
   ul,
   ol {
-    padding-left: (50px/$font-size) * 1em;
+    padding-left: (30px/$font-size) * 1em;
 
     list-style-position: outside;
+
+    @media (min-width: $min-tablet) {
+      padding-left: (50px/$font-size) * 1em
+    }
+
+    > li > ul,
+    > li > ol {
+      margin: 0.5em 0;
+      padding-left: 1em;
+    }
+
   }
 
   ul {
     
     li {
       display: list-item;
-      list-style-type: disc;
+      list-style: disc inside;
+      li {
+        list-style-type: circle;
+      }
     }
   }
 
   ol {
-    li {
-      list-style-type: decimal;
+    list-style: decimal inside;
+
+    ol {
+      counter-reset: list-alpha;
+
+      li {
+        list-style: lower-alpha inside;
+      }
     }
   }
 

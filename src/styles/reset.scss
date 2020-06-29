@@ -48,6 +48,10 @@ body {
 	box-sizing: inherit;
 }
 
+a {
+	color: inherit;
+}
+
 img,
 object,
 iframe,
@@ -57,7 +61,8 @@ embed {
 	height: auto;
 }
 
-ul {
+ul,
+ol {
 	list-style: none;
 }
 
@@ -164,13 +169,12 @@ button {
 
 button, input, select, textarea {
 	margin: 0;
+	font-family: inherit;
 }
 
-/* make buttons play nice in IE */
 button,
 input[type=button] {
-	width: auto;
-	overflow: visible;
+	padding: 0;
 
 	border: 0;
 }
@@ -181,8 +185,4 @@ input[type=button] {
     animation: none !important;
     transition: none !important;
   }
-}
-
-a {
-	color: inherit;
 }

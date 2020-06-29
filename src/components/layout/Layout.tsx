@@ -1,9 +1,11 @@
-import s from './Layout.module.scss';
+
+import Link from 'next/link';
 
 import { Header } from 'components/header/Header';
 import { Footer } from 'components/footer/Footer';
-import { Devtools } from 'components/devtools/Devtools';
-import Link from 'next/link';
+import { Nav } from 'components/nav/Nav';
+
+import s from './Layout.module.scss';
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
 
@@ -13,14 +15,16 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
     <>
       <div className={s.layout}>
         <Header>
-          <Link href="/"><a>header!</a></Link>
+          <Nav>
+            <Link href="/elements"><a>elements</a></Link>
+            <span>boing</span>
+          </Nav>
         </Header>
         <div className={s.layout__content}>
           {children}
         </div>
         <Footer>¯\_(ツ)_/¯</Footer>
       </div>
-      { isDev && <Devtools />}
     </>
   );
 }

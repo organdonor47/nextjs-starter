@@ -1,10 +1,21 @@
 @import 'styles/config';
 
 .header {
-  display: flex;
-  align-items: center;
-
   height: $header-height;
 
   background: #caa;
+
+  &__container {
+    @include container;
+  
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+  }
+
+  &__nav {
+    margin-left: auto;
+    padding-left: var(--gutter);
+  }
 }
