@@ -2,6 +2,16 @@
 
 // handle default html tags as article styles 
 .richText {
+  // $heading-elements: h1, h2, h3, h4, h5, h6;
+
+  // @each $el in $heading-elements {
+  //   #{$el} {
+  //     @include #{$el};
+  //   }
+  // }
+
+  // use rem here for consistent spacing rules?
+  $block-margin: 2rem;
   
   h1 {
     @include h1;
@@ -28,13 +38,14 @@
   }
 
   $block-elements: p, ul, ol, dl, blockquote, pre;
+  $heading-elements: h1, h2, h3, h4, h5, h6;
 
   @each $el in $block-elements {
     
     #{$el} {
       all: revert;
-      margin-top: 2em;
-      margin-bottom: 2em;
+      margin-top: $block-margin;
+      margin-bottom: $block-margin;
 
       &:first-child {
         margin-top: 0;
@@ -46,13 +57,22 @@
     }
 
     h4 + #{$el} {
-      margin-top: 1em;
+      margin-top: 1rem;
     }
 
     h5 + #{$el},
     h6 + #{$el} {
       margin-top: 0;
     }
+
+    // heading gets more spacing above
+    @each $heading in $heading-elements {
+      #{$el} + #{$heading} {
+        margin-top: $block-margin * 2;
+      }
+    }
+
+
   }
 
   h5 + &,
@@ -61,8 +81,8 @@
   }
 
   hr {
-    margin-top: 3.5em;
-    margin-bottom: 3.5em;
+    margin-top: $block-margin * 2;
+    margin-bottom: $block-margin * 2;
   }
 
   ul,
@@ -91,7 +111,7 @@
   }
 
   dd {
-    margin-bottom: 1.5em;
+    margin-bottom: $block-margin;
 
     &:last-child {
       margin-bottom: 0;

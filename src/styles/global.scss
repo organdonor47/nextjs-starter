@@ -8,15 +8,12 @@
   --color-background: #{$color-background};
   --color-border: #{$color-border};
   --color-font: #{$color-font};
+  --color-link: #{$color-link};
   --color-placeholder: #{$color-placeholder};
   --color-primary: #{$color-primary};
+
   --container-gutter: #{$container-gutter-mobile};
   --gutter: #{$gutter};
-
-  @media (prefers-color-scheme: dark) {
-    --color-font: #{$color-font-dark-mode};
-    --color-background: #{$color-background-dark-mode};
-  }
 
   @media (min-width: $min-tablet) {
     --container-gutter: #{$container-gutter-tablet};
@@ -25,17 +22,30 @@
   @media (min-width: $min-desktop) {
     --container-gutter: #{$container-gutter-desktop};
   }
+
+  // DARK MODE?
+  @media (prefers-color-scheme: dark) {
+    @if variable-exists(color-background-dark-mode) {
+      --color-background: #{$color-background-dark-mode};
+    }
+
+    @if variable-exists(color-font-dark-mode) {
+      --color-font: #{$color-font-dark-mode};
+    }
+    @if variable-exists(color-link-dark-mode) {
+      --color-link: #{$color-link-dark-mode};
+    }
+  }
 }
 
 html {
-  color: var(--color-font);
-  background: var(--color-background);
-}
+  @include responsive-font($font-size-min, $font-size);
 
-body {
   font-family: $font-family;
   line-height: $line-height;
 
+  color: var(--color-font, $color-font);
+  background: var(--color-background, $color-background);
 }
 
 
@@ -45,6 +55,7 @@ hr {
 
 a {
   text-decoration: underline;
+  color: var(--color-link, inherit);
 
   @media (pointer: fine) {
     &:hover {
@@ -53,7 +64,7 @@ a {
   }
 }
 
-// placeholders
+// placeholders. needs longhand
 input,
 textarea,
 select {
