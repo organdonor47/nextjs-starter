@@ -37,6 +37,10 @@
     background-size: calc(100% + var(--gutter)) 100%;
     background-position: 0 0;
 
+    @media (prefers-reduced-motion: reduce) {
+      opacity: 1;
+    }
+
     @keyframes fade-in {
       to {
         opacity: 1;
