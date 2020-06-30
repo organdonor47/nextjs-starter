@@ -1,0 +1,99 @@
+@import 'styles/config';
+
+.hero {
+  @include section;
+
+  display: flex;
+  align-items: stretch;
+  
+  min-height: 80vmin;
+
+  background: var(--color-primary);
+
+  &__grid {
+    @include grid;
+  }
+
+  &__container {
+    @include container;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  // demo style for labelling
+  @mixin label {
+    position: relative;
+
+    padding-top: 11px;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      font-size: 11px;
+
+      background: rgba(#fff, 0.5);
+    }
+  }
+
+  &__content {
+    @include grid-col;
+    @include label;
+
+    position: relative;
+
+    &::before {
+      content: 'mobile: 100%';
+    }
+
+    @media (min-width: $min-tablet) {
+      @include grid-col(10);
+
+      &::before {
+        content: 'tablet: 10 / 12';
+      }
+    }
+
+    @media (min-width: $min-desktop) {
+      @include grid-col(8);
+
+      &::before {
+        content: 'desktop: 8/12';
+      }
+    }
+
+    @media (min-width: $page-limit) {
+      @include grid-col(6);
+
+      &::before {
+        content: 'max page width: 6 / 12';
+      }
+    }
+  }
+
+  &__block {
+    @include grid-col;
+    @include label;
+
+    aspect-ratio: 16 / 9;
+    padding: var(--gutter);
+
+    background: rgba(#fff, 0.5);
+
+    &::before {
+      content: 'default: 100%';
+    }
+
+    @media (min-width: $min-desktop) {
+      @include grid-col(4);
+
+      &::before {
+        content: 'desktop: 4 / 12';
+      }
+    }
+  }
+}

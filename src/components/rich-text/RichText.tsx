@@ -1,16 +1,31 @@
 import c from 'classnames';
 import s from './RichText.module.scss';
 
-export const RichText = ({html, className }: { html: string | React.ReactNode; className?: string; }) => {
+interface IProps {
+  html?: string;
+  children?: React.ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
+}
 
-  if (typeof html === 'string') {
+export const RichText = ({html, children, className, style }: IProps) => {
+
+  if (!html && !children) return null;
+
+  const passProps: IProps = {};
+  passProps.className = c(s.richText, className);
+  passProps.style = style;
+
+  // prioritise children
+  if (children) {
     return (
-      <div className={c(s.richText, className)} dangerouslySetInnerHTML={{ __html: html }} />
+      <div {...passProps}>
+        {children}
+      </div>
     );
   }
+
   return (
-    <div className={c(s.richText, className)}>
-      {html}
-    </div>
+    <div {...passProps} dangerouslySetInnerHTML={{ __html: html }} />
   );
 }

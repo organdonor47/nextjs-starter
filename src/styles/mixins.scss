@@ -66,18 +66,30 @@
 }
 
 // GRID
-// <Row> grid wrapper
+// grid row wrapper
 @mixin grid($direction: ltr, $grid-gutter: var(--gutter)) {
-  display: grid;
-  gap: $grid-gutter;
-  grid-template-columns: repeat($grid-column-count, minmax(0, 1fr));
-  grid-template-rows: auto;
+  // linear until $min-mobile, gives space for gap to not overflow
 
-  direction: $direction;
+  display: grid;
+  gap: $grid-gutter 0;
+  grid-template-columns: 1fr;
+
+  // mq should be more like ($grid-gutter (px value, not custom prop!) * $grid-column-count)
+  @media (min-width: $min-mobile) {
+    gap: $grid-gutter;
+
+    grid-template-columns: repeat($grid-column-count, minmax(0, 1fr));
+    grid-template-rows: auto;
+  
+    flex: none;
+    width: 100%;
+  
+    direction: $direction;
+  }
 }
 
 // individual column
-@mixin grid-col($col-width: 12, $offset: 0) {
+@mixin grid-col($col-width: $grid-column-count, $offset: 0) {
   @if ($offset > 0) {
     grid-column: ($offset + 1) / span #{$col-width};
   }
@@ -88,7 +100,7 @@
 
 // <Container>: center & left/right pad elements
 @mixin container($fluid: false) {
-  flex: none;
+  flex-grow: 1;
 
   margin: 0 auto;
   padding-left: $container-gutter-mobile;

@@ -1,10 +1,28 @@
 import Head from 'next/head';
-
 import Link from 'next/link';
-import { Section } from 'components/section/Section';
-import { H1 } from 'components/heading/Heading';
+import { GetStaticProps } from 'next';
 
-export default function Elements() {
+import { getSortedPostsData } from 'lib/posts';
+
+import { Container } from 'components/container/Container';
+import { Section } from 'components/section/Section';
+import { H1, H2, H3 } from 'components/heading/Heading';
+import { RichText } from 'components/rich-text/RichText';
+
+// demo components
+import { Cards, Card } from 'components/demos/cards/Cards';
+import { Hero } from 'components/demos/hero/Hero';
+
+export default function Elements({
+  allPostsData
+}: {
+  allPostsData: {
+    date: string;
+    title: string;
+    id: string;
+    description: string;
+  }[]
+}) {
   return (
     <div className="container">
       <Head>
@@ -14,9 +32,58 @@ export default function Elements() {
 
       <Section container>
         <H1>
-          Elements page <br /><Link href="/"><a>go home!</a></Link>
+          Elements page
         </H1>
+      </Section>
+
+      <Section>
+
+        <Container>
+          <H2 as="h2">Basic grid column span usage</H2>
+        
+
+          <RichText style={{ paddingBottom: '2em'}}>
+            <p>Uses the <code>@grid</code> and <code>@grid-col</code> scss mixins to lay out elements on the page.</p>
+          </RichText>
+        </Container>
+
+        <Hero title="Title: no columns defined">
+          <strong>kids here!</strong> Maecenas est ligula, consequat suscipit malesuada sit amet, tristique quis lorem. Quisque quis pellentesque dui. Suspendisse erat velit, rutrum eu mi at, faucibus hendrerit neque.
+        </Hero>
+
+      </Section>
+
+      <Section container>
+
+      <H3 as="h2">Card grid</H3>
+      <RichText style={{ paddingBottom: '2em'}}>
+        <p>uses a <code>&lt;Card&gt;</code> component to configure and style a basic <code>&lt;Grid&gt;</code> component, which generates an equal-column grid. </p>
+      </RichText>
+
+      <Cards>
+        {allPostsData.map(({ id, date, title, description }) => (
+          <Card
+            key={id}
+            heading={
+              <Link href="/posts/[id]" as={`/posts/${id}`}><a>{title}</a></Link>
+            }
+            date={date}
+          >
+            <div>{description}</div>
+          </Card>
+        ))}
+        
+      </Cards>
       </Section>
     </div>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const allPostsData = getSortedPostsData()
+  return {
+    props: {
+      allPostsData
+    }
+  }
 }

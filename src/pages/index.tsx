@@ -1,28 +1,11 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { GetStaticProps } from 'next';
 
-import { getSortedPostsData } from 'lib/posts';
-
-import { Container } from 'components/container/Container';
-import { H1, H2, H3 } from 'components/heading/Heading';
+import { H1, H3 } from 'components/heading/Heading';
 import { Section } from 'components/section/Section';
-import { Cards, Card } from 'components/cards/Cards';
+import { RichText } from 'components/rich-text/RichText';
 
-export default function Home({
-  allPostsData
-}: {
-  allPostsData: {
-    date: string;
-    title: string;
-    id: string;
-    description: string;
-  }[]
-}) {
-
-  const renderPosts = () => {
-    return 
-  }
+export default function Home() {
 
   return (
     <>
@@ -33,35 +16,25 @@ export default function Home({
 
       <Section container as="div">
         <H1 style={{ marginBottom: 0 }}>Next-js starter</H1>
-      </Section>
 
-      <Section container>
-      
-        <H2>Card grid</H2>
-        <Cards>
-          {allPostsData.map(({ id, date, title, description }) => (
-            <Card
-              key={id}
-              heading={
-                <Link href="/posts/[id]" as={`/posts/${id}`}><a>{title}</a></Link>
-              }
-              date={date}
-            >
-              <div>{description}</div>
-            </Card>
-          ))}
+        <RichText html="there is some htome">
+          <H3 as="h2">Kit includes</H3>
+
+          <p>The kit constistutes some basic bootstrapping (S)CSS and React Components.</p>
+
+          <ul>
+            <li>CSS Grid -- no flexbox fallback (TODO)</li>
+            <li>Simple components for common layout patterns</li>
+            <li>responsive typography</li>
+            <li>Mobile / desktop nav</li>
+            <li>Dev tool grid overlay</li>
+            <li>SVG imports as React Components</li>
+            <li>lots of other bits; check out
+              the <Link href="/elements"><a>Elements page</a></Link> to see examples</li>
+          </ul>
           
-        </Cards>
+        </RichText>
       </Section>
     </>
   )
-}
-
-export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = getSortedPostsData()
-  return {
-    props: {
-      allPostsData
-    }
-  }
 }

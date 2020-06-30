@@ -42,6 +42,10 @@
   $heading-elements: h1, h2, h3, h4, h5, h6;
 
   @each $el in $block-elements {
+
+    #{$el}:empty {
+      display: none;
+    }
     
     #{$el} {
       margin-top: $block-margin;
@@ -72,6 +76,12 @@
     }
 
 
+  }
+
+  @each $heading in $heading-elements {
+    &:empty {
+      display: none;
+    }
   }
 
   h5 + &,
@@ -144,5 +154,31 @@
 
   em, i {
     font-style: italic;
+  }
+
+  code,
+  pre {
+    border-radius: 3px;
+    border: 1px solid var(--color-border);
+
+    background-color: lighten(#000, 90%);
+    color: #e01e5a;
+
+    font-family: $font-family-monospace;
+  }
+
+  code {
+    padding: 0.1em 0.3em;
+  }
+
+  pre {
+    padding: var(--gutter);
+    
+    code {
+      padding: 0;
+  
+      border: 0;
+      background: none;
+    }
   }
 }

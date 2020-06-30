@@ -12,6 +12,10 @@ interface IProps {
 }
 
 const Heading = ({type = 'h1', as, children, className, style}: IProps) => {
+  if (!children) {
+    return null;
+  }
+
   const Wrap = as ?? type;
   
   return (

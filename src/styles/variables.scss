@@ -16,6 +16,7 @@ $section-padding-mobile: 90px;
 $header-height: 90px;
 $header-height-mobile: 60px;
 $page-width: 1440px;
+$page-limit: 1440px + ($container-gutter-desktop * 2);
 
 // BREAKPOINTS
 $min-mobile: 480px;
@@ -38,9 +39,11 @@ $color-placeholder: #eee;
 $color-primary: #c0a;
 $color-link: #c00;
 
-// TYPE
+// TYPE (locally-hosted set up)
 $font-family-serif: 'Gentium Basic', Times, "Times New Roman", serif;
 $font-family-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+$font-family-monospace: monospace, sans-serif;
+
 $font-family: $font-family-sans;
 $font-family-heading: $font-family-serif;
 
@@ -62,7 +65,6 @@ $h6-size: $font-size;
 $h6-size-min: $font-size-min;
 
 $line-height: 1.5;
-
 
 // ANIMATION [power1, 2, 3, 4] in gsap;
 
