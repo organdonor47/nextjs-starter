@@ -2,14 +2,6 @@
 
 // handle default html tags as article styles 
 .richText {
-  // $heading-elements: h1, h2, h3, h4, h5, h6;
-
-  // @each $el in $heading-elements {
-  //   #{$el} {
-  //     @include #{$el};
-  //   }
-  // }
-
   > :first-child {
     margin-top: 0;
   }
@@ -21,6 +13,7 @@
   // use rem here for consistent spacing rules?
   $block-margin: 2rem;
   
+  // cant loop this dynamically (or at least not in a readable way)
   h1 {
     @include h1;
   }
@@ -51,7 +44,6 @@
   @each $el in $block-elements {
     
     #{$el} {
-      all: revert;
       margin-top: $block-margin;
       margin-bottom: $block-margin;
     }
@@ -65,10 +57,17 @@
       margin-top: 0;
     }
 
-    // heading gets more spacing above
+    // heading gets more spacing above when adjacent to a block el
     @each $heading in $heading-elements {
-      #{$el} + #{$heading} {
-        margin-top: $block-margin * 2;
+      @if index('h1' 'h2' 'h3', $heading) {
+        #{$el} + #{$heading} {
+          margin-top: $block-margin * 2;
+        }
+      }
+      @else {
+        #{$el} + #{$heading} {
+          margin-top: $block-margin;
+        }
       }
     }
 
