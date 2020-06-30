@@ -23,6 +23,7 @@ export default function Home() {
           <p>The kit constistutes some basic bootstrapping (S)CSS and React Components.</p>
 
           <ul>
+            <li>TODO: button</li>
             <li>CSS Grid -- no flexbox fallback (TODO)</li>
             <li>Simple components for common layout patterns</li>
             <li>responsive typography</li>
@@ -31,6 +32,7 @@ export default function Home() {
             <li>SVG imports as React Components</li>
             <li>lots of other bits; check out
               the <Link href="/elements"><a>Elements page</a></Link> to see examples</li>
+
           </ul>
           
         </RichText>
