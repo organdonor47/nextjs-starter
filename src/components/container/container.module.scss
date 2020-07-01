@@ -1,9 +1,0 @@
-@import 'styles/config';
-
-.container {
-  @include container;
-
-  > .container {
-    padding: 0;
-  }
-}
