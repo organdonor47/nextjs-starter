@@ -12,6 +12,7 @@ This is a starter template for [Next.js](https://nextjs.org/) with some css scaf
 ## options (as branch?):
 - [ ] add gsap
 - [ ] css `<Grid />` flex IE fallback
+- [ ] page transitions
 
 ## secondary:
 - [ ] metadata component with fallbacks
