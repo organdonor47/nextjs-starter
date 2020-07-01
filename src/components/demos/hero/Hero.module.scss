@@ -41,7 +41,7 @@
   }
 
   &__content {
-    @include grid-col;
+    @include grid-item;
     @include label;
 
     position: relative;
@@ -51,7 +51,7 @@
     }
 
     @media (min-width: $min-tablet) {
-      @include grid-col(10);
+      @include grid-item(10);
 
       &::before {
         content: 'tablet: 10 / 12';
@@ -59,7 +59,7 @@
     }
 
     @media (min-width: $min-desktop) {
-      @include grid-col(8);
+      @include grid-item(8);
 
       &::before {
         content: 'desktop: 8/12';
@@ -67,7 +67,7 @@
     }
 
     @media (min-width: $page-limit) {
-      @include grid-col(6);
+      @include grid-item(6);
 
       &::before {
         content: 'max page width: 6 / 12';
@@ -76,7 +76,7 @@
   }
 
   &__block {
-    @include grid-col;
+    @include grid-item;
     @include label;
 
     aspect-ratio: 16 / 9;
@@ -89,7 +89,7 @@
     }
 
     @media (min-width: $min-desktop) {
-      @include grid-col(4);
+      @include grid-item(4);
 
       &::before {
         content: 'desktop: 4 / 12';

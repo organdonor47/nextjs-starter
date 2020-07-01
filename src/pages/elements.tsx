@@ -13,6 +13,8 @@ import { Section } from 'components/section/Section';
 // demo components
 import { Cards, Card } from 'components/demos/cards/Cards';
 import { Hero } from 'components/demos/hero/Hero';
+import { Button } from 'components/button/Button';
+import { Grid } from 'components/grid/Grid';
 
 export default function Elements({
   allPostsData
@@ -44,7 +46,7 @@ export default function Elements({
         
 
           <RichText style={{ paddingBottom: '2em'}}>
-            <p>Uses the <code>@grid</code> and <code>@grid-col</code> scss mixins to lay out elements on the page.</p>
+            <p>Uses the <code>@grid</code> and <code>@grid-item</code> scss mixins to lay out elements on the page.</p>
           </RichText>
         </Container>
 
@@ -75,6 +77,16 @@ export default function Elements({
         ))}
         
       </Cards>
+      </Section>
+
+      <Section container>
+        <H3 as="h2">Buttons</H3>
+        <Grid columnCount={{ mobile: 1, desktop: 4 }}>
+          <Button onClick={() => console.log('on click event')}>default button</Button>
+          <Button disabled to="#">a disabled button</Button>
+          <Button to="/">internal link, also with some very long text so lets see how that works</Button>
+          <Button to="https://hugsmidjan.is">external link</Button>
+        </Grid>
       </Section>
     </>
   )

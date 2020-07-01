@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import Link from 'next/link';
 
 import { H1, H3 } from 'components/heading/Heading';
+import { Link } from 'components/link/Link';
 import { Section } from 'components/section/Section';
 import { RichText } from 'components/rich-text/RichText';
 
@@ -39,7 +39,7 @@ export default function Home() {
             <li>Dev tool grid overlay</li>
             <li>SVG imports as React Components</li>
             <li>lots of other bits; check out
-              the <Link href="/elements"><a>Elements page</a></Link> to see examples</li>
+              the <Link to="/elements">Elements page</Link> to see examples</li>
 
           </ul>
           

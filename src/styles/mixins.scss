@@ -71,6 +71,8 @@
   // linear until $min-mobile, gives space for gap to not overflow
 
   display: grid;
+  align-items: flex-start;
+  justify-items: start;
   gap: $grid-gutter 0;
   grid-template-columns: 1fr;
 
@@ -89,7 +91,7 @@
 }
 
 // individual column
-@mixin grid-col($col-width: $grid-column-count, $offset: 0) {
+@mixin grid-item($col-width: $grid-column-count, $offset: 0) {
   @if ($offset > 0) {
     grid-column: ($offset + 1) / span #{$col-width};
   }
