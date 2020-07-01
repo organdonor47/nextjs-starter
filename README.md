@@ -6,7 +6,7 @@ This is a starter template for [Next.js](https://nextjs.org/) with some css scaf
 
 ## todo:
 - [ ] ARIA markup
-- [ ] button
+- [x] button
 - [ ] image / picture component
 
 ## options (as branch?):
