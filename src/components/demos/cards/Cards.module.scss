@@ -14,6 +14,12 @@
   background: var(--color-primary);
   color: #fff;
 
+  .animate & {
+    opacity: 0;
+
+    transform: translateY(50px);
+  }
+
   @media (min-width: $min-tablet) {
     display: grid;
     grid-template-rows: auto 1fr auto;

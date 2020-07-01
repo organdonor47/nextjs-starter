@@ -1,17 +1,56 @@
+import { useEffect, useRef, useContext } from 'react';
+
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+import { UIContext } from 'context/ui';
+
 import { Grid } from 'components/grid/Grid';
 import { H2 } from 'components/heading/Heading';
 
+import c from 'classnames';
 import s from './Cards.module.scss';
 
 // use <Grid /> component with defualt column options to build an even grid
-export const Cards = ({children }: {
-  children: React.ReactNode;
-}) => {
+export const Cards = ({ children }: {children: React.ReactNode; }) => {
+
+  const listRef = useRef<HTMLUListElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
+
+  const { prefersReducedMotion } = useContext(UIContext);
+
+  const animate = () => {
+    if (!triggerRef.current || prefersReducedMotion) {
+      return;
+    }
+      
+    gsap.to(listRef.current.childNodes, {
+        scrollTrigger: {
+          trigger: triggerRef.current,
+          toggleActions: 'restart pause resume pause',
+          // markers: true,
+          scrub: false,
+        },
+        y: 0,
+        autoAlpha: 1,
+        duration: 0.75,
+        stagger: 0.15,
+        ease: 'power4.inOut',
+      });
+  };
+
+  useEffect(() => {
+    animate();
+  }, [prefersReducedMotion]);
 
   return (
-    <Grid as="ul" className={s.cards}>
-      {children}
-    </Grid>
+    <div ref={triggerRef}>
+      <Grid className={c(s.cards, s.animate)}>
+        <ul style={{ display: 'contents' }} ref={listRef}>
+          {children}
+        </ul>
+      </Grid>
+    </div>
   );
 }
 
