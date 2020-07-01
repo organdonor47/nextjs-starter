@@ -1,9 +1,0 @@
-@import 'styles/config';
-
-.section {
-  @include section;
-
-  & + & {
-    padding-top: 0;
-  }
-}
