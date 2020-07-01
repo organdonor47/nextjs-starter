@@ -20,7 +20,10 @@
   // LAYOUT
   --container-gutter: #{$container-gutter-mobile};
   --gutter: #{$gutter};
-  --header-height: #{$header-height-mobile};
+
+  @if variable-exists(header-height-mobile) {
+    --header-height: #{$header-height-mobile};
+  }
 
   @media (min-width: $min-tablet) {
     --container-gutter: #{$container-gutter-tablet};
@@ -28,7 +31,10 @@
 
   @media (min-width: $min-desktop) {
     --container-gutter: #{$container-gutter-desktop};
-    --header-height: #{$header-height};
+
+    @if variable-exists(header-height) {
+      --header-height: #{$header-height};
+    }
   }
 
   // DARK MODE
@@ -40,6 +46,7 @@
     @if variable-exists(color-font-dark-mode) {
       --color-font: #{$color-font-dark-mode};
     }
+
     @if variable-exists(color-link-dark-mode) {
       --color-link: #{$color-link-dark-mode};
     }

@@ -9,7 +9,7 @@ interface IProps {
   as?: string;
 }
 
-export const Link = ({ children, to, as, ...props } : IProps) => (
+export const Link = ({ children, to, as, ...props } : IProps & React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
   <NextLink href={to} as={as}>
     <a {...props}>{children}</a>
   </NextLink>

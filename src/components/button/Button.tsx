@@ -13,8 +13,8 @@ interface IProps {
   [key: string]: any;
 }
 
-export const Button = ({ to, children, className, disabled, ...rest }: IProps) => {
-  const passProps = { ...rest };
+export const Button = ({ to, children, className, disabled, ...props }: IProps) => {
+  const passProps : React.ButtonHTMLAttributes<HTMLButtonElement> & React.AnchorHTMLAttributes<HTMLAnchorElement> = { ...props };
   const isLink = (typeof to !== 'undefined');
   const isExternal = isLink && /^((https?:)?\/\/|[0-9a-zA-Z]+:)/.test(to || '');
 

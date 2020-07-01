@@ -33,9 +33,9 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
             <Link to="/">another link</Link>
           </Nav>
         </Header>
-        <div className={s.layout__content}>
+        <main className={s.layout__content}>
           {children}
-        </div>
+        </main>
         <Footer>¯\_(ツ)_/¯</Footer>
       </div>
     </>
