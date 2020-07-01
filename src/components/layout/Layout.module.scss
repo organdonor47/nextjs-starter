@@ -1,9 +1,17 @@
+@import 'styles/config';
+
 .layout {
   display: flex;
   flex-direction: column;
   align-items: stretch;
 
   min-height: 100vh;
+
+  @media (max-width: $max-desktop) {
+    // header fixed in mobile, create space for it
+    padding-top: $header-height-mobile;
+    padding-top: var(--header-height);
+  }
 
   &__content {
     flex-grow: 1;

@@ -1,13 +1,14 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import { GetStaticProps } from 'next';
 
 import { getSortedPostsData } from 'lib/posts';
 
 import { Container } from 'components/container/Container';
-import { Section } from 'components/section/Section';
 import { H1, H2, H3 } from 'components/heading/Heading';
+import { Link } from 'components/link/Link';
 import { RichText } from 'components/rich-text/RichText';
+import { Section } from 'components/section/Section';
+
 
 // demo components
 import { Cards, Card } from 'components/demos/cards/Cards';
@@ -24,9 +25,9 @@ export default function Elements({
   }[]
 }) {
   return (
-    <div className="container">
+    <>
       <Head>
-        <title>Create Next App</title>
+        <title>Elements</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -65,7 +66,7 @@ export default function Elements({
           <Card
             key={id}
             heading={
-              <Link href="/posts/[id]" as={`/posts/${id}`}><a>{title}</a></Link>
+              <Link to="/posts/[id]" as={`/posts/${id}`}>{title}</Link>
             }
             date={date}
           >
@@ -75,7 +76,7 @@ export default function Elements({
         
       </Cards>
       </Section>
-    </div>
+    </>
   )
 }
 

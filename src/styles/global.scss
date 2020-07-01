@@ -1,8 +1,8 @@
+// PROJECT-SPECIFIC global / reset css should go here
+
 @import 'reset';
 @import 'fonts';
 @import 'config';
-
-// project-specific global / reset css should go here
 
 :root {
   // ANIMATION / TRANSITION
@@ -20,6 +20,7 @@
   // LAYOUT
   --container-gutter: #{$container-gutter-mobile};
   --gutter: #{$gutter};
+  --header-height: #{$header-height-mobile};
 
   @media (min-width: $min-tablet) {
     --container-gutter: #{$container-gutter-tablet};
@@ -27,6 +28,7 @@
 
   @media (min-width: $min-desktop) {
     --container-gutter: #{$container-gutter-desktop};
+    --header-height: #{$header-height};
   }
 
   // DARK MODE

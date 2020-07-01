@@ -1,11 +1,20 @@
 @import 'styles/config';
 
 .header {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: $zindex-header;
+  
   height: $header-height;
+  height: var(--header-height);
 
   background: #caa;
+
+  @media (min-width: $min-desktop) {
+    position: relative;
+  }
 
   &__container {
     @include container;

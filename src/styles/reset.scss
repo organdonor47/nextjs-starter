@@ -185,7 +185,7 @@ input[type=button] {
 /* kill animations where required */
 @media (prefers-reduced-motion: reduce) {
 	* {
-    animation: none !important;
-    transition: none !important;
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
   }
 }

@@ -1,12 +1,12 @@
 
 import { useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 import { UIContext } from 'context/ui';
 
-import { Header } from 'components/header/Header';
 import { Footer } from 'components/footer/Footer';
+import { Header } from 'components/header/Header';
+import { Link } from 'components/link/Link';
 import { Nav } from 'components/nav/Nav';
 
 import s from './Layout.module.scss';
@@ -29,8 +29,8 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
       <div className={s.layout}>
         <Header>
           <Nav>
-            <Link href="/elements"><a>elements</a></Link>
-            <Link href="/"><a>another link</a></Link>
+            <Link to="/elements">elements</Link>
+            <Link to="/">another link</Link>
           </Nav>
         </Header>
         <div className={s.layout__content}>

@@ -23,7 +23,15 @@ export default function Home() {
           <p>The kit constistutes some basic bootstrapping (S)CSS and React Components.</p>
 
           <ul>
-            <li>TODO: button</li>
+            <li>TODO:
+              <ul>
+                <li>button</li>
+                <li>image / picture component</li>
+                <li>Metadata with fallbacks</li>
+                <li>mobile nav overlay</li>
+                <li>adding gsap</li>
+              </ul>
+            </li>
             <li>CSS Grid -- no flexbox fallback (TODO)</li>
             <li>Simple components for common layout patterns</li>
             <li>responsive typography</li>
