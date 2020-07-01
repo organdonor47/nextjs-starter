@@ -5,12 +5,12 @@ This is a starter template for [Next.js](https://nextjs.org/) with some css scaf
 `yarn && yarn dev`
 
 ## todo:
-- [ ] ARIA markup
+- [ ] better ARIA markup
 - [x] button
 - [ ] image / picture component
 
 ## options (as branch?):
-- [ ] add gsap
+- [x] add gsap
 - [ ] css `<Grid />` flex IE fallback
 - [ ] page transitions
 
