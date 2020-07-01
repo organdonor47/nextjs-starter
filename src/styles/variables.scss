@@ -34,14 +34,16 @@ $max-desktop: $min-desktop - 1px;
 $zindex-header: 1;
 
 // COLORS
+$color-primary: #c0a;
+$color-secondary: #ecc;
+
 $color-background: #fff;
 $color-background-dark-mode: #000;
 $color-border: rgba(#c09, 0.3);
 $color-font: #000;
 $color-font-dark-mode: #ddd;
-$color-placeholder: #eee;
-$color-primary: #c0a;
 $color-link: $color-primary;
+$color-placeholder: #eee;
 
 // TYPE (locally-hosted set up)
 $font-family-serif: 'Gentium Basic', Times, "Times New Roman", serif;

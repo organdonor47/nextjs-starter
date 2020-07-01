@@ -14,8 +14,14 @@
   --color-border: #{$color-border};
   --color-font: #{$color-font};
   --color-link: #{$color-link};
-  --color-placeholder: #{$color-placeholder};
   --color-primary: #{$color-primary};
+  
+  @if variable-exists(color-placeholder) {
+    --color-placeholder: #{$color-placeholder};
+  }
+  @if variable-exists(color-secondary) {
+    --color-secondary: #{$color-secondary};
+  }
 
   // LAYOUT
   --container-gutter: #{$container-gutter-mobile};

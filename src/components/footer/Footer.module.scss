@@ -3,5 +3,5 @@
 .footer {
   @include section(40, 40, 25, 25);
 
-  background: #caa;
+  background: var(--color-secondary, --color-background);
 }

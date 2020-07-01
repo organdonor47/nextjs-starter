@@ -10,7 +10,7 @@
   height: $header-height;
   height: var(--header-height);
 
-  background: #caa;
+  background: var(--color-secondary, --color-background);
 
   @media (min-width: $min-desktop) {
     position: relative;
