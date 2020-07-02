@@ -5,9 +5,9 @@ This is a starter template for [Next.js](https://nextjs.org/) with some css scaf
 `yarn && yarn dev`
 
 ## todo:
-- [ ] better ARIA markup
+- [x] better ARIA markup
 - [x] button
-- [ ] image / picture component
+- [x] image / picture component
 
 ## options (as branch?):
 - [x] add gsap
