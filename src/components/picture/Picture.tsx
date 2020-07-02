@@ -29,17 +29,17 @@ export const Picture = ({ src, formats, width, height, alt, lazy = true } : IP
       Object.entries(formats).forEach(([k, v]) => {
 
       if (v.mobile) {
-        result.push({type: k, srcSet: `${formats.webp.mobile}`, media: '(max-width: 719px)'});
+        result.push({type: k, srcSet: `${v.mobile}`, media: '(max-width: 719px)'});
       }
       
       if (v.desktop) {
-        result.push({type: k, srcSet: `${formats.webp.desktop}`, media: '(min-width: 720px)'});
+        result.push({type: k, srcSet: `${v.desktop}`, media: '(min-width: 720px)'});
       }
       
       result.push(
-        formats.webp.x2 ?
-        {type: k, srcSet: `${formats.webp.x1} 1x, ${formats.webp.x2} 2x`}
-        : {type: k, srcSet: `${formats.webp.x1} 1x`});
+        v.x2 ?
+        {type: k, srcSet: `${v.x1} 1x, ${v.x2} 2x`}
+        : {type: k, srcSet: `${v.x1} 1x`});
       });
       
       return result.map((item: { srcSet: string; media: string; type: string }, i) => {
