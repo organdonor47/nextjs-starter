@@ -1,13 +1,16 @@
 const path = require('path');
-const withReactSvg = require('next-react-svg');
+const nextComposePlugins = require('next-compose-plugins');
+const nextReactSvg = require('next-react-svg');
+const nextImages = require('next-images');
 
-module.exports = withReactSvg({
-  include: path.resolve(__dirname, 'src/assets/svg'),
-  webpack(config, options) {
-    return config
-  }
-});
+const svgDir = path.resolve(__dirname, 'src/assets/svg');
 
-module.exports = {
-  poweredByHeader: false,
-}
+const nextConfig = { poweredByHeader: false };
+
+module.exports = nextComposePlugins(
+  [
+    [nextImages, { exclude: svgDir }],
+    [nextReactSvg, { include: svgDir }],
+  ],
+  nextConfig,
+);

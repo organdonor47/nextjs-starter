@@ -57,8 +57,16 @@
       
       background: $color-gap;
 
+      &::before {
+        border-right: 1px solid #c00;
+      }
+
       width: 50vw;
       height: 100%;
+
+      @media (min-width: $min-mobile) {
+        background: $color-gap;
+      }
     }
 
     &::after {

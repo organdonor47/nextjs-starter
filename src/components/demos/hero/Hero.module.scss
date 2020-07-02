@@ -9,6 +9,7 @@
   min-height: 80vmin;
 
   background: var(--color-primary);
+  color: #fff;
 
   &__grid {
     @include grid;
@@ -83,6 +84,7 @@
     padding: var(--gutter);
 
     background: rgba(#fff, 0.5);
+    color: var(--color-font);
 
     &::before {
       content: 'default: 100%';

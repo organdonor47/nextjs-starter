@@ -25,11 +25,11 @@ export default function Home() {
           <ul>
             <li>TODO:
               <ul>
-                <li>button</li>
+                <li><del>button</del></li>
                 <li>image / picture component</li>
                 <li>Metadata with fallbacks</li>
                 <li>mobile nav overlay</li>
-                <li>adding gsap</li>
+                <li><del>adding gsap</del> (added as separate branch)</li>
               </ul>
             </li>
             <li>CSS Grid -- no flexbox fallback (TODO)</li>
