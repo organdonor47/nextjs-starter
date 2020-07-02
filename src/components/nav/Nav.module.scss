@@ -2,6 +2,8 @@
 
 .nav {
   @media (max-width: $max-desktop) {
+      contain: layout;
+      
       position: fixed;
       top: 0;
       bottom: 0;

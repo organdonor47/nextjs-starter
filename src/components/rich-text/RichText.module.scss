@@ -127,7 +127,7 @@
     list-style: decimal inside;
 
     ol {
-      counter-reset: list-alpha;
+      counter-reset: 0;
 
       li {
         list-style: lower-alpha inside;
