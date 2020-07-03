@@ -61,7 +61,11 @@ export const UIProvider = ({ children }: IProps) => {
   // combine prevent scroll, scrollbar measuring on openning / closing nav
   const toggleNav = (open: boolean) => {
     preventScroll(open, true);
-    document.body.style.paddingRight = open ? `${scrollbarWidth}px` : '0';
+
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = open ? `${scrollbarWidth}px` : '0';
+    }
+
     setNavOpen(open);
   };
 
