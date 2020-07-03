@@ -20,7 +20,7 @@ export const Devtools = () => {
 
   return (
     <>
-      <GridOverlay button={isVisible} />
+      <GridOverlay devToolsVisible={isVisible} />
     </>
   );
 };
