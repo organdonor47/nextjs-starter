@@ -1,7 +1,7 @@
 import { HeadingTags } from 'types/html-types';
 
 import c from 'classnames';
-import s from './heading.module.scss';
+import s from './Heading.module.scss';
 
 interface IProps {
   type?: HeadingTags;

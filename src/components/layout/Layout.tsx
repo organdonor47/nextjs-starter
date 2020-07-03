@@ -8,6 +8,7 @@ import { Footer } from 'components/footer/Footer';
 import { Header } from 'components/header/Header';
 import { Link } from 'components/link/Link';
 import { Nav } from 'components/nav/Nav';
+import { PageTransition } from 'components/page-transition/PageTransition';
 
 import s from './Layout.module.scss';
 
@@ -25,7 +26,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   }, [router]);
 
   return (
-    <>
+    <PageTransition location={router.route}>
       <div className={s.layout}>
         <Header>
           <Nav>
@@ -38,6 +39,6 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
         </main>
         <Footer>¯\_(ツ)_/¯</Footer>
       </div>
-    </>
+    </PageTransition>
   );
 }

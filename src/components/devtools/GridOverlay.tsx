@@ -8,23 +8,21 @@ import s from './GridOverlay.module.scss';
 const LOCAL_STORAGE_KEY_ACTIVE = '_devtoolsActiveGrid';
 
 interface IProps {
-  button: boolean;
+  devToolsVisible: boolean;
 }
 
-export const GridOverlay = ({ button }: IProps) => {
+export const GridOverlay = ({ devToolsVisible }: IProps) => {
   const gridOverlayRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setVisible] = useLocalStorage(LOCAL_STORAGE_KEY_ACTIVE, false);
+  const [isGridVisible, setGridVisible] = useLocalStorage(LOCAL_STORAGE_KEY_ACTIVE, false);
   const keys = useKeyDown();
 
   const onToggle = () => {
-    setVisible(!isVisible);
+    setGridVisible(!isGridVisible);
   };
 
   useEffect(() => {
-    if (keys.includes('Control') && keys.includes('k')) {
-      onToggle();
-    }
-  }, [keys]);
+    setGridVisible(devToolsVisible);
+  }, [devToolsVisible]);
 
   return (
     <div
@@ -32,10 +30,10 @@ export const GridOverlay = ({ button }: IProps) => {
       className={s.grid}
     >
       <div className={s.grid__container}>
-        {isVisible && <div className={s.grid__visual} />}
+        {isGridVisible && <div className={s.grid__visual} />}
       </div>
 
-      {button && (
+      {devToolsVisible && (
         <button className={s.grid__button} onClick={onToggle} title="toggle grid" />
       )}
     </div>
