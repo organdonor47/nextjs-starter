@@ -27,6 +27,7 @@ $min-mobile: 480px;
 $min-tablet: 720px;
 $min-desktop: 1080px;
 
+$max-mobile: $min-mobile - 1px;
 $max-tablet: $min-tablet - 1px;
 $max-desktop: $min-desktop - 1px;
 

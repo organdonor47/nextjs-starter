@@ -4,6 +4,7 @@
   @return repeat($grid-column-count / ($grid-column-count / $i), minmax(0, 1fr));
 }
 
+// wrapper for grid items
 .grid {
   @include grid;
 
@@ -20,8 +21,4 @@ $breakpoints: ('Mobile': $min-mobile, 'Tablet': $min-tablet, 'Desktop': $min-des
       }
     }
   }
-}
-
-.column {
-  @include grid-item;
 }

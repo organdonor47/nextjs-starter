@@ -44,11 +44,6 @@ export const UIProvider = ({ children }: IProps) => {
     getScrollbarWidth();
   }, []);
 
-    // check user preferences for animation
-    useEffect(() => {
-      setScrollbarWidth(window.innerWidth - document.documentElement.clientWidth);
-    }, []);
-
   // util for overflow on html element
   const preventScroll = (prevent: boolean, isNavOpen?: boolean) => {
     const htmlClassName = isNavOpen ? 'nav-open' : 'scroll-disabled';
@@ -61,7 +56,11 @@ export const UIProvider = ({ children }: IProps) => {
   // combine prevent scroll, scrollbar measuring on openning / closing nav
   const toggleNav = (open: boolean) => {
     preventScroll(open, true);
-    document.body.style.paddingRight = open ? `${scrollbarWidth}px` : '0';
+
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = open ? `${scrollbarWidth}px` : '0';
+    }
+
     setNavOpen(open);
   };
 

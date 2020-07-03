@@ -23,26 +23,43 @@ interface IProps {
 
 export const Picture = ({ src, formats, width, height, alt, lazy = true } : IProps) => {
 
-    const result = [];
+  const renderImage = (
+    <img
+      className={s.picture__image}
+      src={src}
+      width={width}
+      height={height}
+      alt={alt ?? ''}
+      loading={lazy ? 'lazy' : 'eager'}
+    />
+  );
 
+    if (!formats) {
+      return renderImage;
+    }
+
+    const formatArray: any = [];
+
+    // sets source orders. TODO: mobile / desktop values in UI? 
     const setFormats = () => {
+
       Object.entries(formats).forEach(([k, v]) => {
 
       if (v.mobile) {
-        result.push({type: k, srcSet: `${v.mobile}`, media: '(max-width: 719px)'});
+        formatArray.push({type: k, srcSet: `${v.mobile}`, media: '(max-width: 719px)'});
       }
       
       if (v.desktop) {
-        result.push({type: k, srcSet: `${v.desktop}`, media: '(min-width: 720px)'});
+        formatArray.push({type: k, srcSet: `${v.desktop}`, media: '(min-width: 720px)'});
       }
       
-      result.push(
+      formatArray.push(
         v.x2 ?
         {type: k, srcSet: `${v.x1} 1x, ${v.x2} 2x`}
         : {type: k, srcSet: `${v.x1} 1x`});
       });
       
-      return result.map((item: { srcSet: string; media: string; type: string }, i) => {
+      return formatArray.map((item: { srcSet: string; media: string; type: string }, i) => {
         return (
           <source key={i} srcSet={item.srcSet} media={item.media ?? null} type={`image/${item.type}`} />
         );
@@ -52,14 +69,7 @@ export const Picture = ({ src, formats, width, height, alt, lazy = true } : IP
   return (
     <picture className={s.picture}>
       {setFormats()}
-      <img
-        className={s.picture__image}
-        src={src}
-        width={width}
-        height={height}
-        alt={alt ?? ''}
-        loading={lazy ? 'lazy' : 'eager'}
-      />
+      {renderImage}
     </picture>
   );
 }

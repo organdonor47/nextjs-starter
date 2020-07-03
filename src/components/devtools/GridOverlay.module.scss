@@ -26,16 +26,24 @@
   
     opacity: 0;
     animation: fade-in 200ms forwards;
-      
-    background-image: repeating-linear-gradient(
-      to right,
-      $color-highlight,
-      $color-highlight calc((100% / #{$grid-column-count}) - var(--gutter)),
-      calc((100% / #{$grid-column-count}) - var(--gutter)),
-      $color-gap calc(100% / #{$grid-column-count})
-    );
-    background-size: calc(100% + var(--gutter)) 100%;
-    background-position: 0 0;
+
+    @media (max-width: $max-mobile) {
+      outline: 1px solid $color-gap;
+    }
+
+    @media (min-width: $min-mobile) {
+      outline: none;
+
+      background-image: repeating-linear-gradient(
+        to right,
+        $color-highlight,
+        $color-highlight calc((100% / #{$grid-column-count}) - var(--gutter)),
+        calc((100% / #{$grid-column-count}) - var(--gutter)),
+        $color-gap calc(100% / #{$grid-column-count})
+      );
+      background-size: calc(100% + var(--gutter)) 100%;
+      background-position: 0 0;
+    }
 
     @media (prefers-reduced-motion: reduce) {
       opacity: 1;
@@ -57,16 +65,8 @@
       
       background: $color-gap;
 
-      &::before {
-        border-right: 1px solid #c00;
-      }
-
       width: 50vw;
       height: 100%;
-
-      @media (min-width: $min-mobile) {
-        background: $color-gap;
-      }
     }
 
     &::after {
