@@ -44,11 +44,6 @@ export const UIProvider = ({ children }: IProps) => {
     getScrollbarWidth();
   }, []);
 
-    // check user preferences for animation
-    useEffect(() => {
-      setScrollbarWidth(window.innerWidth - document.documentElement.clientWidth);
-    }, []);
-
   // util for overflow on html element
   const preventScroll = (prevent: boolean, isNavOpen?: boolean) => {
     const htmlClassName = isNavOpen ? 'nav-open' : 'scroll-disabled';

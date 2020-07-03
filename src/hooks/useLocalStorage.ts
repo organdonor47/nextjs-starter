@@ -3,9 +3,8 @@ import { useEffect, useState } from 'react';
 type TValue = string | boolean | object;
 
 /**
- * Custom hooks to get and set item in localstorage. You don't have
- * to set a state and set a value in the localstorage. useLocalStorage
- * return a value and a setter that is sync with localstorage.
+ * Custom hooks to get and set items in localstorage. useLocalStorage
+ * returns a value and a setter that is synced with localstorage.
  */
 export const useLocalStorage = (key: string, initialValue?: TValue) => {
   if (typeof window === undefined) {
