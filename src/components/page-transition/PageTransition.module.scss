@@ -1,0 +1,39 @@
+@import 'styles/config';
+
+.pageTransition {
+  background: var(--color-primary);
+
+  &__inner {
+    background: var(--color-background);
+
+    .enter & {
+      opacity: 0;
+      // transform: translate3d(-100%, 0, 0);
+    }
+  
+    .enterActive & {
+      opacity: 1;
+      transform: none;
+      // transition: opacity 500ms var(--default-ease), transform 500ms var(--default-ease);
+      transition: opacity 500ms var(--default-ease);
+    }
+    
+    .exit & {
+      opacity: 1;
+      transform: none;
+    }
+    
+    .exitActive & {
+      opacity: 0;
+      // transform: translate3d(100%, 0, 0);
+    
+      // transition: opacity 500ms var(--default-ease), transform 500ms var(--default-ease);
+      transition: opacity 500ms var(--default-ease);
+    }
+  }
+}
+
+
+
+
+
