@@ -9,6 +9,8 @@ export interface IUIContext {
   toggleNav: (open: boolean) => void;
   prefersReducedMotion: boolean;
   scrollbarWidth: number;
+  shouldTransition: boolean;
+  setShouldTransition: (shouldTransition: boolean) => void;
 }
 
 export const UIContext = createContext<IUIContext>({
@@ -16,6 +18,8 @@ export const UIContext = createContext<IUIContext>({
   toggleNav: (open: boolean) => !open,
   prefersReducedMotion: false,
   scrollbarWidth: 0,
+  shouldTransition: true,
+  setShouldTransition: (shouldTransition: boolean) => !shouldTransition,
 });
 
 // UI Provider
@@ -23,6 +27,7 @@ export const UIProvider = ({ children }: IProps) => {
   const [navOpen, setNavOpen] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [scrollbarWidth, setScrollbarWidth] = useState(0);
+  const [shouldTransition, setShouldTransition] = useState(true);
 
   const getScrollbarWidth = () => {
       // Add temporary box to wrapper
@@ -71,6 +76,8 @@ export const UIProvider = ({ children }: IProps) => {
         toggleNav,
         prefersReducedMotion,
         scrollbarWidth,
+        shouldTransition,
+        setShouldTransition,
       }}
     >
       {children}

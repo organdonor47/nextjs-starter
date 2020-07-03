@@ -3,6 +3,10 @@
 .pageTransition {
   background: var(--color-primary);
 
+  @media (prefers-reduced-motion: reduce) {
+    background: var(--color-background);
+  }
+
   &__inner {
     background: var(--color-background);
 
