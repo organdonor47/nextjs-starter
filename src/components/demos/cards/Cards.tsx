@@ -29,7 +29,7 @@ export const Cards = ({ children }: {children: React.ReactNode; }) => {
           trigger: triggerRef.current,
           toggleActions: 'restart pause resume pause',
           // markers: true,
-          scrub: false,
+          scrub: 1,
         },
         y: 0,
         autoAlpha: 1,
