@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { GetStaticProps } from 'next';
 
 import { getSortedPostsData } from 'lib/posts';
@@ -6,9 +5,10 @@ import { getSortedPostsData } from 'lib/posts';
 // global components
 import { Button } from 'components/button/Button';
 import { Container } from 'components/container/Container';
-import { H1, H2, H3 } from 'components/heading/Heading';
 import { Grid } from 'components/grid/Grid';
+import { H1, H2, H3 } from 'components/heading/Heading';
 import { Link } from 'components/link/Link';
+import { Meta } from 'components/meta/Meta';
 import { RichText } from 'components/rich-text/RichText';
 import { Section } from 'components/section/Section';
 
@@ -41,10 +41,7 @@ export default function Elements({
 }) {
   return (
     <>
-      <Head>
-        <title>Elements</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Meta title="Next-js example elements page" />
 
       <Section container>
         <H1>Elements page</H1>
@@ -128,7 +125,7 @@ export default function Elements({
 
 
       <Section container>
-        <video src={video} />
+        <video src={video} controls />
       </Section>
     </>
   )

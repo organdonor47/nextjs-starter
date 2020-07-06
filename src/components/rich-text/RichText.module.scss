@@ -117,6 +117,11 @@
     li {
       display: list-item;
       list-style: disc inside;
+
+      &:has(> ul) {
+        margin-top: 0.5em;
+      }
+      
       li {
         list-style-type: circle;
       }
