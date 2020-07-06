@@ -8,11 +8,13 @@ This is a starter template for [Next.js](https://nextjs.org/) with some css scaf
 - [x] better ARIA markup
 - [x] button
 - [x] image / picture component
+- [x] page transitions
+  - [ ] transitions only on `Link` click
 
 ## options (as branch?):
 - [x] add gsap
 - [ ] css `<Grid />` flex IE fallback
-- [ ] page transitions
 
 ## secondary:
 - [ ] metadata component with fallbacks
+
