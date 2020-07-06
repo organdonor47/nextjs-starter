@@ -27,6 +27,7 @@ import sunsetWebp2x from 'assets/images/sunset@2x.webp';
 import sunsetMobile from 'assets/images/sunset-mobile.jpg';
 import sunsetMobileWebp from 'assets/images/sunset-mobile.webp';
 
+import video from 'assets/video/temp.mp4';
 
 export default function Elements({
   allPostsData
@@ -107,22 +108,27 @@ export default function Elements({
         <H3 as="h2">Import images and add to <code>&lt;Picture&gt;</code> component</H3>
         <Picture
           src={sunsetJpg}
-          // formats={{
-          //   webp: {
-          //     x1: sunsetWebp,
-          //     x2: sunsetWebp2x,
-          //     mobile: sunsetMobileWebp
-          //   },
-          //   jpg: {
-          //     x1: sunsetJpg,
-          //     x2: sunsetJpg2x,
-          //     mobile: sunsetMobile,
-          //   },
-          // }}
+          formats={{
+            webp: {
+              x1: sunsetWebp,
+              x2: sunsetWebp2x,
+              mobile: sunsetMobileWebp
+            },
+            jpg: {
+              x1: sunsetJpg,
+              x2: sunsetJpg2x,
+              mobile: sunsetMobile,
+            },
+          }}
           alt="picture of a sunset"
           width={1200}
           height={900}
         />
+      </Section>
+
+
+      <Section container>
+        <video src={video} />
       </Section>
     </>
   )

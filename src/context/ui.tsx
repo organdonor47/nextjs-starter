@@ -1,36 +1,43 @@
+/* UI CONTEXT
+ * ___
+ * some common UI values that can be passed into the app
+ * NavOpen, toggleNav(), shouldTransition [for pages]
+ */
+
 import { createContext, useState, useEffect } from 'react';
 
 interface IProps {
   children: React.ReactNode;
 }
 
-export interface IUIContext {
+export interface IContext {
   navOpen: boolean;
-  toggleNav: (open: boolean) => void;
   prefersReducedMotion: boolean;
   scrollbarWidth: number;
-  shouldTransition: boolean;
   setShouldTransition: (shouldTransition: boolean) => void;
+  shouldTransition: boolean;
+  toggleNav: (open: boolean) => void;
 }
 
-export const UIContext = createContext<IUIContext>({
+export const UIContext = createContext<IContext>({
   navOpen: false,
-  toggleNav: (open: boolean) => !open,
   prefersReducedMotion: false,
   scrollbarWidth: 0,
-  shouldTransition: true,
   setShouldTransition: (shouldTransition: boolean) => !shouldTransition,
+  shouldTransition: false,
+  toggleNav: (open: boolean) => !open,
 });
 
 // UI Provider
 export const UIProvider = ({ children }: IProps) => {
+  // default states
   const [navOpen, setNavOpen] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [scrollbarWidth, setScrollbarWidth] = useState(0);
   const [shouldTransition, setShouldTransition] = useState(true);
 
+  // create overflow box and return value of scrollbar width
   const getScrollbarWidth = () => {
-      // Add temporary box to wrapper
     const scrollEl = document.createElement('div');
     
     scrollEl.style.overflow = 'scroll';
@@ -38,27 +45,30 @@ export const UIProvider = ({ children }: IProps) => {
 
     setScrollbarWidth(scrollEl.offsetWidth - scrollEl.clientWidth);
   
-    // Remove box
+    // remove box
     document.body.removeChild(scrollEl);
   }
 
-  // check user preferences for animation
-  // check scrollbar width
+  // check user preferences for animation on mount
+  // also check scrollbar width
   useEffect(() => {
     setPrefersReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
     getScrollbarWidth();
   }, []);
 
-  // util for overflow on html element
+  // util for overflow on html element (ie navigation open, modal open etc)
   const preventScroll = (prevent: boolean, isNavOpen?: boolean) => {
     const htmlClassName = isNavOpen ? 'nav-open' : 'scroll-disabled';
 
+    const rootClasses = document.documentElement.classList;
+
     prevent
-      ? document.documentElement.classList.add(htmlClassName)
-      : document.documentElement.classList.remove(htmlClassName);
+      ? rootClasses.add(htmlClassName)
+      : rootClasses.remove(htmlClassName);
   };
 
-  // combine prevent scroll, scrollbar measuring on openning / closing nav
+  // function called to open / close nav
+  // combine preventScroll, scrollbarWidth check
   const toggleNav = (open: boolean) => {
     preventScroll(open, true);
 
@@ -73,18 +83,14 @@ export const UIProvider = ({ children }: IProps) => {
     <UIContext.Provider
       value={{
         navOpen,
-        toggleNav,
         prefersReducedMotion,
         scrollbarWidth,
-        shouldTransition,
         setShouldTransition,
+        shouldTransition,
+        toggleNav,
       }}
     >
       {children}
     </UIContext.Provider>
   );
 };
-
-export const withUIContext = (Component: any) => (props: any) => (
-  <UIContext.Consumer>{context => <Component {...props} ui={context} />}</UIContext.Consumer>
-);

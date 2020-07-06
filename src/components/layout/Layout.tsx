@@ -22,11 +22,10 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
     if (navOpen) {
       toggleNav(false);
     }
-
   }, [router]);
 
   return (
-    <PageTransition location={router.route}>
+    <PageTransition>
       <div className={s.layout}>
         <Header>
           <Nav>

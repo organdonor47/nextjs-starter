@@ -1,10 +1,15 @@
 @import 'styles/config';
 
 .pageTransition {
-  background: var(--color-primary);
+  // use SCSS vars for this so we dont get a fail on transitionend using css custom props
+  $page-transition-duration: 400ms;
 
-  @media (prefers-reduced-motion: reduce) {
-    background: var(--color-background);
+  &.transition {
+    background: var(--color-primary);
+
+    @media (prefers-reduced-motion: reduce) {
+      background: var(--color-background);
+    }
   }
 
   &__inner {
@@ -12,27 +17,41 @@
 
     .enter & {
       opacity: 0;
+    }
+
+    .enterActive & {
+      opacity: 1;
+      // transform: none;
+    }
+
+    .enter.transition & {
+      opacity: 0;
       // transform: translate3d(-100%, 0, 0);
     }
   
-    .enterActive & {
+    .enterActive.transition & {
       opacity: 1;
-      transform: none;
-      // transition: opacity 500ms var(--default-ease), transform 500ms var(--default-ease);
-      transition: opacity 500ms var(--default-ease);
+      transition: opacity $page-transition-duration var(--default-ease);
+
+      @media (prefers-reduced-motion: reduce) {
+        background: var(--color-background);
+      }
     }
     
     .exit & {
       opacity: 1;
-      transform: none;
+      // transform: none;
     }
-    
+
     .exitActive & {
       opacity: 0;
-      // transform: translate3d(100%, 0, 0);
+    }
     
-      // transition: opacity 500ms var(--default-ease), transform 500ms var(--default-ease);
-      transition: opacity 500ms var(--default-ease);
+    .exitActive.transition & {
+      opacity: 0;
+      // transform: translate3d(100%, 0, 0);
+
+      transition: opacity $page-transition-duration $default-ease;
     }
   }
 }
