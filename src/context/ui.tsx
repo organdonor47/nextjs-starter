@@ -1,7 +1,7 @@
 /* UI CONTEXT
  * ___
  * some common UI values that can be passed into the app
- * NavOpen, toggleNav(), shouldTransition [for pages], get window.scrollY position [for routing?]
+ * NavOpen, toggleNav(), shouldTransition [for pages]
  */
 
 import { createContext, useState, useEffect } from 'react';
@@ -10,26 +10,22 @@ interface IProps {
   children: React.ReactNode;
 }
 
-export interface IUIContext {
+export interface IContext {
   navOpen: boolean;
-  toggleNav: (open: boolean) => void;
   prefersReducedMotion: boolean;
   scrollbarWidth: number;
-  shouldTransition: boolean;
   setShouldTransition: (shouldTransition: boolean) => void;
-  scrollY: number;
-  setScrollY: (scrollY: number) => void;
+  shouldTransition: boolean;
+  toggleNav: (open: boolean) => void;
 }
 
-export const UIContext = createContext<IUIContext>({
+export const UIContext = createContext<IContext>({
   navOpen: false,
-  toggleNav: (open: boolean) => !open,
   prefersReducedMotion: false,
   scrollbarWidth: 0,
-  shouldTransition: false,
   setShouldTransition: (shouldTransition: boolean) => !shouldTransition,
-  scrollY: 0,
-  setScrollY: (scrollY: number) => scrollY,
+  shouldTransition: false,
+  toggleNav: (open: boolean) => !open,
 });
 
 // UI Provider
@@ -39,7 +35,6 @@ export const UIProvider = ({ children }: IProps) => {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [scrollbarWidth, setScrollbarWidth] = useState(0);
   const [shouldTransition, setShouldTransition] = useState(true);
-  const [scrollY, setScrollY] = useState(0);
 
   // create overflow box and return value of scrollbar width
   const getScrollbarWidth = () => {
@@ -50,7 +45,7 @@ export const UIProvider = ({ children }: IProps) => {
 
     setScrollbarWidth(scrollEl.offsetWidth - scrollEl.clientWidth);
   
-    // Remove box
+    // remove box
     document.body.removeChild(scrollEl);
   }
 
@@ -88,20 +83,14 @@ export const UIProvider = ({ children }: IProps) => {
     <UIContext.Provider
       value={{
         navOpen,
-        toggleNav,
         prefersReducedMotion,
         scrollbarWidth,
-        shouldTransition,
         setShouldTransition,
-        scrollY,
-        setScrollY
+        shouldTransition,
+        toggleNav,
       }}
     >
       {children}
     </UIContext.Provider>
   );
 };
-
-export const withUIContext = (Component: any) => (props: any) => (
-  <UIContext.Consumer>{context => <Component {...props} ui={context} />}</UIContext.Consumer>
-);

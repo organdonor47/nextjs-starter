@@ -25,6 +25,7 @@ export default function Home() {
           <ul>
             <li>CSS Grid -- no flexbox fallback (TODO)</li>
             <li>Simple components for common layout patterns</li>
+            <li>Page transitions</li>
             <li>responsive typography</li>
             <li>Mobile / desktop nav</li>
             <li>Dev tool grid overlay</li>

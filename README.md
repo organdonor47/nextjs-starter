@@ -9,7 +9,7 @@ This is a starter template for [Next.js](https://nextjs.org/) with some css scaf
 - [x] button
 - [x] image / picture component
 - [x] page transitions
-  - [ ] transitions only on `Link` click
+  - [x] transitions only on `Link` click
 
 ## options (as branch?):
 - [x] add gsap
