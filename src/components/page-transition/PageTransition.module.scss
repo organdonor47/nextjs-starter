@@ -23,14 +23,8 @@
       opacity: 1;
       // transform: none;
     }
-
-    .enter.transition & {
-      opacity: 0;
-      // transform: translate3d(-100%, 0, 0);
-    }
   
     .enterActive.transition & {
-      opacity: 1;
       transition: opacity $page-transition-duration var(--default-ease);
 
       @media (prefers-reduced-motion: reduce) {
@@ -48,9 +42,7 @@
     }
     
     .exitActive.transition & {
-      opacity: 0;
       // transform: translate3d(100%, 0, 0);
-
       transition: opacity $page-transition-duration $default-ease;
     }
   }
