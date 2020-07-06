@@ -1,10 +1,10 @@
-import Head from 'next/head';
 import { GetStaticProps, GetStaticPaths } from 'next';
 
 import { getAllPostIds, getPostData } from 'lib/posts';
 import { H1 } from 'components/heading/Heading';
 import { Section } from 'components/section/Section';
 import { RichText } from 'components/rich-text/RichText';
+import { Meta } from 'components/meta/Meta';
 
 export default function Post({
   postData
@@ -17,9 +17,7 @@ export default function Post({
 }) {
   return (
     <>
-      <Head>
-        <title>{postData.title}</title>
-      </Head>
+      <Meta title={postData.title} />
       <Section as="article" container>
         <H1>{postData.title}</H1>
         <time>{postData.date}</time>

@@ -1,19 +1,12 @@
-import Head from 'next/head';
-
 import { H1, H3 } from 'components/heading/Heading';
 import { Link } from 'components/link/Link';
-import { Section } from 'components/section/Section';
 import { RichText } from 'components/rich-text/RichText';
+import { Section } from 'components/section/Section';
 
 export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>Next-js starter</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <Section container as="div">
         <H1 style={{ marginBottom: 0 }}>Next-js starter</H1>
 

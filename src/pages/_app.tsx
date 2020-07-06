@@ -8,6 +8,7 @@ import { Devtools } from 'components/devtools/Devtools';
 import { Layout } from '../components/layout/Layout';
 
 import '../styles/global.scss';
+import { Meta } from 'components/meta/Meta';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,6 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
   
   return (
     <>
+      <Meta />
       <UIProvider>
         <Layout>
           <Component {...pageProps} />
