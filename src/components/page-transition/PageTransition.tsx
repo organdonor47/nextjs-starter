@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 
@@ -12,14 +12,18 @@ export const PageTransition = ({children }: { children: React.ReactNode }) => {
   const router = useRouter();
   const { route } = router;
   const { shouldTransition, setShouldTransition } = useContext(UIContext);
+  const transitionIndex = useRef<number>(0); // is first or second stage transition
 
-  //can be called on timeout (onExited w.timeout prop) or ontransition event
   const onComplete = () => {
     window.scrollTo(0, 0);
 
-    setTimeout(() => {
+    // 2x transitions, so listen for second as real done()
+    if (transitionIndex.current === 0) {
+      transitionIndex.current = 1;
+    } else {
       setShouldTransition(false);
-    }, 400); // TODO: fix timeout value, currently just matches transition but just needs to trigger post-complete
+      transitionIndex.current = 0;
+    }
   }
 
   if (!shouldTransition) {
@@ -47,6 +51,10 @@ export const PageTransition = ({children }: { children: React.ReactNode }) => {
         <div className={c(s.pageTransition, { [s.transition]: shouldTransition })}>
           <div className={s.pageTransition__inner}>
             {children}
+          </div>
+
+          <div className={s.pageTransition__wipe}>
+            <span />
           </div>
         </div>
         

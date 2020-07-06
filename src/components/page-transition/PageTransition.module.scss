@@ -2,7 +2,7 @@
 
 .pageTransition {
   // use SCSS vars for this so we dont get a fail on transitionend using css custom props
-  $page-transition-duration: 400ms;
+  $page-transition-duration: 1500ms;
 
   &.transition {
     background: var(--color-primary);
@@ -14,44 +14,83 @@
 
   &__inner {
     background: var(--color-background);
+  }
 
-    .enter & {
-      opacity: 0;
+  &__wipe {
+    @include fit(fixed);
+    z-index: 1000;
+
+    contain: strict;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    > span {
+      display: block;
+      width: 150%;
+      height: 150%;
+
+      transform: skew(-10deg);
+
+      background: var(--color-primary);
     }
 
-    .enterActive & {
-      opacity: 1;
-      // transform: none;
+    &::before {
+      @include fit;
+
+      margin: auto;
+
+      color: #fff;
+      font-size: 80px;
     }
 
-    .enter.transition & {
-      opacity: 0;
-      // transform: translate3d(-100%, 0, 0);
-    }
-  
-    .enterActive.transition & {
-      opacity: 1;
-      transition: opacity $page-transition-duration var(--default-ease);
-
-      @media (prefers-reduced-motion: reduce) {
-        background: var(--color-background);
-      }
-    }
-    
+    // exit transition is first
     .exit & {
       opacity: 1;
-      // transform: none;
+      transform: translate3d(-100%, 0, 0);
+
+      &::before {
+        content: 'exit';
+      }
     }
 
     .exitActive & {
-      opacity: 0;
+      transform: none;
+
+      > span {
+        transform: none;
+      }
+
+      &::before {
+        content: 'exit active';
+      }
     }
     
     .exitActive.transition & {
-      opacity: 0;
-      // transform: translate3d(100%, 0, 0);
+      transform: none;
+      transition: transform $page-transition-duration $default-ease;
+    }
 
-      transition: opacity $page-transition-duration $default-ease;
+    .enter & {
+      opacity: 1;
+      transform: none;
+
+      &::before {
+        content: 'enter';
+      }
+    }
+
+    .enterActive & {
+      transform: translate3d(100%, 0, 0);
+
+      &::before {
+        content: 'enter active';
+      }
+    }
+    
+    .enterActive.transition & {
+      transition: transform $page-transition-duration $default-ease;
     }
   }
 }
