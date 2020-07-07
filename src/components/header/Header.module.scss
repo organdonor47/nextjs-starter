@@ -16,6 +16,16 @@
     position: relative;
   }
 
+  &__skip {
+    position: absolute;
+    top: 0;
+    transform: translateY(-100%);
+
+    &:focus {
+      transform: none;
+    }
+  }
+
   &__container {
     @include container;
   
