@@ -1,4 +1,4 @@
-import { useContext, useState, useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 
@@ -7,17 +7,15 @@ import { UIContext } from 'context/ui';
 import c from 'classnames';
 import s from './PageTransition.module.scss';
 
-export const PageTransition = ({children }: { children: React.ReactNode }) => {
+export const PageTransition = ({ route, children }: { route: string; children: React.ReactNode }) => {
 
-  const router = useRouter();
-  const { route } = router;
   const { shouldTransition, setShouldTransition } = useContext(UIContext);
   const transitionIndex = useRef<number>(0); // is first or second stage transition
 
   const onComplete = () => {
     window.scrollTo(0, 0);
 
-    // 2x transitions, so listen for second as real done()
+    // 2x transitions from switch, so listen for second as done()
     if (transitionIndex.current === 0) {
       transitionIndex.current = 1;
     } else {
@@ -42,11 +40,9 @@ export const PageTransition = ({children }: { children: React.ReactNode }) => {
           false);
         }}
         
-        timeout={shouldTransition ? null : 0}
+        timeout={shouldTransition ? null : 0} // for back / hoistory ie. non-link clicks
         classNames={{ ...s }}
         unmountOnExit
-        // timeout={shouldTransition ? 500 : 0}
-        // onExited={onComplete}
       >
         <div className={c(s.pageTransition, { [s.transition]: shouldTransition })}>
           <div className={s.pageTransition__inner}>

@@ -17,11 +17,10 @@
   }
 
   &__wipe {
-    @include fit;
-    z-index: $zindex-header;
+    @include fit(fixed);
+    z-index: $zindex-header + 1;
 
     contain: strict;
-    
     display: block;
 
     width: 100%;
@@ -31,14 +30,14 @@
 
     pointer-events: none;
 
-    transform-origin: 0 100%;
+    transform-origin: left bottom;
     
     background: var(--color-primary);
 
     // exit transition is first
     .exit & {
       opacity: 1;
-      transform: skew(30deg) translate3d(-100%, 0, 0);
+      transform: skew(50deg) translate3d(-100%, 0, 0);
     }
 
     .exitActive & {
