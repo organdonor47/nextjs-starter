@@ -6,8 +6,8 @@ import { UIContext } from 'context/ui';
 
 import { Footer } from 'components/footer/Footer';
 import { Header } from 'components/header/Header';
-import { Link } from 'components/link/Link';
 import { Nav } from 'components/nav/Nav';
+import { NavLink } from 'components/nav/NavLink';
 import { PageTransition } from 'components/page-transition/PageTransition';
 
 import s from './Layout.module.scss';
@@ -29,11 +29,11 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
       <div className={s.layout}>
         <Header>
           <Nav>
-            <Link to="/elements">elements</Link>
-            <Link to="/">another link</Link>
+            <NavLink to="/elements">elements</NavLink>
+            <NavLink to="/">another link</NavLink>
           </Nav>
         </Header>
-        <main className={s.layout__content}>
+        <main id="main" className={s.layout__content}>
           {children}
         </main>
         <Footer>¯\_(ツ)_/¯</Footer>
