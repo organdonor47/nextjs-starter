@@ -2,7 +2,7 @@
 
 .pageTransition {
   // use SCSS vars for this so we dont get a fail on transitionend using css custom props
-  $page-transition-duration: 1500ms;
+  $page-transition-duration: 700ms;
 
   &.transition {
     background: var(--color-primary);
@@ -17,80 +17,49 @@
   }
 
   &__wipe {
-    @include fit(fixed);
-    z-index: 1000;
+    @include fit;
+    z-index: $zindex-header;
 
     contain: strict;
+    
+    display: block;
+
+    width: 100%;
+    height: 100%;
 
     opacity: 0;
 
     pointer-events: none;
 
-    > span {
-      display: block;
-      width: 150%;
-      height: 150%;
-
-      transform: skew(-10deg);
-
-      background: var(--color-primary);
-    }
-
-    &::before {
-      @include fit;
-
-      margin: auto;
-
-      color: #fff;
-      font-size: 80px;
-    }
+    transform-origin: 0 100%;
+    
+    background: var(--color-primary);
 
     // exit transition is first
     .exit & {
       opacity: 1;
-      transform: translate3d(-100%, 0, 0);
-
-      &::before {
-        content: 'exit';
-      }
+      transform: skew(30deg) translate3d(-100%, 0, 0);
     }
 
     .exitActive & {
       transform: none;
-
-      > span {
-        transform: none;
-      }
-
-      &::before {
-        content: 'exit active';
-      }
     }
     
     .exitActive.transition & {
-      transform: none;
-      transition: transform $page-transition-duration $default-ease;
+      transition: transform $page-transition-duration $ease-in-quad;
     }
 
     .enter & {
       opacity: 1;
       transform: none;
-
-      &::before {
-        content: 'enter';
-      }
     }
 
     .enterActive & {
       transform: translate3d(100%, 0, 0);
-
-      &::before {
-        content: 'enter active';
-      }
     }
     
     .enterActive.transition & {
-      transition: transform $page-transition-duration $default-ease;
+      transition: transform $page-transition-duration $ease-out-quad;
     }
   }
 }

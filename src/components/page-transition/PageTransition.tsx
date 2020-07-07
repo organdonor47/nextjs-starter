@@ -53,9 +53,7 @@ export const PageTransition = ({children }: { children: React.ReactNode }) => {
             {children}
           </div>
 
-          <div className={s.pageTransition__wipe}>
-            <span />
-          </div>
+          <span className={s.pageTransition__wipe} />
         </div>
         
       </CSSTransition>
