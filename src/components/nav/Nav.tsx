@@ -13,8 +13,10 @@ export const Nav = ({children}: IProps) => {
 
   const { navOpen, toggleNav } = useContext(UIContext);
 
+  // aria-expanded={navOpen}: removed for now as nav is only hidden in mobile; UIContext is unaware of this
+
   return (
-    <nav className={c(s.nav, {[s.open]: navOpen})} aria-expanded={navOpen}>
+    <nav className={c(s.nav, {[s.open]: navOpen})} aria-label="Main Navigation">
       <div className={s.nav__inner}>
         
         <div className={s.nav__content}>
@@ -29,7 +31,7 @@ export const Nav = ({children}: IProps) => {
         </div>
 
       </div>
-      <button className={s.nav__backdrop} aria-label="close nav" onClick={() => toggleNav(false)} />
+      <button className={s.nav__backdrop} aria-label="Close Main Navigation" onClick={() => toggleNav(false)} />
     </nav>
   );
 }

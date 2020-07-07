@@ -47,5 +47,5 @@ export const Button = ({ to, children, className, disabled, ...props }: IProps) 
   // disabled prop only on <button>
   passProps.disabled = disabled;
 
-  return <button {...passProps}>{children}</button>;
+  return <button {...passProps} aria-disabled={disabled}>{children}</button>;
 };
