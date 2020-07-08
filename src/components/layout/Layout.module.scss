@@ -15,5 +15,13 @@
 
   &__content {
     flex-grow: 1;
+
+    @media (max-width: $max-mobile) {
+      // trans-x for mobile open close 
+      .navOpen & {
+        transform: translate3d(calc(var(--gutter) * -2), 0, 0);
+        transition: transform var(--transition-duration) var(--default-ease);
+      }
+    }
   }
 }

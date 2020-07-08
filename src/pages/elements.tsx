@@ -88,9 +88,9 @@ export default function Elements({
       <Section container>
         <H3 as="h2">Buttons</H3>
         <Grid columnCount={{ mobile: 1, desktop: 4 }}>
-          <Button onClick={() => console.log('onClick event')}>default button</Button>
+          <Button disabled onClick={() => console.log('onClick event')}>default button</Button>
           <Button disabled to="#">a disabled button</Button>
-          <Button to="/">internal link, also with some very long text so lets see how that works</Button>
+          <Button to="/" transition={false}>internal link, long text, and no page transition</Button>
           <Button to="https://hugsmidjan.is">external link</Button>
         </Grid>
       </Section>

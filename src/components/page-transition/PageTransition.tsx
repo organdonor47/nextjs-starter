@@ -1,5 +1,4 @@
 import { useContext, useRef } from 'react';
-import { useRouter } from 'next/router';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 
 import { UIContext } from 'context/ui';
@@ -40,7 +39,7 @@ export const PageTransition = ({ route, children }: { route: string; children: 
           false);
         }}
         
-        timeout={shouldTransition ? null : 0} // for back / hoistory ie. non-link clicks
+        timeout={shouldTransition ? null : 0} // for back / history ie. non-link clicks
         classNames={{ ...s }}
         unmountOnExit
       >

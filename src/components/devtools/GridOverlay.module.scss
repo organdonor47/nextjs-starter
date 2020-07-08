@@ -55,6 +55,7 @@
       }
     }
 
+    // visualise container gutter
     &::before,
     &::after {
       content: '';
@@ -75,6 +76,7 @@
     }
   }
 
+  // toggle control button
   &__button {
     position: fixed;
     right: 75px;

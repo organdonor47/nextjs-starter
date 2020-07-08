@@ -37,7 +37,7 @@
     // exit transition is first
     .exit & {
       opacity: 1;
-      transform: skew(50deg) translate3d(-100%, 0, 0);
+      transform: skew(40deg) translate3d(-100%, 0, 0);
     }
 
     .exitActive & {
