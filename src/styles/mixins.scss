@@ -1,5 +1,6 @@
-//HELPERS 
+// layout-based & helper css mixins. type-based mixins in ./type.scss
 
+// HELPERS
 // fix css max, override scss min / max
 @function max($values...) {
   @return m#{a}x(#{$values});
@@ -28,7 +29,7 @@
   @return $number;
 }
 
-// css fit position 
+// GENERIC css fit to relative parent 
 @mixin  fit($position: absolute) {
   position: $position;
   top: 0;
@@ -37,36 +38,8 @@
   bottom: 0;
 }
 
-// RESPONSIVE FONT
-
-// scale font-size according to viewport
-@mixin responsive-font($min-size: $font-size-min, $max-size: $font-size, $viewport-min: 480px, $viewport-max: $page-width) {
-
-  $min: strip-unit($min-size);
-  $max: strip-unit($max-size);
-  $v-min: strip-unit($viewport-min);
-  $v-max: strip-unit($viewport-max);
-
-  $fluid-size:
-    calc(#{$min * 1px}
-    + #{$max - $min}
-    * (100vw - #{$viewport-min}) / (#{$v-max} - #{$v-min}));
-
-  font-size: $min * 1px;
-
-  @supports (font-size: clamp(1px, 2px, 3px)) {
-    font-size: clamp(#{$min * 1px}, $fluid-size, #{$max * 1px});
-  }
-
-  @supports not (font-size: clamp(1px, 2px, 3px)) {
-    @media (min-width: $min-desktop) {
-      font-size: $max * 1px;
-    }
-  }
-}
-
 // GRID
-// grid row wrapper
+// parent grid to layout items along a grid
 @mixin grid($direction: ltr, $grid-gutter: var(--gutter)) {
   // linear until $min-mobile, gives space for gap to not overflow
 
@@ -90,7 +63,7 @@
   }
 }
 
-// individual column
+// individual column. use @include grid-item(5) where number = column span
 @mixin grid-item($col-width: $grid-column-count, $offset: 0) {
   @if ($offset > 0) {
     grid-column: ($offset + 1) / span #{$col-width};
@@ -124,8 +97,10 @@
   }
 }
 
-// <Section>: top & bottom padding
-@mixin section( $padding-top: $section-padding, $padding-bottom: $section-padding, $padding-top-mobile: $section-padding-mobile, $padding-bottom-mobile: $section-padding-mobile) {
+// <Section>: full-width; top & bottom padding for a section component. usually direct parent of <Container />
+@mixin section(
+  $padding-top: $section-padding,
+  $padding-bottom: $section-padding, $padding-top-mobile: $section-padding-mobile, $padding-bottom-mobile: $section-padding-mobile) {
   flex: none;
 
 // Set up unitless values

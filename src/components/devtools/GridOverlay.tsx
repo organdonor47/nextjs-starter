@@ -1,6 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+/* 
+ * Visual grid reference, viewed in dev environment only.
+ * overlays content with grid columns / grid container for reference
+ */
 
-import { useKeyDown } from 'hooks/useKeyDown';
+import React, { useEffect, useRef } from 'react';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 
 import s from './GridOverlay.module.scss';
@@ -13,8 +16,7 @@ interface IProps {
 
 export const GridOverlay = ({ devToolsVisible }: IProps) => {
   const gridOverlayRef = useRef<HTMLDivElement>(null);
-  const [isGridVisible, setGridVisible] = useLocalStorage(LOCAL_STORAGE_KEY_ACTIVE, false);
-  const keys = useKeyDown();
+  const [isGridVisible, setGridVisible] = useLocalStorage(LOCAL_STORAGE_KEY_ACTIVE, true);
 
   const onToggle = () => {
     setGridVisible(!isGridVisible);

@@ -1,3 +1,9 @@
+/* 
+ * Dev tools controller.
+ * show / hide dev tool controls (for grid overlay button)
+ * ctrl & K toggles controls
+ */
+
 import { useEffect } from 'react';
 
 import { useKeyDown } from 'hooks/useKeyDown';

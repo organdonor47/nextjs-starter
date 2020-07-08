@@ -1,6 +1,7 @@
+/* wrapper to provide some non-reset styles for html elements */
+
 @import 'styles/config';
 
-// handle default html tags as article styles 
 .richText {
   > :first-child {
     margin-top: 0;
@@ -41,6 +42,7 @@
   $block-elements: p, ul, ol, dl, blockquote, pre;
   $heading-elements: h1, h2, h3, h4, h5, h6;
 
+  // loop through block elements and add some generic / adjacent selector styles
   @each $el in $block-elements {
 
     #{$el}:empty {
@@ -106,7 +108,7 @@
 
     > li > ul,
     > li > ol {
-      margin: 0.5em 0;
+      margin: 0.25em 0;
       padding-left: 1em;
     }
 
@@ -119,7 +121,7 @@
       list-style: disc inside;
 
       &:has(> ul) {
-        margin-top: 0.5em;
+        // margin-top: 0.25em;
       }
       
       li {
@@ -178,6 +180,8 @@
 
   pre {
     padding: var(--gutter);
+
+    overflow: auto;
     
     code {
       padding: 0;

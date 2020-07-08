@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { Link } from 'components/link/Link';
+import { ILinkProps } from 'components/link/Link';
 
 import c from 'classnames';
 import s from './Button.module.scss';
@@ -11,10 +12,11 @@ interface IProps {
   children: React.ReactNode;
   className?: string;
   [key: string]: any;
+  transition?: boolean;
 }
 
-export const Button = ({ to, children, className, disabled, ...props }: IProps) => {
-  const passProps : React.ButtonHTMLAttributes<HTMLButtonElement> & React.AnchorHTMLAttributes<HTMLAnchorElement> = { ...props };
+export const Button = ({ to, children, className, disabled, transition, ...props }: IProps) => {
+  const passProps: React.ButtonHTMLAttributes<HTMLButtonElement> & React.AnchorHTMLAttributes<HTMLAnchorElement>  = { ...props };
   const isLink = (typeof to !== 'undefined');
   const isExternal = isLink && /^((https?:)?\/\/|[0-9a-zA-Z]+:)/.test(to || '');
 
@@ -44,8 +46,5 @@ export const Button = ({ to, children, className, disabled, ...props }: IProps) 
     );
   }
 
-  // disabled prop only on <button>
-  passProps.disabled = disabled;
-
-  return <button {...passProps} aria-disabled={disabled}>{children}</button>;
+  return <button {...passProps} disabled={disabled} aria-disabled={disabled}>{children}</button>;
 };

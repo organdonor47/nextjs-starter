@@ -10,7 +10,9 @@ import { Nav } from 'components/nav/Nav';
 import { NavLink } from 'components/nav/NavLink';
 import { PageTransition } from 'components/page-transition/PageTransition';
 
+import c from 'classnames';
 import s from './Layout.module.scss';
+
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
 
@@ -26,7 +28,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <PageTransition route={router.route}>
-      <div className={s.layout}>
+      <div className={c(s.layout, { [s.navOpen]: navOpen})}>
         <Header>
           <Nav>
             <NavLink to="/elements">elements</NavLink>

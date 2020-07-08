@@ -4,19 +4,24 @@ import { useContext } from 'react';
 import NextLink from 'next/link';
 import { UIContext } from 'context/ui';
 
-interface IProps {
+export interface ILinkProps {
   children: React.ReactNode;
   to: string;
   as?: string;
   transition?: boolean;
+  className?: string;
+  [key: string]: any;
 }
 
-export const Link = ({ children, to, as, transition = true, ...props } : IProps & React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+export const Link = ({ children, to, as, transition = true, ...props } :
+  ILinkProps & React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
 
+  // prop: transiton = opt in or out of a page transition
+  // (i.e tabs might not require a transition)
+  // defaults to active page transitions
   const { setShouldTransition } = useContext(UIContext);
 
   const onClick = () => {
-    // opt in or out of page transition, default to transition
     setShouldTransition(transition);
   };
   

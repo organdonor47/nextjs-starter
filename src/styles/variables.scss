@@ -3,26 +3,28 @@ $gutter: 30px;
 
 $grid-column-count: 12;
 
-// container
+// container - spacing either side of content
 $container-gutter-mobile: 20px;
 $container-gutter-tablet: 50px;
 $container-gutter-desktop: 70px;
 
-// spacing between sections
+// vertical spacing between <section>s
 $section-padding: 140px;
 $section-padding-mobile: 90px;
 
-// DIMENSIONS
+// point at which container reaches limit (unless fluid=true), and fonts max-out
+$page-width: 1440px; 
+$page-limit: 1440px + ($container-gutter-desktop * 2);
+
+// MISC ELEMENT DIMENSIONS
 $header-height: 90px;
 $header-height-mobile: 60px;
-
-$page-width: 1440px;
-$page-limit: 1440px + ($container-gutter-desktop * 2);
 
 $button-height: 60px;
 $button-width: 220px;
 
-// BREAKPOINTS
+// COMMON BREAKPOINTS: used for consistent measuring breakpoints
+// also used in <Grid /> component breakpoints
 $min-mobile: 480px;
 $min-tablet: 720px;
 $min-desktop: 1080px;
@@ -34,10 +36,13 @@ $max-desktop: $min-desktop - 1px;
 // STACK
 $zindex-header: 1;
 
-// COLORS
+// COLORS - these are also generated as :root css variables
+
+// theme
 $color-primary: #c09;
 $color-secondary: #fec;
 
+// misc inlcuding dark mode
 $color-background: #fff;
 $color-background-dark-mode: #000;
 $color-border: rgba(#c09, 0.3);
@@ -61,6 +66,7 @@ $font-size-min: 16px;
 $font-size-button: 16px;
 $font-size-button-min: 14px;
 
+// used in heading mixins (styles/type)
 $h1-size: 60px;
 $h1-size-min: 40px;
 $h2-size: 40px;

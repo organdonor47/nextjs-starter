@@ -3,12 +3,7 @@
  * some common UI values that can be passed into the app
  * NavOpen, toggleNav(), shouldTransition [for pages]
  */
-
 import { createContext, useState, useEffect } from 'react';
-
-interface IProps {
-  children: React.ReactNode;
-}
 
 export interface IContext {
   navOpen: boolean;
@@ -19,6 +14,7 @@ export interface IContext {
   toggleNav: (open: boolean) => void;
 }
 
+// export: allows useContext(UIContext);
 export const UIContext = createContext<IContext>({
   navOpen: false,
   prefersReducedMotion: false,
@@ -28,9 +24,8 @@ export const UIContext = createContext<IContext>({
   toggleNav: (open: boolean) => !open,
 });
 
-// UI Provider
-export const UIProvider = ({ children }: IProps) => {
-  // default states
+// exported UIProvider Component that wraps _app for children to optionally consume with useContext() hook
+export const UIProvider = ({ children }: {children: React.ReactNode}) => {
   const [navOpen, setNavOpen] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [scrollbarWidth, setScrollbarWidth] = useState(0);
@@ -56,10 +51,10 @@ export const UIProvider = ({ children }: IProps) => {
     getScrollbarWidth();
   }, []);
 
-  // util for overflow on html element (ie navigation open, modal open etc)
+  // function for overflow on html element (ie navigation open, modal open etc)
   const preventScroll = (prevent: boolean, isNavOpen?: boolean) => {
+    // nav open distinction is so overflow is only in "mobile"
     const htmlClassName = isNavOpen ? 'nav-open' : 'scroll-disabled';
-
     const rootClasses = document.documentElement.classList;
 
     prevent
