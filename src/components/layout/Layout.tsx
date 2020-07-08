@@ -25,7 +25,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   }, [router]);
 
   return (
-    <PageTransition>
+    <PageTransition route={router.route}>
       <div className={s.layout}>
         <Header>
           <Nav>
