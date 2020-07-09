@@ -1,7 +1,7 @@
 // a sane version of Link without having to write a child anchor & whatnot
 import { useContext } from 'react';
-// alias of Link
-import NextLink from 'next/link';
+import NextLink from 'next/link'; // alias of Link
+
 import { UIContext } from 'context/ui';
 
 export interface ILinkProps {

@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+
 import { Link, ILinkProps } from 'components/link/Link';
 
 export const NavLink = ({ to, children } : ILinkProps) => {

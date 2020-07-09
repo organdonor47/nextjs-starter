@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { Link } from 'components/link/Link';
-import { ILinkProps } from 'components/link/Link';
 
 import c from 'classnames';
 import s from './Button.module.scss';

@@ -134,6 +134,7 @@
   }
 }
 
+// BUTTON styles. used in input[type="button"] and the <Button /> component
 @mixin button {
   @if variable-exists(font-size-button-min) and variable-exists(font-size-button) {
     @include responsive-font($font-size-button-min, $font-size-button);
@@ -164,10 +165,31 @@
   background-color: var(--color-primary);
   color: #fff;
 
-  &.disabled {
+  &.disabled,
+  &:disabled {
     cursor: default;
     pointer-events: none;
 
     opacity: 0.5;
   }
+}
+
+// generic text-type input styles
+@mixin input-defaults {
+  display: inline-block;
+  padding-left: 0.5ch;
+  padding-right: 0.5ch;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  border: 1px solid var(--color-border);
+
+  @if variable-exists(input-height) {
+    height: $input-height;
+  }
+
+  &:disabled {
+    color: var(--color-disabled, rgba($color-font, 0.6));
+  }
+
 }
