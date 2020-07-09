@@ -39,6 +39,7 @@ export const Button = ({ to, children, className, disabled, transition, ...props
     return (
       <Link
         to={to || '#'}
+        transition={transition}
         {...passProps}
       >
         {children}

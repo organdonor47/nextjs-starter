@@ -121,16 +121,18 @@ input, select {
 	vertical-align: middle;
 }
 
-input[type="radio"] {
+input[type=radio] {
 		vertical-align: text-bottom;
 }
 
-input[type="checkbox"] {
+input[type=checkbox] {
 	vertical-align: bottom;
 }
 
 input, select, textarea {
 	font-family: inherit;
+	border-radius: 0;
+	background: transparent;
 }
 
 strong {

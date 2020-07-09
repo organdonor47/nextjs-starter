@@ -70,7 +70,16 @@ export default function Elements({
         </RichText>
 
         <Cards>
-          {allPostsData.map(({ id, date, title, description }) => (
+            <Card
+              heading={
+                <Link to="/forms">html form elements</Link>
+              }
+              date="today"
+            >
+              How form elements work with some basic generic styles from global.scss
+            </Card>
+          
+          {allPostsData.slice(0, 5).map(({ id, date, title, description }) => (
             <Card
               key={id}
               heading={
@@ -88,7 +97,7 @@ export default function Elements({
       <Section container>
         <H3 as="h2">Buttons</H3>
         <Grid columnCount={{ mobile: 1, desktop: 4 }}>
-          <Button disabled onClick={() => console.log('onClick event')}>default button</Button>
+          <Button onClick={() => console.log('onClick event')}>default button</Button>
           <Button disabled to="#">a disabled button</Button>
           <Button to="/" transition={false}>internal link, long text, and no page transition</Button>
           <Button to="https://hugsmidjan.is">external link</Button>
@@ -97,7 +106,7 @@ export default function Elements({
 
       <Section container>
         <H3 as="h2">Import SVG as component</H3>
-        <Circle className="🥰" style={{ color: '#c00' }} />
+        <Circle className="🥰" style={{ color: '#c09' }} />
 
       </Section>
 

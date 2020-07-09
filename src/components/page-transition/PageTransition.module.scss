@@ -2,7 +2,7 @@
 
 .pageTransition {
   // use SCSS vars for this so we dont get a fail on transitionend using css custom props
-  $page-transition-duration: 700ms;
+  $page-transition-duration: 600ms;
 
   &.transition {
     background: var(--color-primary);
