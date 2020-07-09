@@ -65,9 +65,14 @@
 
 // individual column. use @include grid-item(5) where number = column span
 @mixin grid-item($col-width: $grid-column-count, $offset: 0) {
+  @if ($col-width > $grid-column-count) {
+    $col-width: $grid-column-count;
+  }
+
   @if ($offset > 0) {
     grid-column: ($offset + 1) / span #{$col-width};
   }
+  
   @else {
     grid-column: span $col-width;
   }
@@ -126,5 +131,43 @@
       padding-top: $top * 1px;
       padding-bottom: $bottom * 1px;
     }
+  }
+}
+
+@mixin button {
+  @if variable-exists(font-size-button-min) and variable-exists(font-size-button) {
+    @include responsive-font($font-size-button-min, $font-size-button);
+  }
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: calc(var(--gutter) * 0.5) var(--gutter);
+
+  @if variable-exists(button-width) {
+    width: $button-width;
+  }
+
+  @if variable-exists(button-height) {
+    min-height: $button-height;
+  }
+
+  max-width: 100%;
+
+  border-radius: 3px;
+
+  font-weight: 700;
+  line-height: 1.1;
+  text-decoration: none;
+
+  background-color: var(--color-primary);
+  color: #fff;
+
+  &.disabled {
+    cursor: default;
+    pointer-events: none;
+
+    opacity: 0.5;
   }
 }
