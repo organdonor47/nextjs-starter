@@ -39,11 +39,8 @@
     @include h6;
   }
 
-  $block-elements: p, ul, ol, dl, blockquote, pre;
-  $heading-elements: h1, h2, h3, h4, h5, h6;
-
   // loop through block elements and add some generic / adjacent selector styles
-  @each $el in $block-elements {
+  @each $el in $block-article-elements {
 
     #{$el}:empty {
       display: none;
@@ -64,7 +61,7 @@
     }
 
     // heading gets more spacing above when adjacent to a block el
-    @each $heading in $heading-elements {
+    @each $heading in $heading-types {
       @if index('h1' 'h2' 'h3', $heading) {
         #{$el} + #{$heading} {
           margin-top: $block-margin * 2;
@@ -80,7 +77,7 @@
 
   }
 
-  @each $heading in $heading-elements {
+  @each $heading in $heading-types {
     &:empty {
       display: none;
     }

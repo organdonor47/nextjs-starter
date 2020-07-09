@@ -1,5 +1,6 @@
 @import 'styles/config';
 
+// grid
 .cards {
   align-items: stretch;
   justify-items: stretch;
@@ -8,6 +9,7 @@
   --card-gutter: 20px;
 }
 
+// grid-item
 .card {
   padding: var(--card-gutter);
 
@@ -38,10 +40,6 @@
     > a {
       color: inherit;
     }
-  }
-
-  &__content {
-
   }
 
   &__date {

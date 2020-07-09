@@ -17,7 +17,9 @@ export const Header = ({children}: { children: React.ReactNode }) => {
           Skip to content
         </Link>
         <Link tabIndex={0} to="/">Header</Link>
-        <div className={s.header__nav}>{children}</div>
+        <div className={s.header__nav}>
+          {children}
+        </div>
         <div className={s.header__controls}>
           <button onClick={() => toggleNav(!navOpen)}>menu</button>
         </div>

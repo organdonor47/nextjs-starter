@@ -1,7 +1,7 @@
 ---
 title: 'Markdown everything!!!!'
 date: '2020-06-26'
-description: 'Inspired by the many excellent lorem ipsum generators, this simple webapp generates placeholder text. However, instead of generating plain text, this generator gives you structured text in the form of markdown.'
+description: 'This is a kitchen-sink markdown page used to check RichText component generic styling.'
 ---
 
 # Digitis sensu
@@ -33,33 +33,12 @@ modo. In tenus quidve prodis, adgnovitque parum: ultroque dextro fronde.
 Armentis formosus ut domos, usquam meus munus ego supera passim et? Temptanda ne
 auris succidere quaeque visura. Teneas avem! Vidit nunc non revocantis vultum.
 
-    if (big_mnemonic_threading <= nat_archie_web) {
-        sector(cursor(speed, cd), defragmentKerningKeywords -
-                virtual_us_toolbar, modeNtfs + plug);
-        dashboard = 1 * -5;
-        biosMeta = gigabyteDefaultYobibyte;
-    }
-    if (cpu_freeware_megahertz(webSoftwarePitch) - 375787) {
-        archie(4, markup_resources);
-        maximizeSite = upsLaser;
-    } else {
-        storage_ups_error = 420299;
-    }
-    var frameworkSession = abend_ipod;
-    if (syntax + 37 + nas_qwerty_switch) {
-        slaMegabyteFile.hot -= syntaxE - white;
-        browserUpload.latency(urlDtd, blobAffiliateDrive +
-                broadband_server_desktop, serviceOn);
-        text(sdramLayoutHeader(chipNumber, popControlYottabyte,
-                southbridgeCaptchaAcl));
-    }
-
 #### Utque inmissa arsuro duplici icta timetque fertque
 
-Oculos subito, locutum, [collaque mentis](http://quificto.net/minos-levatum) ea
+Oculos subito, locutum, [collaque mentis](https://hugsmidjan.is) ea
 caesa **Liternum** petiitque **aversata donec**, ratione vicinos ignem. A tertia
 stagnumque concidere et ergo, [invita cursu
-illa](http://novas-terras.org/modo.html) rector; virgo. Iuppiter locum: digna
+illa](https://hugsmidjan.is/6klst) rector; virgo. Iuppiter locum: digna
 nutu repetens, quis nasci summas graia illo, hominis, protinus et lucem
 stellatus.
 
@@ -109,6 +88,6 @@ quam duabus: incoluit: usus prior, traduxit.
             deviceCaseLossless));
 
 Litora sanguine toto aethera [mandata manifestaque
-moenia](http://taurumerat.org/templa) laceris odoribus Amor tegebant. Precatur
+moenia](https://www.arsenal.com/) laceris odoribus Amor tegebant. Precatur
 plura de quem inplet silvamque meorum Aurora arma secabant. Lege et patiuntur
 cibus.

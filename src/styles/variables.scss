@@ -3,25 +3,20 @@ $gutter: 30px;
 
 $grid-column-count: 12;
 
-// container - spacing either side of content
+// <Container> - spacing either side of content
 $container-gutter-mobile: 20px;
 $container-gutter-tablet: 50px;
 $container-gutter-desktop: 70px;
 
-// vertical spacing between <section>s
+// vertical spacing between <Section>s
 $section-padding: 140px;
 $section-padding-mobile: 90px;
 
-// point at which container reaches limit (unless fluid=true), and fonts max-out
-$page-width: 1440px; 
+// point at which container reaches width limit (unless fluid=true), and responsive font-sizes max-out
+$page-width: 1440px;
+
+// mq for page full-width
 $page-limit: 1440px + ($container-gutter-desktop * 2);
-
-// MISC ELEMENT DIMENSIONS
-$header-height: 90px;
-$header-height-mobile: 60px;
-
-$button-height: 60px;
-$button-width: 220px;
 
 // COMMON BREAKPOINTS: used for consistent measuring breakpoints
 // also used in <Grid /> component breakpoints
@@ -33,23 +28,27 @@ $max-mobile: $min-mobile - 1px;
 $max-tablet: $min-tablet - 1px;
 $max-desktop: $min-desktop - 1px;
 
+// MISC ELEMENT DIMENSIONS
+$header-height: 90px;
+$header-height-mobile: 60px;
+
 // STACK
 $zindex-header: 1;
 
 // COLORS - these are also generated as :root css variables
 
 // theme
-$color-primary: #c09;
-$color-secondary: #fec;
+$color-primary: #297;
+$color-secondary: #f5f5f5;
 
 // misc inlcuding dark mode
 $color-background: #fff;
 $color-background-dark-mode: #000;
-$color-border: rgba(#c09, 0.3);
-$color-font: #000;
+$color-border: #ddd;
+$color-font: #202020;
 $color-font-dark-mode: #ddd;
-$color-link: $color-primary;
-$color-placeholder: #eee;
+$color-link: $color-font;
+$color-placeholder: #ccc;
 
 // TYPE (locally-hosted set up)
 $font-family-serif: 'Gentium Basic', Times, "Times New Roman", serif;
@@ -60,11 +59,11 @@ $font-family: $font-family-sans;
 $font-family-heading: $font-family-serif;
 
 // font-sizes
-$font-size: 20px;
-$font-size-min: 16px;
+$font-size: 18px;
+$font-size-min: 14px;
 
-$font-size-button: 16px;
-$font-size-button-min: 14px;
+$font-size-button: 14px;
+$font-size-button-min: 12px;
 
 // used in heading mixins (styles/type)
 $h1-size: 60px;
@@ -81,6 +80,11 @@ $h6-size: $font-size;
 $h6-size-min: $font-size-min;
 
 $line-height: 1.5;
+
+// form elements
+$button-height: $font-size * 3;
+$button-width: 220px;
+$input-height: $font-size * 3;
 
 // ANIMATION [power1, 2, 3, 4] in gsap;
 
@@ -105,3 +109,8 @@ $ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
 $default-ease: $ease-in-out-quint;
 
 $transition-duration: 300ms;
+
+// element lists (for genetic style loops)
+$input-types: date, datetime-local, email, month, number, password, search, tel, text, time, url, week;
+$heading-types: h1, h2, h3, h4, h5, h6;
+$block-article-elements: p, ul, ol, dl, blockquote, pre;

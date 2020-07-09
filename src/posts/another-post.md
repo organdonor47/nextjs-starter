@@ -1,7 +1,7 @@
 ---
 title: 'a bew post thing in the thing'
 date: '2020-01-20'
-description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rhoncus ipsum.'
+description: 'Donec non varius nulla, a mollis ante. Fusce massa ligula, efficitur in blandit vitae, commodo non augue. Nulla ut erat varius, vulputate nibh ac, lacinia odio. Nullam pulvinar vulputate turpis, ut malesuada ante pulvinar sed. Sed mollis est sit amet enim consectetur dictum.'
 ---
 
 We recommend using **Static Generation** (with and without data) whenever possible because your page can be built once and served by CDN, which makes it much faster than having a server render the page on every request.
