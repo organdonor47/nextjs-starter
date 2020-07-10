@@ -18,7 +18,7 @@ export const PageTransition = ({ route, children }: { route: string; children: 
   }
 
   const handleComplete = (e: TransitionEvent) => {
-
+    window.scrollTo(0, 0);
     /* 
      * if there are multiple transitioned elements and the durations are all the same,
      * it may be necessary to target the transitionend event of a specific DOM element
@@ -34,7 +34,7 @@ export const PageTransition = ({ route, children }: { route: string; children: 
     if (transitionIndex.current === 0) {
       transitionIndex.current = 1;
     } else {
-      window.scrollTo(0, 0);
+      
 
       setShouldTransition(false);
       setTransitioning(false);
