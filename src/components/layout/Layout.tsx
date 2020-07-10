@@ -6,8 +6,7 @@ import { UIContext } from 'context/ui';
 
 import { Footer } from 'components/footer/Footer';
 import { Header } from 'components/header/Header';
-import { Nav } from 'components/nav/Nav';
-import { NavLink } from 'components/nav/NavLink';
+import { NavContainer as Nav } from 'containers/nav/Nav';
 import { PageTransition } from 'components/page-transition/PageTransition';
 
 import c from 'classnames';
@@ -30,10 +29,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
     <PageTransition route={router.route}>
       <div className={c(s.layout, { [s.navOpen]: navOpen})}>
         <Header>
-          <Nav>
-            <NavLink to="/elements">elements</NavLink>
-            <NavLink to="/">another link</NavLink>
-          </Nav>
+          <Nav />
         </Header>
         <main id="main" className={s.layout__content}>
           {children}

@@ -41,10 +41,10 @@ export default function Elements({
 }) {
   return (
     <>
-      <Meta title="Next-js example elements page" />
+      <Meta title="Next-js starter example page" />
 
       <Section container>
-        <H1>Elements page</H1>
+        <H1>Examples page</H1>
       </Section>
 
       <Section>

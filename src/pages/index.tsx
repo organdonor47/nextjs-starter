@@ -34,7 +34,7 @@ export default function Home() {
             <li>SVG imports as React <code>&lt;Component&gt;</code>s</li>
             <li><code>&lt;Picture&gt;</code> component with sanitised media-query / srcset props</li>
             <li>Basic dark-mode css custom property config</li>
-            <li>lots of other small bits & pieces; the <Link to="/elements">Elements page</Link> has examples</li>
+            <li>lots of other small bits & pieces; the <Link to="/examples">examples page</Link> has examples</li>
 
             <li>TODO: 
               <ul>
