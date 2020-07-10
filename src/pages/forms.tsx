@@ -37,8 +37,6 @@ export default function Elements() {
         <form>
           <fieldset>
             <div className="form">
-              <legend>Here is a legend</legend>
-
               <div className="form__item" style={{ alignItems: 'start'}}>
                 <label htmlFor={`textarea`}>textarea</label>
                 <textarea id="textarea" rows={10}></textarea>
@@ -78,15 +76,16 @@ export default function Elements() {
               <div className="form__item">
                 <label htmlFor="input-type-datalist">Input w. datalist</label>
                 <input id="input-type-datalist" list="ice-cream-flavors" />
-                <datalist id="ice-cream-flavors">
-                  <option value="Chocolate" />
-                  <option value="Coconut" />
-                  <option value="Mint" />
-                  <option value="Strawberry" />
-                  <option value="Vanilla" />
-                </datalist>
               </div>
             </div>
+
+            <datalist id="ice-cream-flavors">
+              <option value="Chocolate" />
+              <option value="Coconut" />
+              <option value="Mint" />
+              <option value="Strawberry" />
+              <option value="Vanilla" />
+            </datalist>
           </fieldset>
         </form>
       </Section>
@@ -95,25 +94,39 @@ export default function Elements() {
       <style jsx>{`
       .form {
         display: grid;
-        grid-template-columns: auto 1fr;
+        grid-template-columns: minmax(max-content, 200px) minmax(0, 1fr);
         gap: var(--gutter);
+        align-items: center;
+        justify-content: start;
       
         max-width: 800px;
       }
 
       .form__item {
         display: grid;
+        grid: inherit;
+        grid-gap: calc(var(--gutter) / 2);
         grid-column: span 2;
-        align-items: center;
-        grid-template-columns:  20ch 1fr;
-    
-        grid-template-columns: subgrid;
+
+        grid-template-columns: repeat(auto-fill, 100%);
       }
 
-      
-      @supports (grid-template-columns: subgrid) {
+      @media (min-width: 600px) {
         .form__item {
-          text-align: right;
+          align-items: center;
+          justify-content: start;
+          grid-gap: inherit;
+          grid-template-columns: 20ch minmax(0, 1fr);
+          grid-template-columns: subgrid;
+        }
+
+        .form__item label {
+          justify-self: end;
+        }
+        
+        .form__item input[type=radio],
+        .form__item input[type=checkbox] {
+          justify-self: start;
         }
       }
       `}</style>

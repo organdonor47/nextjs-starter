@@ -1,0 +1,64 @@
+input,
+textarea,
+select {
+  &::-webkit-input-placeholder {
+    color: var(--color-placeholder);
+  }
+
+  &::-moz-placeholder {
+    opacity: 1;
+    color: var(--color-placeholder);
+  }
+
+  &:-ms-input-placeholder {
+    color: var(--color-placeholder);
+  }
+}
+
+select {
+  @include input-defaults;
+  // appearance: none will fix safari overkill styles if required
+  // will need to add a select indicator if so
+}
+
+textarea {
+  border: 1px solid var(--color-border);
+}
+
+@each $input in $input-types {
+  input[type=#{$input}] {
+    @include input-defaults;
+  }
+}
+
+input[list] {
+  @include input-defaults;
+}
+
+input[type=button] {
+  @include button;
+
+  appearance: none;
+}
+
+input[type=color] {
+  padding: 0;
+  border: none;
+  
+  &::-webkit-color-swatch {
+    border: 1px solid var(--color-border);
+  }
+
+  @if variable-exists(input-height) {
+    height: $input-height;
+    width:  $input-height;
+  }
+}
+
+input[type=search] {
+  appearance: none;
+}
+
+fieldset {
+  //
+}

@@ -131,7 +131,10 @@ input[type=checkbox] {
 
 input, select, textarea {
 	font-family: inherit;
+	
 	border-radius: 0;
+	
+	color: inherit;
 	background: transparent;
 }
 
