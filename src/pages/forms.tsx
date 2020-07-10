@@ -11,10 +11,10 @@ export default function Elements() {
     { type: 'color', value: '#cc0099' },
     { type: 'date' },
     { type: 'datetime-local' },
-    { type: 'email' },
+    { type: 'email', attributes: { autoComplete: 'email'}  },
     { type: 'month' },
     { type: 'number' },
-    { type: 'password' },
+    { type: 'password', attributes: { autoComplete: 'current-password'} },
     { type: 'radio' },
     { type: 'search', value: 'search' },
     { type: 'tel', value: '+354' },
@@ -120,8 +120,10 @@ export default function Elements() {
           grid-template-columns: subgrid;
         }
 
-        .form__item label {
-          justify-self: end;
+        @supports (grid-template-columns: subgrid) {
+          .form__item label {
+            justify-self: end;
+          }
         }
         
         .form__item input[type=radio],

@@ -9,7 +9,7 @@ interface ISizes {
 export const useResize = () => {
   const [sizes, setSizes] = useState<ISizes>({ width: 0, height: 0 });
 
-  const onResize = debounce(() => {
+  const handleResize = debounce(() => {
     if (typeof window === undefined) {
       return;
     }
@@ -22,11 +22,11 @@ export const useResize = () => {
       return;
     }
 
-    onResize();
-    window.addEventListener('resize', onResize);
+    handleResize();
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener('resize', onResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 

@@ -21,13 +21,13 @@ export const Link = ({ children, to, as, transition = true, ...props } :
   // defaults to active page transitions
   const { setShouldTransition } = useContext(UIContext);
 
-  const onClick = () => {
+  const handleClick = () => {
     setShouldTransition(transition);
   };
   
   return (
     <NextLink href={to} as={as} scroll={!transition}>
-      <a {...props} onClick={onClick}>{children}</a>
+      <a {...props} onClick={handleClick}>{children}</a>
     </NextLink>
   );
 
