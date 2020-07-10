@@ -6,7 +6,7 @@ import { UIContext } from 'context/ui';
 
 import { Footer } from 'components/footer/Footer';
 import { Header } from 'components/header/Header';
-import { Loading } from 'components/loading/loading';
+import { Loading } from 'components/loading/Loading';
 import { NavContainer as Nav } from 'containers/nav/Nav';
 import { PageTransition } from 'components/page-transition/PageTransition';
 
