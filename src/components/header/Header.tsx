@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { UIContext } from 'context/ui';
 
 import { Link } from 'components/link/Link';

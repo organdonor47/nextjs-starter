@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useEffect, useState, TransitionEvent } from 'react';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 
 import { UIContext } from 'context/ui';
@@ -8,17 +8,41 @@ import s from './PageTransition.module.scss';
 
 export const PageTransition = ({ route, children }: { route: string; children: React.ReactNode }) => {
 
-  const { shouldTransition, setShouldTransition } = useContext(UIContext);
+  const { shouldTransition, setShouldTransition, setCanScroll } = useContext(UIContext);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const transitionIndex = useRef<number>(0); // is first or second stage transition
 
-  const onComplete = () => {
-    window.scrollTo(0, 0);
+  useEffect(() => {
+    return () => setCanScroll(true);
+  }, []);
 
-    // 2x transitions from switch, so listen for second as done()
+  const onStart = () => {
+    setIsTransitioning(true);
+    setCanScroll(false);
+  }
+
+  const onComplete = (e: TransitionEvent) => {
+
+    /* 
+     * if there are multiple transitioned elements and the durations are all the same,
+     * it may be necessary to target the transitionend event of a specific DOM element
+     * so we are just listening for the end of each Switch transition once (i.e. 2x 1 event).
+     * Alternatively, just use the timeout prop instead of the transitionend event listener
+     */
+    const target = e.target as HTMLElement;
+    if (target.className !== s.pageTransition__wipe) {
+      return;
+    }
+
+    // 2x transitions from Switch; listen for second event as done()
     if (transitionIndex.current === 0) {
       transitionIndex.current = 1;
     } else {
+      window.scrollTo(0, 0);
+
       setShouldTransition(false);
+      setIsTransitioning(false);
+      setCanScroll(true);
       transitionIndex.current = 0;
     }
   }
@@ -32,8 +56,11 @@ export const PageTransition = ({ route, children }: { route: string; children: 
       <CSSTransition
         key={route}
         addEndListener={(node, done) => {
+          // listen to transitionstart / endevents
+          node.addEventListener('transitionstart', onStart, false);
+
           node.addEventListener('transitionend', (e: React.TransitionEvent) => {
-            onComplete();
+            onComplete(e);
             done();
           },
           false);
@@ -43,7 +70,7 @@ export const PageTransition = ({ route, children }: { route: string; children: 
         classNames={{ ...s }}
         unmountOnExit
       >
-        <div className={c(s.pageTransition, { [s.transition]: shouldTransition })}>
+        <div className={c(s.pageTransition, { [s.isTransitioning]: isTransitioning})}>
           <div className={s.pageTransition__inner}>
             {children}
           </div>

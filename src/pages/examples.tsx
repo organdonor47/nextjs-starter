@@ -134,6 +134,7 @@ export default function Elements({
 
 
       <Section container>
+        <H3 as="h2">Import video</H3>
         <video src={video} controls />
       </Section>
     </>

@@ -8,7 +8,7 @@ export default function Elements() {
   const inputTypes = [
     { type: 'button', value: 'button' },
     { type: 'checkbox' },
-    { type: 'color' },
+    { type: 'color', value: '#cc0099' },
     { type: 'date' },
     { type: 'datetime-local' },
     { type: 'email' },

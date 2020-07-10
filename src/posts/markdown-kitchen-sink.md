@@ -1,5 +1,5 @@
 ---
-title: 'Markdown everything!!!!'
+title: 'HTML elements'
 date: '2020-06-26'
 description: 'This is a kitchen-sink markdown page used to check RichText component generic styling.'
 ---
