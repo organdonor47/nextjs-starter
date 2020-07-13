@@ -56,8 +56,8 @@ export default function Elements({
           </RichText>
         </Container>
 
-        <Hero title="Title: no columns defined">
-          <strong>kids here!</strong> Maecenas est ligula, consequat suscipit malesuada sit amet, tristique quis lorem. Quisque quis pellentesque dui. Suspendisse erat velit, rutrum eu mi at, faucibus hendrerit neque.
+        <Hero title="Title: no columns defined so 100% span">
+          <strong>children</strong> Maecenas est ligula, consequat suscipit malesuada sit amet, tristique quis lorem. Quisque quis pellentesque dui. Suspendisse erat velit, rutrum eu mi at, faucibus hendrerit neque.
         </Hero>
 
       </Section>

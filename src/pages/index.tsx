@@ -38,7 +38,7 @@ export default function Home() {
             <li>TODO: 
               <ul>
                 <li>video (+ autoplay?) component</li>
-                <li>Flexbox grid fallback for IE11</li>
+                <li>fallbacks for IE11 (css vars, css grid {'>'} flexbox)</li>
               </ul>
             </li>
 
