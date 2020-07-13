@@ -188,11 +188,3 @@ input[type=button] {
 	background: transparent;
 	color: inherit;
 }
-
-/* kill animations where required */
-@media (prefers-reduced-motion: reduce) {
-	* {
-    animation-duration: 1ms !important;
-    transition-duration: 1ms !important;
-  }
-}

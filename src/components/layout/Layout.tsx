@@ -34,6 +34,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
           <Header>
             <Nav />
           </Header>
+          {/* ID for skip link */}
           <main id="main" className={s.layout__content}>
             {children}
           </main>

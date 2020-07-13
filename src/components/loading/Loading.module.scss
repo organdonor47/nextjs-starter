@@ -18,10 +18,12 @@
   opacity: 0;
   pointer-events: none;
 
-  transition: opacity var(--transition-duration) var(--default-ease);
+  animation: fade-in var(--transition-duration);
 
-  &.active {
-    opacity: 1;
+  @keyframes fade-in {
+    to {
+      opacity: 1;
+    }
   }
 }
 

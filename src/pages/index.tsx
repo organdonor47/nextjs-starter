@@ -1,4 +1,4 @@
-import { H1, H3 } from 'components/heading/Heading';
+import { H1, H2 } from 'components/heading/Heading';
 import { Link } from 'components/link/Link';
 import { RichText } from 'components/rich-text/RichText';
 import { Section } from 'components/section/Section';
@@ -11,9 +11,8 @@ export default function Home() {
         <H1>Next-js starter</H1>
 
         <RichText>
-          <H3 as="h2" style={{ marginBottom: '-1ex' }}>What this kit includes:</H3>
-
-          <p>The kit constistutes bootstrapping (S)CSS and some helpful React Components and functionality.</p>
+          <p>The kit constistutes bootstrapping (S)CSS and some commonly-used React component patterns and functionality.</p>
+          <H2 as="h3" style={{ marginBottom: '-1ex' }}>What this kit includes:</H2>
 
           <ul>
             <li>Grid layout using simple <code>CSS Grid</code> <code>scss</code> mixins</li>
@@ -38,7 +37,6 @@ export default function Home() {
 
             <li>TODO: 
               <ul>
-                <li>loading state for transition</li>
                 <li>video (+ autoplay?) component</li>
                 <li>Flexbox grid fallback for IE11</li>
               </ul>

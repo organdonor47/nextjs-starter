@@ -1,7 +1,7 @@
 /* UI CONTEXT
  * ___
  * some common UI values that can be passed into the app
- * NavOpen, toggleNav(), shouldTransition [for pages]
+ * overflow state on content; toggle nav state; transition opt in / out;
  */
 import { createContext, useState, useEffect } from 'react';
 
@@ -16,7 +16,7 @@ export interface IContext {
   setCanScroll: (canScroll: boolean) => void;
 
   prefersReducedMotion: boolean;
-  scrollbarWidth: number;
+  // scrollbarWidth: number;
 }
 
 // export: allows useContext(UIContext);
@@ -33,7 +33,7 @@ export const UIContext = createContext<IContext>({
 
   // read-only
   prefersReducedMotion: false,
-  scrollbarWidth: 0,
+  // scrollbarWidth: 0,
   
 });
 
@@ -61,8 +61,10 @@ export const UIProvider = ({ children }: {children: React.ReactNode}) => {
   // check user preferences for animation on mount
   // also check scrollbar width
   useEffect(() => {
-    setPrefersReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(reducedMotion.matches);
     getScrollbarWidth();
+
   }, []);
 
   // on canScroll change, call preventScroll()
@@ -77,6 +79,7 @@ export const UIProvider = ({ children }: {children: React.ReactNode}) => {
     const htmlClassName = isNavOpen ? 'nav-open' : 'scroll-disabled';
     const rootClasses = document.documentElement.classList;
 
+    // if a scrollbar exists, add this value to body on overflow hiddn to prevent content jump
     if (scrollbarWidth > 0) {
       document.body.style.paddingRight = prevent ? `${scrollbarWidth}px` : '0';
     }
@@ -107,7 +110,7 @@ export const UIProvider = ({ children }: {children: React.ReactNode}) => {
         setShouldTransition,
 
         prefersReducedMotion,
-        scrollbarWidth,
+        // scrollbarWidth,
       }}
     >
       {children}

@@ -2,7 +2,6 @@ import Router from 'next/router';
 import { useEffect, useState } from 'react';
 import { debounce } from 'lodash';
 
-import c from 'classnames';
 import s from './Loading.module.scss';
 
 export const Loading = () => {
@@ -29,8 +28,8 @@ export const Loading = () => {
     }
   }, []);
 
-  return (
-    <div className={c(s.loading, {[s.active]: isLoading })}>loading...</div>
-  );
+  return isLoading ? (
+    <div className={s.loading}>loading...</div>
+  ) : null;
 
 };
