@@ -18,7 +18,7 @@ export const GridOverlay = ({ devToolsVisible }: IProps) => {
   const gridOverlayRef = useRef<HTMLDivElement>(null);
   const [isGridVisible, setGridVisible] = useLocalStorage(LOCAL_STORAGE_KEY_ACTIVE, true);
 
-  const onToggle = () => {
+  const handleToggle = () => {
     setGridVisible(!isGridVisible);
   };
 
@@ -36,7 +36,7 @@ export const GridOverlay = ({ devToolsVisible }: IProps) => {
       </div>
 
       {devToolsVisible && (
-        <button className={s.grid__button} onClick={onToggle} title="toggle grid" />
+        <button className={s.grid__button} onClick={handleToggle} title="toggle grid" />
       )}
     </div>
   );

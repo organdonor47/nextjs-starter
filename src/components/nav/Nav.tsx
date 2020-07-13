@@ -13,7 +13,7 @@ export const Nav = ({children}: IProps) => {
 
   const { navOpen, toggleNav } = useContext(UIContext);
 
-  // aria-expanded={navOpen}: removed for now as nav is only hidden in mobile; UIContext is unaware of this
+  // aria-expanded={navOpen}: removed for now as nav is only hidden in mobile; UIContext is unaware of this distinction
 
   return (
     <nav className={c(s.nav, {[s.open]: navOpen})} aria-label="Main Navigation">

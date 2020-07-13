@@ -41,10 +41,10 @@ export default function Elements({
 }) {
   return (
     <>
-      <Meta title="Next-js example elements page" />
+      <Meta title="Next-js starter example page" />
 
       <Section container>
-        <H1>Elements page</H1>
+        <H1>Examples page</H1>
       </Section>
 
       <Section>
@@ -134,6 +134,7 @@ export default function Elements({
 
 
       <Section container>
+        <H3 as="h2">Import video</H3>
         <video src={video} controls />
       </Section>
     </>

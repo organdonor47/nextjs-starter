@@ -1,3 +1,7 @@
+// PROJECT SCSS VARIABLES
+
+// not all of these are available as css custom properties by default: they can be added @ styles/global.scss
+
 // BLOCK / GRID
 $gutter: 30px;
 
@@ -48,6 +52,7 @@ $color-border: #ddd;
 $color-font: #202020;
 $color-font-dark-mode: #ddd;
 $color-link: $color-font;
+$color-link-dark-mode: $color-font-dark-mode;
 $color-placeholder: #ccc;
 
 // TYPE (locally-hosted set up)
@@ -106,7 +111,7 @@ $ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
 $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 $ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
 
-$default-ease: $ease-in-out-quint;
+$default-ease: $ease-in-out-cubic;
 
 $transition-duration: 300ms;
 

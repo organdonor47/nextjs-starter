@@ -1,3 +1,5 @@
+/* wrapper component to pass to some non-reset styles for html elements */
+
 import c from 'classnames';
 import s from './RichText.module.scss';
 

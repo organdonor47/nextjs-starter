@@ -1,4 +1,5 @@
 import { H1 } from 'components/heading/Heading';
+
 import s from './Hero.module.scss';
 
 export const Hero = ({title, children}: { title: string; children: React.ReactNode }) => (

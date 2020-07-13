@@ -1,7 +1,7 @@
 // a sane version of Link without having to write a child anchor & whatnot
 import { useContext } from 'react';
-// alias of Link
-import NextLink from 'next/link';
+import NextLink from 'next/link'; // alias of Link
+
 import { UIContext } from 'context/ui';
 
 export interface ILinkProps {
@@ -21,13 +21,13 @@ export const Link = ({ children, to, as, transition = true, ...props } :
   // defaults to active page transitions
   const { setShouldTransition } = useContext(UIContext);
 
-  const onClick = () => {
+  const handleClick = () => {
     setShouldTransition(transition);
   };
   
   return (
     <NextLink href={to} as={as} scroll={!transition}>
-      <a {...props} onClick={onClick}>{children}</a>
+      <a {...props} onClick={handleClick}>{children}</a>
     </NextLink>
   );
 

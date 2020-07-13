@@ -1,19 +1,33 @@
+// an example page transition. transforms an element across the page
+// css classes triggered by a <SwitchTransition />
+
 @import 'styles/config';
 
 .pageTransition {
-  // use SCSS vars for this so we dont get a fail on transitionend using css custom props
-  $page-transition-duration: 600ms;
+  // use SCSS vars for this so we dont get a fail on transitionstart / end using css custom props
+  // if we have 2 different transition lengths
+  $page-transition-duration: 500ms;
 
-  &.transition {
-    background: var(--color-primary);
-
-    @media (prefers-reduced-motion: reduce) {
-      background: var(--color-background);
-    }
+  &.isTransitioning {
+    pointer-events: none;
+    user-select: none;
   }
 
   &__inner {
-    background: var(--color-background);
+    .enter &,
+    .exitActive & {
+      opacity: 0;
+    }
+
+    .exit &,
+    .enterActive & {
+      opacity: 1;
+    }
+
+    .enterActive &,
+    .exitActive & {
+      transition: opacity $page-transition-duration $ease-out-quad;
+    }
   }
 
   &__wipe {
@@ -42,9 +56,6 @@
 
     .exitActive & {
       transform: none;
-    }
-    
-    .exitActive.transition & {
       transition: transform $page-transition-duration $ease-in-quad;
     }
 
@@ -55,11 +66,9 @@
 
     .enterActive & {
       transform: translate3d(100%, 0, 0);
-    }
-    
-    .enterActive.transition & {
       transition: transform $page-transition-duration $ease-out-quad;
     }
+
   }
 }
 
