@@ -23,8 +23,8 @@ PROD: `yarn build && yarn start`
 - Dark mode setup
 - `<Meta>` SEO component w. simple default setup
 - `<Svg>` import as component
+- includes [gsap animation library](https://greensock.com/gsap/)
 
 ## options as separate branch:
-- gsap library
 - [ ] [todo]: IE11 patches for flexbox grid and css custom properties
 
