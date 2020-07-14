@@ -68,7 +68,6 @@ export const PageTransition = ({ route, children }: { route: string; children: 
         
         timeout={canTransition ? null : 0} // for back / history ie. non-link clicks
         classNames={{ ...s }} // spread classNames from module
-        unmountOnExit
       >
         <div className={c(s.pageTransition, { [s.isTransitioning]: isTransitioning})}>
           <div className={s.pageTransition__inner}>
