@@ -13,9 +13,9 @@ export const Header = ({children}: { children: React.ReactNode }) => {
   return (
     <header className={s.header} ref={headerRef}>
       <div className={s.header__container}>
-        <Link tabIndex={0} className={s.header__skip} to="#main">
+        <a tabIndex={0} className={s.header__skip} href="#main">
           Skip to content
-        </Link>
+        </a>
         <Link tabIndex={0} to="/">Header</Link>
         <div className={s.header__nav}>
           {children}
