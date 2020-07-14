@@ -3,17 +3,14 @@ import { SwitchTransition, CSSTransition } from 'react-transition-group';
 
 import { UIContext } from 'context/ui';
 
-import c from 'classnames';
 import s from './PageTransition.module.scss';
 
 export const PageTransition = ({ route, children }: { route: string; children: React.ReactNode }) => {
 
   const { prefersReducedMotion, canTransition, setcanTransition, setCanScroll } = useContext(UIContext);
-  const [isTransitioning, setTransitioning] = useState(false);
   const transitionIndex = useRef<number>(0); // is first or second stage transition
 
   const handleStart = () => {
-    setTransitioning(true);
     setCanScroll(false);
   }
 
@@ -37,7 +34,6 @@ export const PageTransition = ({ route, children }: { route: string; children: 
       
 
       setcanTransition(false);
-      setTransitioning(false);
       setCanScroll(true);
 
       // reset flag
@@ -68,9 +64,8 @@ export const PageTransition = ({ route, children }: { route: string; children: 
         
         timeout={canTransition ? null : 0} // for back / history ie. non-link clicks
         classNames={{ ...s }} // spread classNames from module
-        unmountOnExit
       >
-        <div className={c(s.pageTransition, { [s.isTransitioning]: isTransitioning})}>
+        <div className={s.pageTransition}>
           <div className={s.pageTransition__inner}>
             {children}
           </div>

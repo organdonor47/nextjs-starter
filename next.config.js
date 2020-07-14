@@ -12,7 +12,7 @@ module.exports = nextComposePlugins(
   [
     [nextImages, { exclude: svgDir }],
     [nextReactSvg, { include: svgDir }],
-    nextVideos,
+    [nextVideos, { assetDirectory: 'static'}],
   ],
   nextConfig,
 );
