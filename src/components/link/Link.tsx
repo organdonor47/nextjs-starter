@@ -19,10 +19,11 @@ export const Link = ({ children, to, as, transition = true, ...props } :
   // prop: transiton = opt in or out of a page transition
   // (i.e tabs might not require a transition)
   // defaults to active page transitions
-  const { setShouldTransition } = useContext(UIContext);
+  const { toggleNav, setcanTransition } = useContext(UIContext);
 
   const handleClick = () => {
-    setShouldTransition(transition);
+    toggleNav(false);
+    setcanTransition(transition);
   };
   
   return (

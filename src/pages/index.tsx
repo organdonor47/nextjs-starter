@@ -1,51 +1,155 @@
-import { H1, H2 } from 'components/heading/Heading';
+import { GetStaticProps } from 'next';
+
+import { getSortedPostsData } from 'lib/posts';
+
+// global components
+import { Button } from 'components/button/Button';
+import { Container } from 'components/container/Container';
+import { Grid } from 'components/grid/Grid';
+import { H1, H2, H3 } from 'components/heading/Heading';
 import { Link } from 'components/link/Link';
+import { Meta } from 'components/meta/Meta';
 import { RichText } from 'components/rich-text/RichText';
-import { Section } from 'components/section/Section';
+import { Section } from 'components/section/Section';
 
-export default function Home() {
+// demo components
+import { Cards, Card } from 'components/demos/cards/Cards';
+import { Hero } from 'components/demos/hero/Hero';
+import { Picture } from 'components/picture/Picture';
 
+// SVG as component
+import Circle from 'assets/svg/circle.svg';
+//import image files
+import sunsetJpg from 'assets/images/sunset.jpg';
+import sunsetJpg2x from 'assets/images/sunset@2x.jpg';
+import sunsetWebp from 'assets/images/sunset.webp';
+import sunsetWebp2x from 'assets/images/sunset@2x.webp';
+import sunsetMobile from 'assets/images/sunset-mobile.jpg';
+import sunsetMobileWebp from 'assets/images/sunset-mobile.webp';
+
+import video from 'assets/video/temp.mp4';
+
+export default function Elements({
+  allPostsData
+}: {
+  allPostsData: {
+    date: string;
+    title: string;
+    id: string;
+    description: string;
+  }[]
+}) {
   return (
     <>
-      <Section container as="div">
+      <Meta title="Next-js starter" />
+
+      <Section container>
         <H1>Next-js starter</H1>
 
         <RichText>
-          <p>The kit constistutes bootstrapping (S)CSS and some commonly-used React component patterns and functionality.</p>
-          <H2 as="h3" style={{ marginBottom: '-1ex' }}>What this kit includes:</H2>
-
-          <ul>
-            <li>Grid layout using simple <code>CSS Grid</code> <code>scss</code> mixins</li>
-            <li>Simple components for common layout patterns (using css modules)</li>
-            <li>Page transitions using <code>react-transition-group</code></li>
-            <li>Responsive typography</li>
-            <li>Mobile / desktop style navigations</li>
-            <li>UI context <code>Provider</code> for common global states</li>
-            <li>useful <code>hooks</code> for: 
-              <ul>
-                <li>local storage</li>
-                <li>resize</li>
-                <li>keydown</li>
-              </ul>
-            </li>
-            <li>Grid visiual reference overlay tool to help aligning layout</li>
-            <li>SEO <code>&lt;Meta&gt;</code> component w. simple default setup</li>
-            <li>SVG imports as React <code>&lt;Component&gt;</code>s</li>
-            <li><code>&lt;Picture&gt;</code> component with sanitised media-query / srcset props</li>
-            <li>Basic dark-mode css custom property config</li>
-            <li>lots of other small bits & pieces; the <Link to="/examples">examples page</Link> has examples</li>
-
-            <li>TODO: 
-              <ul>
-                <li>video (+ autoplay?) component</li>
-                <li>Flexbox grid fallback for IE11</li>
-              </ul>
-            </li>
-
-          </ul>
-          
+          <p>This starter-kit contains bootstrapping (S)CSS and some commonly-used React component patterns and functionality. examples below:</p>
         </RichText>
+      </Section>
+
+      <Section>
+        <Container>
+          <H2 as="h2">Basic grid column span usage</H2>
+
+          <RichText style={{ paddingBottom: '2em'}}>
+            <p>Uses the <code>@grid</code> and <code>@grid-item</code> scss mixins to lay out elements on the page.</p>
+          </RichText>
+        </Container>
+
+        <Hero title="Title: no columns defined so 100% span">
+          <strong>children</strong> Maecenas est ligula, consequat suscipit malesuada sit amet, tristique quis lorem. Quisque quis pellentesque dui. Suspendisse erat velit, rutrum eu mi at, faucibus hendrerit neque.
+        </Hero>
+
+      </Section>
+
+      <Section container>
+
+        <H3 as="h2">Card grid</H3>
+        <RichText style={{ paddingBottom: '2em'}}>
+          <p>uses a <code>&lt;Card&gt;</code> component to configure and style a basic <code>&lt;Grid&gt;</code> component, which generates an equal-column grid. </p>
+        </RichText>
+
+        <Cards>
+            <Card
+              heading={
+                <Link to="/forms">html form elements</Link>
+              }
+              date="today"
+            >
+              How form elements work with some basic generic styles from global.scss
+            </Card>
+          
+          {allPostsData.slice(0, 5).map(({ id, date, title, description }) => (
+            <Card
+              key={id}
+              heading={
+                <Link to="/posts/[id]" as={`/posts/${id}`}>{title}</Link>
+              }
+              date={date}
+            >
+              <div>{description}</div>
+            </Card>
+          ))}
+          
+        </Cards>
+      </Section>
+
+      <Section container>
+        <H3 as="h2">Buttons</H3>
+        <Grid columnCount={{ mobile: 1, desktop: 4 }}>
+          <Button onClick={() => console.log('onClick event')}>default button</Button>
+          <Button disabled to="#">a disabled button</Button>
+          <Button to="/" transition={false}>internal link, long text, and no page transition</Button>
+          <Button to="https://hugsmidjan.is">external link</Button>
+        </Grid>
+      </Section>
+
+      <Section container>
+        <H3 as="h2">Import SVG as component</H3>
+        <Circle className="🥰" style={{ color: '#c09' }} />
+
+      </Section>
+
+      <Section container>
+        <H3 as="h2">Import images and add to <code>&lt;Picture&gt;</code> component</H3>
+        <Picture
+          src={sunsetJpg}
+          formats={{
+            webp: {
+              x1: sunsetWebp,
+              x2: sunsetWebp2x,
+              mobile: sunsetMobileWebp
+            },
+            jpg: {
+              x1: sunsetJpg,
+              x2: sunsetJpg2x,
+              mobile: sunsetMobile,
+            },
+          }}
+          alt="picture of a sunset"
+          width={1200}
+          height={900}
+        />
+      </Section>
+
+
+      <Section container>
+        <H3 as="h2">Import video</H3>
+        <video src={video} controls />
       </Section>
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const allPostsData = getSortedPostsData()
+  return {
+    props: {
+      allPostsData
+    }
+  }
 }

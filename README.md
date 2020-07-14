@@ -2,19 +2,29 @@
 
 This is a starter template for [Next.js](https://nextjs.org/) with some css scaffold and common component patterns. 
 
-`yarn && yarn dev`
+DEV: `yarn && yarn dev`
+PROD: `yarn build && yarn start`
 
-## todo:
-- [x] better ARIA markup
-- [x] button
-- [x] image / picture component
-- [x] page transitions
-  - [x] transitions only on `Link` click
+## includes:
+- CSS scaffolding (using scss modules)
+  - Grid layout using `@grid` scss mixins
+  - dev environment has visual overlay grid-helper
+  - `<RichText>` for some post-reset sane defaults
+  - Responsive typography using `clamp`
+  - local font files setup 
+- `UIContext` consumer / provider setup for global ui states (i.e `navOpen`, `canTransition`, `canScroll` etc)
+- Mobile & desktop style navigation scaffold
+- `React hooks()` for:
+  - local storage
+  - resize events
+  - keyboard events
+- `<PageTransition>` component using `react-transition-group`
+- `<Picture>` component with sanitised media-query / srcset props
+- Dark mode setup
+- `<Meta>` SEO component w. simple default setup
+- `<Svg>` import as component
 
-## options (as branch?):
-- [x] add gsap
-- [ ] css `<Grid />` flex IE fallback
-
-## secondary:
-- [x] metadata component with fallbacks
+## options as separate branch:
+- gsap library
+- [ ] [todo]: IE11 patches for flexbox grid and css custom properties
 

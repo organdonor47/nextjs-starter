@@ -9,8 +9,8 @@ export interface IContext {
   navOpen: boolean;
   toggleNav: (open: boolean) => void;
 
-  shouldTransition: boolean;
-  setShouldTransition: (shouldTransition: boolean) => void;
+  canTransition: boolean;
+  setcanTransition: (canTransition: boolean) => void;
   
   canScroll: boolean;
   setCanScroll: (canScroll: boolean) => void;
@@ -25,8 +25,8 @@ export const UIContext = createContext<IContext>({
   navOpen: false,
   toggleNav: (open: boolean) => !open,
     
-  shouldTransition: false,
-  setShouldTransition: (shouldTransition: boolean) => !shouldTransition,
+  canTransition: false,
+  setcanTransition: (canTransition: boolean) => !canTransition,
 
   canScroll: false,
   setCanScroll: (canScroll: boolean) => !canScroll,
@@ -43,7 +43,7 @@ export const UIProvider = ({ children }: {children: React.ReactNode}) => {
   const [navOpen, setNavOpen] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [scrollbarWidth, setScrollbarWidth] = useState(0);
-  const [shouldTransition, setShouldTransition] = useState(true);
+  const [canTransition, setcanTransition] = useState(true);
 
   // create overflow box and return value as scrollbarWidth
   const getScrollbarWidth = () => {
@@ -106,8 +106,8 @@ export const UIProvider = ({ children }: {children: React.ReactNode}) => {
         navOpen,
         toggleNav,
 
-        shouldTransition,
-        setShouldTransition,
+        canTransition,
+        setcanTransition,
 
         prefersReducedMotion,
         // scrollbarWidth,
