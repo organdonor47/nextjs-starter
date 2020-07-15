@@ -6,6 +6,9 @@
 import { createContext, useState, useEffect } from 'react';
 
 export interface IContext {
+  isLoading: boolean;
+  setLoading: (isLoading: boolean) => void;
+
   navOpen: boolean;
   toggleNav: (open: boolean) => void;
 
@@ -22,6 +25,9 @@ export interface IContext {
 // export: allows useContext(UIContext);
 export const UIContext = createContext<IContext>({
   // writeable states
+  isLoading: false,
+  setLoading: (isLoading: boolean) => !isLoading,
+
   navOpen: false,
   toggleNav: (open: boolean) => !open,
     
@@ -40,6 +46,7 @@ export const UIContext = createContext<IContext>({
 // exported UIProvider Component that wraps _app for children to optionally consume with useContext() hook
 export const UIProvider = ({ children }: {children: React.ReactNode}) => {
   const [canScroll, setCanScroll] = useState(true);
+  const [isLoading, setLoading] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [scrollbarWidth, setScrollbarWidth] = useState(0);
@@ -102,6 +109,9 @@ export const UIProvider = ({ children }: {children: React.ReactNode}) => {
       value={{
         canScroll,
         setCanScroll,
+
+        isLoading,
+        setLoading,
 
         navOpen,
         toggleNav,

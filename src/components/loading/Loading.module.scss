@@ -1,33 +1,102 @@
 @import 'styles/config';
 
-.loading {
-  @include fit(fixed);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+// copy hugsmidjan loading screen
 
-  z-index: $zindex-header + 2;
+@keyframes interwind {
+  0% {
+    transform:rotate(0) translate3d(0, -20px, 0) scale(0);
+    animation-timing-function: cubic-bezier(0.2, 0, 0.8, 1);
+  }
 
-  margin: auto;
-  width: 200px;
-  height: 200px;
+  50% {
+    transform: rotate(180deg) translate3d(0, -20px, 0) scale(1);
+    animation-timing-function: cubic-bezier(0, 0.2, 1, 0.8);
+  }
 
-  border: 1px solid var(--color-border);
-  background: var(--color-background);
-
-  opacity: 0;
-  pointer-events: none;
-
-  animation: fade-in var(--transition-duration);
-
-  @keyframes fade-in {
-    to {
-      opacity: 1;
-    }
+  100% {
+    transform: rotate(360deg) translate(0,-20px) scale(0);
+    animation-timing-function: cubic-bezier(0.2, 0, 0.8, 1);
   }
 }
 
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
 
+.loading {
+  @include fit(fixed);
+  z-index: 100;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  opacity: 0;
+  pointer-events: none;
 
+  background: var(--color-background);
 
+  &.enter {
+    opacity: 0;
+  }
+
+  &.enterActive {
+    opacity: 1;
+  }
+
+  &.enterDone {
+    opacity: 1;
+  }
+
+  &.exit {
+    opacity: 1;
+  }
+  
+  &.exitActive {
+    opacity: 0;
+  }
+
+  &.enterActive,
+  &.exitActive {
+    transition: opacity $transition-duration $ease-out-quad;
+  }
+
+  &.exitDone {
+    // z-index: 0;
+  }
+
+  &__inner {
+    position: relative;
+  
+    width: 201px;
+    height: 200px;
+
+    contain: strict;
+  
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 70px;
+      left: 70px;
+
+      width: 60px;
+      height: 60px;
+
+      border-radius: 50%;
+
+      background: var(--color-primary);
+
+      backface-visibility: hidden;
+      
+      animation: interwind 1.4s linear infinite;
+    }
+  
+    &::after {
+      background: var(--color-font);
+      animation-delay: -700ms;
+    }
+  }
+}
