@@ -1,4 +1,4 @@
-import { useContext, useRef, useState, TransitionEvent } from 'react';
+import { useContext, useRef, TransitionEvent } from 'react';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 
 import { UIContext } from 'context/ui';
@@ -31,8 +31,6 @@ export const PageTransition = ({ route, children }: { route: string; children: 
     if (transitionIndex.current === 0) {
       transitionIndex.current = 1;
     } else {
-      
-
       setcanTransition(false);
       setCanScroll(true);
 
