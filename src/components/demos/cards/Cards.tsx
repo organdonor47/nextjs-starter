@@ -26,30 +26,30 @@ export const Cards = ({ children }: {children: React.ReactNode; }) => {
 
     const cards = listRef.current.querySelectorAll(`.${s.card}`);
 
-    ScrollTrigger.batch(cards, {
-      onEnter: elements => {
-        gsap.to(elements, {
-          opacity: 1,
-          y: 0,
-          stagger: 0.2,
-          duration: 0.75,
-          ease: 'power4.inOut' });
-      }
-    });
+    // ScrollTrigger.batch(cards, {
+    //   onEnter: elements => {
+    //     gsap.to(elements, {
+    //       opacity: 1,
+    //       y: 0,
+    //       stagger: 0.2,
+    //       duration: 0.75,
+    //       ease: 'power4.inOut' });
+    //   }
+    // });
       
-    // gsap.to(listRef.current.childNodes, {
-    //     scrollTrigger: {
-    //       trigger: triggerRef.current,
-    //       toggleActions: 'restart pause resume pause',
-    //       // markers: true,
-    //       scrub: 1,
-    //     },
-    //     y: 0,
-    //     autoAlpha: 1,
-    //     duration: 0.75,
-    //     stagger: 0.15,
-    //     ease: 'power4.inOut',
-    //   });
+    gsap.to(cards, {
+        scrollTrigger: {
+          trigger: triggerRef.current,
+          toggleActions: 'restart pause resume pause',
+          // markers: true,
+          scrub: 1,
+        },
+        y: 0,
+        autoAlpha: 1,
+        duration: 0.75,
+        stagger: 0.15,
+        ease: 'power4.inOut',
+      });
   };
 
   useEffect(() => {
