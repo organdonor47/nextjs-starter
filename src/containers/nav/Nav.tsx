@@ -6,7 +6,7 @@ import { NavLink } from 'components/nav/NavLink';
 
 export const NavContainer = () => (
   <Nav>
-    <NavLink to="/gsap">Gsap playground</NavLink>
+    <NavLink to="/gsap">Gsap tests</NavLink>
     <NavLink to="/posts/[id]" as={`/posts/markdown-kitchen-sink`}>HTML elements</NavLink>
     <NavLink to="/forms">Form elements</NavLink>
   </Nav>

@@ -1,10 +1,12 @@
 @import 'styles/config';
 
-.box {
-  width: 40vmin;
-  height: 40vmin;
+.grid {
+  @include grid;
 
-  opacity: 0;
+  &__box {
+    @include grid-item(4);
 
-  background: var(--color-primary);
+    opacity: 0;
+    transform: translateY(50px);
+  }
 }

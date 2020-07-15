@@ -1,5 +1,5 @@
 // global components
-import { H1 } from 'components/heading/Heading';
+import { H1, H2 } from 'components/heading/Heading';
 import { Meta } from 'components/meta/Meta';
 import { Section } from 'components/section/Section';
 
@@ -12,10 +12,17 @@ export default function Gsap() {
       <Meta title="Next-js starter: form elements" />
 
       <Section container>
-        <H1>Next-js starter: GSAP playground</H1>
+        <H1>Next-js starter: GSAP tests</H1>
+      </Section>
+
+      <Section container>
+        <H2>gsap.registerEffect</H2>
 
         <Effect />
+      
       </Section>
+
+      
 
     </>
   );

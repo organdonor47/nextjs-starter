@@ -1,0 +1,14 @@
+.box {
+  width: 100%;
+
+  pointer-events: none;
+
+  background: #c09;
+
+  &::before {
+    content: '';
+
+    display: block;
+    padding-bottom: 100%;
+  }
+}
