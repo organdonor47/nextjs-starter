@@ -27,7 +27,7 @@ export const Link = ({ children, to, as, transition = true, ...props } :
   };
   
   return (
-    <NextLink href={to} as={as} scroll={prefersReducedMotion ?? transition}>
+    <NextLink href={to} as={as} scroll={prefersReducedMotion ? true : !transition}>
       <a {...props} onClick={handleClick}>{children}</a>
     </NextLink>
   );
