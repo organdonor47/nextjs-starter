@@ -23,11 +23,11 @@ export const Link = ({ children, to, as, transition = true, ...props } :
 
   const handleClick = () => {
     toggleNav(false);
-    setcanTransition(transition);
+    setcanTransition(prefersReducedMotion ? false : transition);
   };
   
   return (
-    <NextLink href={to} as={as} scroll={prefersReducedMotion ?? transition}>
+    <NextLink href={to} as={as} scroll={prefersReducedMotion ? true : !transition}>
       <a {...props} onClick={handleClick}>{children}</a>
     </NextLink>
   );

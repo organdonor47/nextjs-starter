@@ -103,7 +103,7 @@ export default function Elements({
         <Grid columnCount={{ mobile: 1, desktop: 4 }}>
           <Button onClick={() => console.log('onClick event')}>default button</Button>
           <Button disabled to="#">a disabled button</Button>
-          <Button to="/" transition={false}>internal link, long text, and no page transition</Button>
+          <Button to="/forms" transition={false}>internal link, long text, and no page transition</Button>
           <Button to="https://hugsmidjan.is">external link</Button>
         </Grid>
       </Section>
