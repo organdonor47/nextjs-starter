@@ -23,7 +23,7 @@ export const Link = ({ children, to, as, transition = true, ...props } :
 
   const handleClick = () => {
     toggleNav(false);
-    setcanTransition(transition);
+    setcanTransition(prefersReducedMotion ? false : transition);
   };
   
   return (
