@@ -8,13 +8,11 @@ import s from './Loading.module.scss';
 import { UIContext } from 'context/ui';
 
 export const Loading = () => {
-  const { isLoading, setLoading } = useContext(UIContext);
+  const { isLoading, setLoading, prefersReducedMotion } = useContext(UIContext);
 
   useEffect(() => {
     // show loading if page not loaded after 1 sec
     const handleRouteStart = debounce(() => {
-      console.log('route start');
-      
       if (!isLoading) {
         setLoading(true);
       }
@@ -40,13 +38,20 @@ export const Loading = () => {
   return  (
       <CSSTransition
         in={isLoading}
-        timeout={300}
+        timeout={prefersReducedMotion ? 0 : 300}
         classNames={{ ...s }}
         unmountOnExit
       >
-        <span className={c(s.loading)}>
-          <span className={s.loading__inner} />
-        </span>
+        <div
+          className={c(s.loading)}
+          role="alertdialog"
+          aria-busy="true"
+          aria-live="assertive"
+        >
+          <span className={s.loading__inner}>
+            loading...
+          </span>
+        </div>
       </CSSTransition>
     );
 

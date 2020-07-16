@@ -19,7 +19,7 @@ export const Link = ({ children, to, as, transition = true, ...props } :
   // prop: transiton = opt in or out of a page transition
   // (i.e tabs might not require a transition)
   // defaults to active page transitions
-  const { toggleNav, setcanTransition } = useContext(UIContext);
+  const { toggleNav, setcanTransition, prefersReducedMotion } = useContext(UIContext);
 
   const handleClick = () => {
     toggleNav(false);
@@ -27,7 +27,7 @@ export const Link = ({ children, to, as, transition = true, ...props } :
   };
   
   return (
-    <NextLink href={to} as={as} scroll={!transition}>
+    <NextLink href={to} as={as} scroll={prefersReducedMotion ?? transition}>
       <a {...props} onClick={handleClick}>{children}</a>
     </NextLink>
   );
