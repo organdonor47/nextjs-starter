@@ -20,6 +20,21 @@ export const Link = ({ children, to, as, transition = true, ...props } :
   // (i.e tabs might not require a transition)
   // defaults to active page transitions
   const { toggleNav, setcanTransition, prefersReducedMotion } = useContext(UIContext);
+  const isExternal = /^((https?:)?\/\/|[0-9a-zA-Z]+:)/.test(to || '');
+
+  if (isExternal) {
+
+    return (
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href={to}
+        {...props}
+      >
+      {children}
+      </a>
+    )
+  }
 
   const handleClick = () => {
     toggleNav(false);

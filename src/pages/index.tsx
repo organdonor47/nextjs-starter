@@ -61,7 +61,7 @@ export default function Elements({
         </Container>
 
         <Hero title="Title: no columns defined so 100% span">
-          <strong>children</strong> Maecenas est ligula, consequat suscipit malesuada sit amet, tristique quis lorem. Quisque quis pellentesque dui. Suspendisse erat velit, rutrum eu mi at, faucibus hendrerit neque.
+          <strong>children</strong> Maecenas est ligula, consequat suscipit malesuada sit amet, tristique quis lorem. Quisque quis <Link className="🤯" to="https://guardian.co.uk/">text external link</Link> pellentesque dui. Suspendisse erat velit, rutrum eu mi at, faucibus hendrerit neque.
         </Hero>
 
       </Section>
