@@ -19,6 +19,7 @@ PROD: `yarn build && yarn start`
   - resize events
   - keyboard events
 - `<PageTransition>` component using `react-transition-group`
+- debounced `<Loading>` component using `react-transition-group`
 - `<Picture>` component with sanitised media-query / srcset props
 - Dark mode setup
 - `<Meta>` SEO component w. simple default setup
