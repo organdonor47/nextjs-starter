@@ -11,18 +11,20 @@ export const Loading = () => {
   const { isLoading, setLoading } = useContext(UIContext);
 
   useEffect(() => {
-    // show loading if page not loaded after 1/2 sec
+    // show loading if page not loaded after 1 sec
     const handleRouteStart = debounce(() => {
       console.log('route start');
       
       if (!isLoading) {
         setLoading(true);
       }
-    }, 500, { leading: false });
+    }, 1000, { leading: false });
 
     const handleRouteComplete = () => {
-      // cancel start listener
+      // cancel start listener loading debounce
       handleRouteStart.cancel();
+
+      // hide loading screen
       setLoading(false);
     };
   
@@ -36,7 +38,12 @@ export const Loading = () => {
   }, []);
 
   return  (
-      <CSSTransition in={isLoading} timeout={300} classNames={{ ...s }} mountOnEnter={true}>
+      <CSSTransition
+        in={isLoading}
+        timeout={300}
+        classNames={{ ...s }}
+        unmountOnExit
+      >
         <span className={c(s.loading)}>
           <span className={s.loading__inner} />
         </span>
