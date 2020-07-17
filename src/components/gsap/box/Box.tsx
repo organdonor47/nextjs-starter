@@ -1,22 +1,23 @@
 
 // box as forwardRef ro use in animation examples
-import { forwardRef, RefObject } from 'react';
+import { forwardRef } from 'react';
 
 import c from 'classnames';
 import s from './Box.module.scss';
 
 interface IProps {
-  ref: RefObject<HTMLDivElement>;
+  ref: React.RefObject<HTMLDivElement>;
   children?: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 export const Box = forwardRef<HTMLDivElement, IProps>((props, ref) => {
 
-  const { children, className } = props;
+  const { children, className, style } = props;
   
   return (
-    <div ref={ref} className={c(s.box, className)}>
+    <div ref={ref} className={c(s.box, className)} style={style}>
       {children}
     </div>
   );

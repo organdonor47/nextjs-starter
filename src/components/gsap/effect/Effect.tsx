@@ -1,10 +1,10 @@
 import { gsap } from 'gsap';
-import { useState, useEffect, useRef, useContext, ChangeEvent } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
+import { Button } from 'components/button/Button';
+import { Box } from 'components/gsap/box/Box';
 
 import s from './Effect.module.scss';
-import { Button } from 'components/button/Button';
-import { UIContext } from 'context/ui';
-import { Box } from '../box/Box';
 
 interface ITimelineProps {
   paused?: boolean;
@@ -12,11 +12,8 @@ interface ITimelineProps {
   duration?: number;
 }
 
-export const Effect = ({children}: { children?: React.ReactNode }) => {
-
-  const { prefersReducedMotion } = useContext(UIContext);
+export const Effect = () => {
   const divRef = useRef<HTMLDivElement>(null);
-  const hasAnimated = useRef<boolean>(false); // flag for init
   const [timeline] = useState<GSAPTimeline>(gsap.timeline({ paused: true }));
   
   const [timelineState, setTimelineState] = useState<ITimelineProps>({
@@ -40,15 +37,11 @@ export const Effect = ({children}: { children?: React.ReactNode }) => {
     updateState({paused: true });
   }
 
-  const onReverseComplete = () => {
-    updateState({paused: true });
-  }
-
   // called on mount
   const buildTimeline = () => {
 
     // timeline complete callbacks
-    timeline.eventCallback('onComplete', onComplete).eventCallback('onReverseComplete', onReverseComplete);
+    timeline.eventCallback('onComplete', onComplete).eventCallback('onReverseComplete', onComplete);
 
     // register a reusable effect
     gsap.registerEffect({
@@ -96,22 +89,17 @@ export const Effect = ({children}: { children?: React.ReactNode }) => {
   }
 
   // mount / play / pause logic
-  useEffect(() => {
-    if (!hasAnimated.current) {
 
+  const hasMounted = useRef<boolean>(false); // flag for initialising timeline
+  useEffect(() => {
+    if (!hasMounted.current) {
+      
       // build timeline onMount
       buildTimeline();
-
-      hasAnimated.current = true;
+      hasMounted.current = true;
     }
 
-    if (paused) {
-      timeline.pause();
-    }
-
-    else {
-      handleDirection();
-    }
+    paused ? timeline.pause() : handleDirection();
 
     return () => {
       timeline.kill();
@@ -138,11 +126,14 @@ export const Effect = ({children}: { children?: React.ReactNode }) => {
       </Button>
 
       <select
-        onChange={(e: ChangeEvent<HTMLSelectElement>) => updateState({ forwards: e.target.value === 'forwards' })}
+        onChange={
+          (e: React.ChangeEvent<HTMLSelectElement>) =>
+          updateState({ forwards: e.target.value === 'forwards' })
+        }
         defaultValue="forwards"
         style={{ marginLeft: 30 }}
       >
-        <option value="forwards">Direction: forwards</option>
+        <option value="forwards">Direction: Forwards</option>
         <option value="backwards">Direction: Backwards</option>
       </select>
 
