@@ -1,5 +1,5 @@
 import { gsap } from 'gsap';
-import { useState, useEffect, useRef, useContext } from 'react';
+import { useState, useEffect, useRef, useContext, ChangeEvent } from 'react';
 
 import s from './Effect.module.scss';
 import { Button } from 'components/button/Button';
@@ -7,10 +7,9 @@ import { UIContext } from 'context/ui';
 import { Box } from '../box/Box';
 
 interface ITimelineProps {
-  paused: boolean;
-  forwards: boolean;
-  showDirectionControl: boolean;
-  duration: number;
+  paused?: boolean;
+  forwards?: boolean;
+  duration?: number;
 }
 
 export const Effect = ({children}: { children?: React.ReactNode }) => {
@@ -23,34 +22,33 @@ export const Effect = ({children}: { children?: React.ReactNode }) => {
   const [timelineState, setTimelineState] = useState<ITimelineProps>({
     paused: true,
     forwards: true,
-    showDirectionControl: false,
-    duration: 0
+    duration: 0,
   });
 
-  const { paused, forwards, showDirectionControl } = timelineState;
+  const { paused, forwards, duration } = timelineState;
 
-  // forward animation finishes
-  const onComplete = () => {
+  // shorthand alias to update misc states
+  const updateState = (items: ITimelineProps) => {
     setTimelineState((prevState) => ({
       ...prevState,
-      paused: true,
-      showDirectionControl: true,
+      ...items,
     }));
+  }
+
+  // pause on complete
+  const onComplete = () => {
+    updateState({paused: true });
   }
 
   const onReverseComplete = () => {
-    setTimelineState((prevState) => ({
-      ...prevState,
-      paused: true,
-      forwards: true,
-    }));
+    updateState({paused: true });
   }
 
+  // called on mount
   const buildTimeline = () => {
-    // build timeline on mount
 
-    // complete callbacks
-    timeline.eventCallback('onComplete', onComplete).eventCallback('onComplete', onReverseComplete);
+    // timeline complete callbacks
+    timeline.eventCallback('onComplete', onComplete).eventCallback('onReverseComplete', onReverseComplete);
 
     // register a reusable effect
     gsap.registerEffect({
@@ -59,44 +57,60 @@ export const Effect = ({children}: { children?: React.ReactNode }) => {
           return gsap.to(targets, {duration: config.duration, opacity: 1, y: 0, rotate: 180 });
       },
       defaults: {
-        duration: 2,
+        duration: 3,
       },
       extendTimeline: true, // call the effect directly on timeline
     });
 
     // @ts-ignore (property slideFadeSpin does not exist on timeline)
     timeline.slideFadeSpin(divRef.current, {});
+    // effect can also be called as `gsap.effects.slideFadeSpin(el, {opts});`
 
-    setTimelineState((prevState) => ({
-      ...prevState,
-      duration: timeline.duration(),
-    }));
+    // let component know real duration post-mount
+    updateState({duration: timeline.duration()});
   }
 
-  useEffect(() => {
+  // animate based on direction
+  const handleDirection = () => {
     const currentTime = timeline.time();
-    const { duration } = timelineState;
 
+    console.log('forwards:', forwards);
+
+    if (forwards) {
+      if (currentTime === duration) {
+        // has ended, start from beginnning
+        timeline.seek(0).play();
+      } else {
+        timeline.play();
+      }
+    }
+    
+    else {
+      if (currentTime === duration) {
+        // has ended, start from end and reverse
+        timeline.reverse();
+        } else {
+        currentTime > 0 ? timeline.reverse() : timeline.seek(duration).reverse();
+      }
+    }
+  }
+
+  // mount / play / pause logic
+  useEffect(() => {
     if (!hasAnimated.current) {
+
+      // build timeline onMount
       buildTimeline();
 
       hasAnimated.current = true;
     }
 
-    // timeline built
-    if (hasAnimated.current) {
-      if (paused) {
-        timeline.pause();
-      }
+    if (paused) {
+      timeline.pause();
+    }
 
-      else {
-        if (currentTime === duration) {
-          // has ended, start from beginnning
-          timeline.seek(0).play();
-        } else {
-          currentTime > 0 ? timeline.resume() : timeline.play();
-        }
-      }
+    else {
+      handleDirection();
     }
 
     return () => {
@@ -105,32 +119,32 @@ export const Effect = ({children}: { children?: React.ReactNode }) => {
     
   }, [paused]);
 
+  // directional
   useEffect(() => {
-    // const duration = timeline.duration();
-    // const currentTime = timeline.time();
+    if (paused) {
+      return;
+    }
 
-    // if (paused && currentTime !== duration) {
-    //   return;
-    // }
-
-    // if (currentTime !== duration) {
-
-    // }
-    
-    // forwards ? timeline.play() : timeline.reverse();
-
+    handleDirection();
   }, [forwards]);
 
   return (
     <>
       <Button
         style={{ marginBottom: 30 }}
-        onClick={() => setTimelineState((prevState) => ({...prevState, paused: !paused }))}
+        onClick={() => updateState({ paused: !paused })}
       >
         {paused ? 'Play' : 'Pause'}
       </Button>
 
-      {/* <Button disabled={!showDirectionControl} style={{ marginLeft: 30 }} onClick={() => setForwards(!forwards)}>{forwards ? 'Rewind' : 'Forward'}</Button> */}
+      <select
+        onChange={(e: ChangeEvent<HTMLSelectElement>) => updateState({ forwards: e.target.value === 'forwards' })}
+        defaultValue="forwards"
+        style={{ marginLeft: 30 }}
+      >
+        <option value="forwards">Direction: forwards</option>
+        <option value="backwards">Direction: Backwards</option>
+      </select>
 
       <div className={s.grid}>
         <Box ref={divRef} className={s.grid__box}>BOXX!</Box>
