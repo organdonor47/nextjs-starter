@@ -11,17 +11,21 @@ interface IProps {
 
 export const Nav = ({children}: IProps) => {
 
-  const { navOpen, toggleNav } = useContext(UIContext);
+  const { uiState, setUIState } = useContext(UIContext);
+
+  const handleClose = () => {
+    setUIState({ isNavOpen: false });
+  }
 
   // aria-expanded={navOpen}: removed for now as nav is only hidden in mobile; UIContext is unaware of this distinction
 
   return (
-    <nav className={c(s.nav, {[s.open]: navOpen})} aria-label="Main Navigation">
+    <nav className={c(s.nav, {[s.open]: uiState.isNavOpen})} aria-label="Main Navigation">
       <div className={s.nav__inner}>
         
         <div className={s.nav__content}>
           <div className={s.nav__close}>
-            <button onClick={() => toggleNav(false)}>close</button>
+            <button onClick={handleClose}>close</button>
           </div>
           <ul className={s.nav__list}>
             {Children.map(children, (child, i) => (
@@ -31,7 +35,7 @@ export const Nav = ({children}: IProps) => {
         </div>
 
       </div>
-      <button className={s.nav__backdrop} aria-label="Close Main Navigation" onClick={() => toggleNav(false)} />
+      <button className={s.nav__backdrop} aria-label="Close Main Navigation" onClick={handleClose} />
     </nav>
   );
 }

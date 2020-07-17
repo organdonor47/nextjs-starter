@@ -16,21 +16,19 @@ import s from './Layout.module.scss';
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
 
-  const { navOpen, toggleNav } = useContext(UIContext);
+  const { uiState, setUIState } = useContext(UIContext);
 
   const router = useRouter();
 
   useEffect(() => {
-    if (navOpen) {
-      toggleNav(false);
-    }
+    setUIState({ isNavOpen: false });
   }, [router]);
 
   return (
     <>
       <Loading />
       <PageTransition route={router.route}>
-        <div className={c(s.layout, { [s.navOpen]: navOpen})}>
+        <div className={c(s.layout, { [s.navOpen]: uiState.isNavOpen })}>
           <Header>
             <Nav />
           </Header>

@@ -1,20 +1,21 @@
 import Router from 'next/router';
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { debounce } from 'lodash';
 
-import c from 'classnames';
-import s from './Loading.module.scss';
 import { UIContext } from 'context/ui';
 
+import c from 'classnames';
+import s from './Loading.module.scss';
+
 export const Loading = () => {
-  const { isLoading, setLoading, prefersReducedMotion } = useContext(UIContext);
+  const { uiState, setUIState } = useContext(UIContext);
 
   useEffect(() => {
     // show loading if page not loaded after 1 sec
     const handleRouteStart = debounce(() => {
-      if (!isLoading) {
-        setLoading(true);
+      if (!uiState.isLoading) {
+        setUIState({ isLoading: true });
       }
     }, 1000, { leading: false });
 
@@ -23,7 +24,7 @@ export const Loading = () => {
       handleRouteStart.cancel();
 
       // hide loading screen
-      setLoading(false);
+      setUIState({ isLoading: false });
     };
   
     Router.events.on('routeChangeStart', handleRouteStart);
@@ -36,23 +37,22 @@ export const Loading = () => {
   }, []);
 
   return  (
-      <CSSTransition
-        in={isLoading}
-        timeout={prefersReducedMotion ? 0 : 300}
-        classNames={{ ...s }}
-        unmountOnExit
+    <CSSTransition
+      in={uiState.isLoading}
+      timeout={uiState.prefersReducedMotion ? 0 : 300}
+      classNames={{ ...s }}
+      unmountOnExit
+    >
+      <div
+        className={c(s.loading)}
+        role="alertdialog"
+        aria-busy="true"
+        aria-live="assertive"
       >
-        <div
-          className={c(s.loading)}
-          role="alertdialog"
-          aria-busy="true"
-          aria-live="assertive"
-        >
-          <span className={s.loading__inner}>
-            loading...
-          </span>
-        </div>
-      </CSSTransition>
-    );
-
+        <span className={s.loading__inner}>
+          loading...
+        </span>
+      </div>
+    </CSSTransition>
+  );
 };
