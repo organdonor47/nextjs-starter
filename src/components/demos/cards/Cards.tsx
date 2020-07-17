@@ -17,10 +17,10 @@ export const Cards = ({ children }: {children: React.ReactNode; }) => {
   const listRef = useRef<HTMLUListElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
 
-  const { prefersReducedMotion } = useContext(UIContext);
+  const { uiState } = useContext(UIContext);
 
   const animate = () => {
-    if (!triggerRef.current || prefersReducedMotion) {
+    if (!triggerRef.current || uiState.prefersReducedMotion ) {
       return;
     }
       
@@ -41,7 +41,7 @@ export const Cards = ({ children }: {children: React.ReactNode; }) => {
 
   useEffect(() => {
     animate();
-  }, [prefersReducedMotion]);
+  }, [uiState.prefersReducedMotion]);
 
   return (
     <div ref={triggerRef}>
