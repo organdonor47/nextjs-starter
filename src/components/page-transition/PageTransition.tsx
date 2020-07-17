@@ -7,11 +7,11 @@ import s from './PageTransition.module.scss';
 
 export const PageTransition = ({ route, children }: { route: string; children: React.ReactNode }) => {
 
-  const { prefersReducedMotion, canTransition, setcanTransition, setCanScroll } = useContext(UIContext);
+  const { uiState, setUIState } = useContext(UIContext);
   const transitionIndex = useRef<number>(0); // is first or second stage transition
 
   const handleStart = () => {
-    setCanScroll(false);
+    setUIState({ canScroll: false });
   }
 
   const handleComplete = (e: TransitionEvent) => {
@@ -31,15 +31,14 @@ export const PageTransition = ({ route, children }: { route: string; children: 
     if (transitionIndex.current === 0) {
       transitionIndex.current = 1;
     } else {
-      setcanTransition(false);
-      setCanScroll(true);
+      setUIState({ canTransition: false, canScroll: true });
 
       // reset flag
       transitionIndex.current = 0;
     }
   }
 
-  if (!canTransition || prefersReducedMotion) {
+  if (!uiState.canTransition || uiState.prefersReducedMotion) {
     return (
       <>{children}</>
     );
@@ -60,7 +59,7 @@ export const PageTransition = ({ route, children }: { route: string; children: 
           false);
         }}
         
-        timeout={canTransition ? null : 0} // for back / history ie. non-link clicks
+        timeout={uiState.canTransition ? null : 0} // for back / history ie. non-link clicks
         classNames={{ ...s }} // spread classNames from module
       >
         <div className={s.pageTransition}>

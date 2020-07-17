@@ -6,7 +6,7 @@ import { Link } from 'components/link/Link';
 import s from './Header.module.scss';
 
 export const Header = ({children}: { children: React.ReactNode }) => {
-  const { navOpen, toggleNav } = useContext(UIContext);
+  const { setUIState } = useContext(UIContext);
 
   const headerRef = useRef<HTMLElement>(null);
   
@@ -21,7 +21,7 @@ export const Header = ({children}: { children: React.ReactNode }) => {
           {children}
         </div>
         <div className={s.header__controls}>
-          <button onClick={() => toggleNav(!navOpen)}>menu</button>
+          <button onClick={() => setUIState({ isNavOpen: true })}>menu</button>
         </div>
       </div>
     </header>

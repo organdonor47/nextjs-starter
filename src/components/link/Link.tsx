@@ -19,7 +19,9 @@ export const Link = ({ children, to, as, transition = true, ...props } :
   // prop: transiton = opt in or out of a page transition
   // (i.e tabs might not require a transition)
   // defaults to active page transitions
-  const { toggleNav, setcanTransition, prefersReducedMotion } = useContext(UIContext);
+  const { uiState, setUIState } = useContext(UIContext);
+  const { prefersReducedMotion } = uiState;
+
   const isExternal = /^((https?:)?\/\/|[0-9a-zA-Z]+:)/.test(to || '');
 
   if (isExternal) {
@@ -37,8 +39,7 @@ export const Link = ({ children, to, as, transition = true, ...props } :
   }
 
   const handleClick = () => {
-    toggleNav(false);
-    setcanTransition(prefersReducedMotion ? false : transition);
+    setUIState({ isNavOpen: false, canTransition: prefersReducedMotion ? false : transition });
   };
   
   return (
