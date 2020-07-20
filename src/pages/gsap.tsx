@@ -5,6 +5,7 @@ import { Section } from 'components/section/Section';
 
 import { Effect } from 'components/gsap/effect/Effect';
 import { Interpolate } from 'components/gsap/interpolate/Interpolate';
+import { RichText } from 'components/rich-text/RichText';
 
 export default function Gsap() {
 
@@ -24,7 +25,10 @@ export default function Gsap() {
       </Section>
 
       <Section container>
-        <H2>gsap.utils (interpolate, quickSetter) w/ ScrollTrigger</H2>
+        <RichText style={{ paddingBottom: 50 }}>
+          <h2>gsap.utils (interpolate, snap): animate misc stuff on ScrollTrigger</h2>
+          <p>This component shouldn't really be called "interpolate" as there is more interesting stuff going on. It animates a number also, which could be used to update an image sequence or something cool like that.</p>
+        </RichText>
 
         <Interpolate />
       </Section>
