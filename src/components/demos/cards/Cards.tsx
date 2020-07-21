@@ -71,7 +71,7 @@ export const Cards = ({ children }: {children: React.ReactNode; }) => {
 
 interface ICardProps {
   heading: string | React.ReactElement;
-  date: string;
+  date?: string;
   children: React.ReactNode;
 }
 
@@ -82,7 +82,7 @@ export const Card = ({heading, date, children }: ICardProps) => {
     <li className={s.card}>
       <H2 as="h3" className={s.card__heading}>{heading}</H2>
       {children}
-      <div className={s.card__date}>{date}</div>
+      {date && <div className={s.card__date}>{date}</div>}
     </li>
   );
 }
