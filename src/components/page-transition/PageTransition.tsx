@@ -1,72 +1,45 @@
-import { useContext, useRef, TransitionEvent } from 'react';
+import { useContext } from 'react';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 
 import { UIContext } from 'context/ui';
 
+import c from 'classnames';
 import s from './PageTransition.module.scss';
 
 export const PageTransition = ({ route, children }: { route: string; children: React.ReactNode }) => {
 
   const { uiState, setUIState } = useContext(UIContext);
-  const transitionIndex = useRef<number>(0); // is first or second stage transition
 
   const handleStart = () => {
     setUIState({ canScroll: false });
+    console.log('start');
   }
 
-  const handleComplete = (e: TransitionEvent) => {
-    window.scrollTo(0, 0);
-    /* 
-     * if there are multiple transitioned elements and the durations are all the same,
-     * it may be necessary to target the transitionend event of a specific DOM element
-     * so we are just listening for the end of each Switch transition once (i.e. 2x 1 event).
-     * Alternatively, just use the timeout prop instead of the transitionend event listener
-     */
-    const target = e.target as HTMLElement;
-    if (target.className !== s.pageTransition__wipe) {
-      return;
-    }
-
-    // 2x transitions from Switch; listen for second event as done()
-    if (transitionIndex.current === 0) {
-      transitionIndex.current = 1;
-    } else {
-      setUIState({ canTransition: false, canScroll: true });
-
-      // reset flag
-      transitionIndex.current = 0;
+  const handleEntering = () => {
+    if (uiState.canTransition) {
+      window.scrollTo(0, 0);
     }
   }
 
-  if (!uiState.canTransition || uiState.prefersReducedMotion) {
-    return (
-      <>{children}</>
-    );
+  const handleEntered = () => {
+    setUIState({ canTransition: false, canScroll: true })
   }
 
   return (
     <SwitchTransition>
       <CSSTransition
         key={route}
-        addEndListener={(node, done) => {
-          // listen to transitionstart / endevents
-          node.addEventListener('transitionstart', handleStart, false);
-
-          node.addEventListener('transitionend', (e: React.TransitionEvent) => {
-            handleComplete(e);
-            done();
-          },
-          false);
-        }}
-        
-        timeout={uiState.canTransition ? null : 0} // for back / history ie. non-link clicks
+        onExit={handleStart}
+        onEntering={handleEntering}
+        onEntered={handleEntered}
+        timeout={uiState.canTransition ? 500 : 0} // for back / history ie. non-link clicks
         classNames={{ ...s }} // spread classNames from module
       >
         <div className={s.pageTransition}>
           <div className={s.pageTransition__inner}>
             {children}
           </div>
-          <span className={s.pageTransition__wipe} />
+          <span className={c(s.pageTransition__wipe, { [s.hidden]: !uiState.canTransition})} />
         </div>
         
       </CSSTransition>

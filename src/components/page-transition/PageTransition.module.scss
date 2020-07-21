@@ -51,8 +51,8 @@
     @include fit(fixed);
     z-index: $zindex-header + 1;
 
-    contain: strict;
     display: block;
+    contain: strict;
 
     width: 100%;
     height: 100%;
@@ -64,6 +64,10 @@
     transform-origin: left bottom;
     
     background: var(--color-primary);
+
+    &.hidden {
+      display: none;
+    }
 
     // exit transition is first
     .exit & {
