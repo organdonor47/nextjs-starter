@@ -3,11 +3,11 @@
 .box {
   @include fit(fixed);
 
-  // contain: layout;
+  contain: layout;
 
   background: transparent;
-  transform-style: preserve-3d;
-  transform-origin: center;
+  // transform-style: preserve-3d;
+  // transform-origin: center;
 
   &__text,
   &__bg {

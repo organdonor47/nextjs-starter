@@ -26,6 +26,10 @@ export const Interpolate = () => {
   const interpolation = gsap.utils.interpolate([initialColor, lastColor]);
 
   const buildTimeline = () => {
+    if (!parentRef.current || !triggerRef.current) {
+      return;
+    }
+  
     // not going to use quicksetter here, use a tween instead
     // const setBg = gsap.quickSetter(parentRef.current, '--background');
     timeline.addLabel('start');
@@ -38,16 +42,12 @@ export const Interpolate = () => {
 
     // update state from tween value
     const onUpdate = () => {
-      if (!parentRef.current) {
-        return;
-      }
-
-      setIndex(counter.totalValue)
+      setIndex(counter.totalValue);
     }
 
     ScrollTrigger.create({
       trigger: triggerRef.current,
-      start: 'top 50%',
+      start: 'top 30%',
       end: 'bottom 50%',
       scrub: 1,
       // animate counter object, parent box css vars and rotation on box
