@@ -50,6 +50,8 @@ export const Interpolate = () => {
       start: 'top 30%',
       end: 'bottom 50%',
       scrub: 1,
+      // this is a required property in 3.4.1
+      refreshPriority: 0,
       // animate counter object, parent box css vars and rotation on box
       animation: 
         timeline
@@ -66,8 +68,6 @@ export const Interpolate = () => {
                 return gsap.utils.snap(1, newX);
               }
             },
-             // snap to whole integer
-            // snap: { totalValue: 1 },
             onUpdate,
           }, 'start')
           .to(boxRef.current, { rotateY: 180, duration, ease }, 'start')
