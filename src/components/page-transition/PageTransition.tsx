@@ -12,7 +12,6 @@ export const PageTransition = ({ route, children }: { route: string; children: 
 
   const handleStart = () => {
     setUIState({ canScroll: false });
-    console.log('start');
   }
 
   const handleEntering = () => {
