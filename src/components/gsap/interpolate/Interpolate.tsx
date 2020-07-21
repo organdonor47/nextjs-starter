@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import { Box } from 'components/gsap/box/Box';
 
+import s from './Interpolate.module.scss';
 // counter object for gsap to update
 // thats what it expects to be able to tween
 const counter = {
@@ -13,6 +14,7 @@ const counter = {
 
 export const Interpolate = () => {
 
+  const triggerRef = useRef<HTMLDivElement>(null);
   const parentRef = useRef<HTMLDivElement>(null);
   const boxRef = useRef<HTMLDivElement>(null);
   const [timeline] = useState<GSAPTimeline>(gsap.timeline({ paused: true }));
@@ -27,8 +29,12 @@ export const Interpolate = () => {
     // not going to use quicksetter here, use a tween instead
     // const setBg = gsap.quickSetter(parentRef.current, '--background');
     timeline.addLabel('start');
+    
+    // timeline defaults
     const duration = 1;
-    const ease = 'none';
+    const ease = 'power0.out';
+    // how many times to loop sequence within scrollTrigger
+    const sequenceIterations = 3;
 
     // update state from tween value
     const onUpdate = () => {
@@ -40,9 +46,9 @@ export const Interpolate = () => {
     }
 
     ScrollTrigger.create({
-      trigger: parentRef.current,
-      start: 'top 90%',
-      end: 'bottom 90%',
+      trigger: triggerRef.current,
+      start: 'top 50%',
+      end: 'bottom 50%',
       scrub: 1,
       // animate counter object, parent box css vars and rotation on box
       animation: 
@@ -52,12 +58,19 @@ export const Interpolate = () => {
             duration,
             ease,
             // animate totalValue to 100
-            totalValue: 100,
+            totalValue: 99 * sequenceIterations,
+            modifiers: {
+              totalValue: (value) =>  {
+                var newX = value % 99;
+
+                return gsap.utils.snap(1, newX);
+              }
+            },
              // snap to whole integer
-            snap: { totalValue: 1 },
+            // snap: { totalValue: 1 },
             onUpdate,
           }, 'start')
-          .to(boxRef.current, { rotation: 180, duration, ease }, 'start')
+          .to(boxRef.current, { rotateY: 180, duration, ease }, 'start')
           .fromTo(parentRef.current,
             { '--background': interpolation(0) },
             { '--background': interpolation(1), duration, ease }, 'start')
@@ -73,10 +86,14 @@ export const Interpolate = () => {
   }, []);
 
   return (
-    <div ref={parentRef}>
-      {index}
-      <Box ref={boxRef} style={{ background: 'var(--background, initialColor)' }} />
-      
-    </div>
+    <>
+    <div ref={triggerRef} className={s.trigger}></div>
+      <div ref={parentRef}>
+        <Box className={s.box} ref={boxRef}>
+          <span className={s.box__text} style={{ background: 'var(--background)' }}>{index}</span>
+          {/* <span className={s.box__bg}>{index}</span> */}
+        </Box>
+      </div>
+    </>
   );
 }

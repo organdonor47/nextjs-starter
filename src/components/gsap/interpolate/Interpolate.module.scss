@@ -1,0 +1,47 @@
+@import 'styles/config';
+
+.box {
+  @include fit(fixed);
+
+  // contain: layout;
+
+  background: transparent;
+  transform-style: preserve-3d;
+  transform-origin: center;
+
+  &__text,
+  &__bg {
+    @include fit;
+
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: auto;
+
+    width: 20vmin;
+    height: 20vmin;
+
+    font-size: 4vmin;
+    font-variant-numeric: tabular-nums;
+
+    // backface-visibility: hidden;
+
+    // transform: rotateY(0);
+  }
+
+
+  &__bg {
+    z-index: 0;
+    background: #c09;
+    color: #fff;
+
+    transform: rotateY(180deg);
+  }
+}
+
+.trigger {
+  height: 300vh;
+}
