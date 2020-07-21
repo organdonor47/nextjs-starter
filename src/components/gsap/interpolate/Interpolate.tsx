@@ -40,15 +40,16 @@ export const Interpolate = () => {
     // how many times to loop sequence within scrollTrigger
     const sequenceIterations = 3;
 
-    // update state from tween value
+    // update state from tweened counter value
     const onUpdate = () => {
       setIndex(counter.totalValue);
     }
 
     ScrollTrigger.create({
+      id: 'od47',
       trigger: triggerRef.current,
       start: 'top 30%',
-      end: 'bottom 50%',
+      end: 'bottom 100%',
       scrub: 1,
       // this is a required property in 3.4.1
       refreshPriority: 0,
@@ -59,13 +60,13 @@ export const Interpolate = () => {
           {
             duration,
             ease,
-            // animate totalValue to 100
+            // animate totalValue to 99
             totalValue: 99 * sequenceIterations,
             modifiers: {
               totalValue: (value) =>  {
                 var newX = value % 99;
 
-                return gsap.utils.snap(1, newX);
+                return gsap.utils.snap(1, newX); // round number
               }
             },
             onUpdate,
@@ -82,7 +83,7 @@ export const Interpolate = () => {
     parentRef.current.style.setProperty('--background', initialColor);
     buildTimeline();
 
-    return () => timeline.kill();
+    return () => ScrollTrigger.getById('od47').kill(true);
   }, []);
 
   return (
@@ -91,7 +92,6 @@ export const Interpolate = () => {
       <div ref={parentRef}>
         <Box className={s.box} ref={boxRef}>
           <span className={s.box__text} style={{ background: 'var(--background)' }}>{index}</span>
-          {/* <span className={s.box__bg}>{index}</span> */}
         </Box>
       </div>
     </>

@@ -25,13 +25,6 @@ export default function ScrollTrigger() {
 
         <Interpolate />
       </Section>
-
-      <Section container>
-        <H2>gsap.effects</H2>
-
-        <Effect />
-      
-      </Section>
       
 
     </>
