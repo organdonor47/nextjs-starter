@@ -30,6 +30,7 @@ export const Cards = ({ children }: {children: React.ReactNode; }) => {
           toggleActions: 'restart pause resume pause',
           // markers: true,
           scrub: 1,
+          refreshPriority: 0,
         },
         y: 0,
         autoAlpha: 1,
