@@ -5,19 +5,24 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import { Box } from 'components/gsap/box/Box';
 
-import s from './Interpolate.module.scss';
+import s from './GetTweenValue.module.scss';
 // counter object for gsap to update
 // thats what it expects to be able to tween
 const counter = {
   totalValue: 0,
 };
 
-export const Interpolate = () => {
+export const GetTweenValue = () => {
 
+  // elements
   const triggerRef = useRef<HTMLDivElement>(null);
   const parentRef = useRef<HTMLDivElement>(null);
   const boxRef = useRef<HTMLDivElement>(null);
+  
+  // timeline instance - should be ref?
   const [timeline] = useState<GSAPTimeline>(gsap.timeline({ paused: true }));
+
+  // twwen value to be updated on scroll
   const [index, setIndex] = useState(0);
   
   // blend some volours on scroll
@@ -30,8 +35,6 @@ export const Interpolate = () => {
       return;
     }
   
-    // not going to use quicksetter here, use a tween instead
-    // const setBg = gsap.quickSetter(parentRef.current, '--background');
     timeline.addLabel('start');
     
     // timeline defaults
@@ -85,6 +88,11 @@ export const Interpolate = () => {
 
     return () => ScrollTrigger.getById('od47').kill(true);
   }, []);
+
+  // *could* use quickSetter on state update of value
+  // useEffect(() => {
+  //   const setBg = gsap.quickSetter(parentRef.current, '--background');
+  // }, [index]);
 
   return (
     <>

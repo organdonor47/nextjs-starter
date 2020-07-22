@@ -1,9 +1,7 @@
 // global components
-import { H1, H2 } from 'components/heading/Heading';
+import { H1 } from 'components/heading/Heading';
 import { Meta } from 'components/meta/Meta';
 import { Section } from 'components/section/Section';
-
-import { Effect } from 'components/gsap/effect/Effect';
 
 import { Cards, Card } from 'components/demos/cards/Cards';
 import { Link } from 'components/link/Link';
@@ -20,11 +18,12 @@ export default function Gsap() {
 
       <Section container>
         <Cards>
-          <Card heading={<Link to="/gsap/scroll-trigger">ScrollTrigger</Link>}>
-            <p>gsap.utils (interpolate, snap, modifiers): animate misc stuff on ScrollTrigger</p>
+          <Card heading={<Link to="/gsap/scroll-trigger">[ScrollTrigger] get tween value</Link>}>
+            <p><code>gsap.utils (interpolate, snap (value), modifiers)</code> Get the actual tween value as integer, which could be used to animate an image sequence, update a css variable etc. Also interpolates a colour value on scroll.</p>
           </Card>
-          <Card heading="gsap.effects">
-            <p>registerEffect, trigger it</p>
+          <Card heading={<Link to="/gsap/effects">gsap.effects</Link>}>
+            <p>using <code>registerEffect</code> to set up a default effect.
+            Not really that useful in this demo, but might be on something you have to call a lot.</p>
           </Card>
         </Cards>
       </Section>
