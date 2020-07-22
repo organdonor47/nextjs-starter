@@ -14,7 +14,7 @@ import { GridOverlay } from './GridOverlay';
 const LOCAL_STORAGE_KEY_VISIBLE = '_devtoolsActive';
 
 export const Devtools = () => {
-  const [isVisible, setVisible] = useLocalStorage(LOCAL_STORAGE_KEY_VISIBLE, false);
+  const [isVisible, setVisible] = useLocalStorage(LOCAL_STORAGE_KEY_VISIBLE, true);
   const keys = useKeyDown();
 
   useEffect(() => {

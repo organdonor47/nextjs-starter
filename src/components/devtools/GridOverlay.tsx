@@ -15,7 +15,6 @@ interface IProps {
 }
 
 export const GridOverlay = ({ devToolsVisible }: IProps) => {
-  const gridOverlayRef = useRef<HTMLDivElement>(null);
   const [isGridVisible, setGridVisible] = useLocalStorage(LOCAL_STORAGE_KEY_ACTIVE, true);
 
   const handleToggle = () => {
@@ -28,7 +27,6 @@ export const GridOverlay = ({ devToolsVisible }: IProps) => {
 
   return (
     <div
-      ref={gridOverlayRef}
       className={s.grid}
     >
       <div className={s.grid__container}>

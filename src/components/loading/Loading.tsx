@@ -11,17 +11,31 @@ import s from './Loading.module.scss';
 export const Loading = () => {
   const { uiState, setUIState } = useContext(UIContext);
 
+  // do somehting here for scrollY?
+
+  const loadingTimer = debounce(() => {
+    if (!uiState.isLoading) {
+      setUIState({ isLoading: true });
+    }
+  }, 1000, { leading: false });
+  
+
+  const handleRouteStart = () => {
+    loadingTimer();
+
+    if (typeof window === undefined) {
+      return;
+    }
+    
+  }
+
   useEffect(() => {
     // show loading if page not loaded after 1 sec
-    const handleRouteStart = debounce(() => {
-      if (!uiState.isLoading) {
-        setUIState({ isLoading: true });
-      }
-    }, 1000, { leading: false });
+    
 
     const handleRouteComplete = () => {
       // cancel start listener loading debounce
-      handleRouteStart.cancel();
+      loadingTimer.cancel();
 
       // hide loading screen
       setUIState({ isLoading: false });

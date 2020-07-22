@@ -10,12 +10,16 @@ export const PageTransition = ({ route, children }: { route: string; children: 
 
   const { uiState, setUIState } = useContext(UIContext);
 
+  const transitionDisabled = !uiState.canTransition || uiState.prefersReducedMotion;
+
   const handleStart = () => {
-    setUIState({ canScroll: false });
+    if (!transitionDisabled) {
+      setUIState({ canScroll: false });
+    }
   }
 
   const handleEntering = () => {
-    if (uiState.canTransition) {
+    if (!transitionDisabled) {
       window.scrollTo(0, 0);
     }
   }
@@ -31,14 +35,14 @@ export const PageTransition = ({ route, children }: { route: string; children: 
         onExit={handleStart}
         onEntering={handleEntering}
         onEntered={handleEntered}
-        timeout={uiState.canTransition ? 500 : 0} // for back / history ie. non-link clicks
-        classNames={{ ...s }} // spread classNames from module
+        timeout={transitionDisabled ?  0 : 500} // for back / history ie. non-link clicks
+        classNames={{ ...s }} // spread classNames from scss module
       >
         <div className={s.pageTransition}>
           <div className={s.pageTransition__inner}>
             {children}
           </div>
-          <span className={c(s.pageTransition__wipe, { [s.hidden]: !uiState.canTransition})} />
+          <span className={c(s.pageTransition__wipe, { [s.hidden]: transitionDisabled})} />
         </div>
         
       </CSSTransition>

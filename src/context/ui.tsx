@@ -77,13 +77,13 @@ export const UIProvider = ({ children }: {children: React.ReactNode}) => {
   // todo: listen to updates rather than just one-hit?
   useEffect(() => {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPrefersReducedMotion(reducedMotion.matches);
-    getScrollbarWidth();
+    setUIState({ prefersReducedMotion: reducedMotion.matches });
 
   }, []);
 
-  // on canScroll change, call preventScroll()
+  // on "canScroll" change, toggle preventScroll()
   useEffect(() => {
+    getScrollbarWidth();
     preventScroll(!uiState.canScroll);
   }, [uiState.canScroll]);
 
@@ -107,11 +107,7 @@ export const UIProvider = ({ children }: {children: React.ReactNode}) => {
   // toggle nav states
   useEffect(() => {
     
-    if (uiState.isNavOpen) {
-      preventScroll(true, true);
-    } else {
-      preventScroll(false, true);
-    }
+    preventScroll(uiState.isNavOpen, true);
 
   }, [uiState.isNavOpen]);
 
