@@ -6,19 +6,14 @@ import c from 'classnames';
 import s from './Box.module.scss';
 
 interface IProps {
-  ref: React.RefObject<HTMLDivElement>;
+  ref: React.RefObject<HTMLElement>;
   children?: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
 }
 
-export const Box = forwardRef<HTMLDivElement, IProps>((props, ref) => {
-
-  const { children, className, style } = props;
-  
-  return (
-    <div ref={ref} className={c(s.box, className)} style={style}>
-      {children}
-    </div>
-  );
-});
+export const Box = forwardRef<HTMLDivElement, IProps>((props, ref) => (
+  <div ref={ref} className={c(s.box, props.className)} style={props.style}>
+    {props.children}
+  </div>
+));
