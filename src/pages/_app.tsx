@@ -8,7 +8,7 @@ import { Devtools } from 'components/devtools/Devtools';
 import { Layout } from 'components/layout/Layout';
 import { Meta } from 'components/meta/Meta';
 
-import '../styles/global.scss';
+import 'styles/global.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 

@@ -11,8 +11,6 @@ import s from './Loading.module.scss';
 export const Loading = () => {
   const { uiState, setUIState } = useContext(UIContext);
 
-  // do somehting here for scrollY?
-
   const loadingTimer = debounce(() => {
     if (!uiState.isLoading) {
       setUIState({ isLoading: true });
@@ -30,8 +28,7 @@ export const Loading = () => {
   }
 
   useEffect(() => {
-    // show loading if page not loaded after 1 sec
-    
+    // show loading if page not loaded after [debounce] ms
 
     const handleRouteComplete = () => {
       // cancel start listener loading debounce
