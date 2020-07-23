@@ -9,25 +9,27 @@ import { Grid } from 'components/grid/Grid';
 import { H1, H2, H3 } from 'components/heading/Heading';
 import { Link } from 'components/link/Link';
 import { Meta } from 'components/meta/Meta';
+import { Picture } from 'components/picture/Picture';
 import { RichText } from 'components/rich-text/RichText';
 import { Section } from 'components/section/Section';
 
 // demo components
 import { Cards, Card } from 'components/demos/cards/Cards';
 import { Hero } from 'components/demos/hero/Hero';
-import { Picture } from 'components/picture/Picture';
 
-// SVG as component
-import Circle from 'assets/svg/circle.svg';
-//import image files
-import sunsetJpg from 'assets/images/sunset.jpg';
-import sunsetJpg2x from 'assets/images/sunset@2x.jpg';
-import sunsetWebp from 'assets/images/sunset.webp';
-import sunsetWebp2x from 'assets/images/sunset@2x.webp';
-import sunsetMobile from 'assets/images/sunset-mobile.jpg';
-import sunsetMobileWebp from 'assets/images/sunset-mobile.webp';
+// import SVG as component using `next-react-svg`
+import Circle from 'assets/svg/temp/circle.svg';
 
-import video from 'assets/video/temp.mp4';
+//import image files using `next-images`
+import sunsetJpg from 'assets/images/temp/sunset.jpg';
+import sunsetJpg2x from 'assets/images/temp/sunset@2x.jpg';
+import sunsetWebp from 'assets/images/temp/sunset.webp';
+import sunsetWebp2x from 'assets/images/temp/sunset@2x.webp';
+import sunsetMobile from 'assets/images/temp/sunset-mobile.jpg';
+import sunsetMobileWebp from 'assets/images/temp/sunset-mobile.webp';
+
+// import video using `next-videos`
+import video from 'assets/video/temp/temp.mp4';
 
 export default function Elements({
   allPostsData
