@@ -13,9 +13,6 @@ const counter = {
 };
 
 export const GetTweenValue = () => {
-
-  // elements
-  const triggerRef = useRef<HTMLDivElement>(null);
   const parentRef = useRef<HTMLDivElement>(null);
   const boxRef = useRef<HTMLDivElement>(null);
   
@@ -30,8 +27,9 @@ export const GetTweenValue = () => {
   const lastColor = '#1699ca';
   const interpolation = gsap.utils.interpolate([initialColor, lastColor]);
 
+  // build on mount
   const buildTimeline = () => {
-    if (!parentRef.current || !triggerRef.current) {
+    if (!parentRef.current || !boxRef.current) {
       return;
     }
   
@@ -50,12 +48,12 @@ export const GetTweenValue = () => {
 
     ScrollTrigger.create({
       id: 'od47',
-      trigger: triggerRef.current,
-      start: 'top 30%',
-      end: 'bottom 100%',
+      trigger: parentRef.current,
+      start: 'top',
+      // end: 'bottom 100%',
       scrub: 1,
-      // this is a required property in 3.4.1
-      refreshPriority: 0,
+      end: '300%',
+      pin: true,
       // animate counter object, parent box css vars and rotation on box
       animation: 
         timeline
@@ -86,22 +84,21 @@ export const GetTweenValue = () => {
     parentRef.current.style.setProperty('--background', initialColor);
     buildTimeline();
 
-    return () => ScrollTrigger.getById('od47').kill(true);
+    return () => {
+      const unmountTarget = ScrollTrigger.getById('od47');
+
+      if (unmountTarget) {
+        ScrollTrigger.getById('od47').kill(true);
+      }
+      
+    }
   }, []);
 
-  // *could* use quickSetter on state update of value
-  // useEffect(() => {
-  //   const setBg = gsap.quickSetter(parentRef.current, '--background');
-  // }, [index]);
-
   return (
-    <>
-    <div ref={triggerRef} className={s.trigger}></div>
-      <div ref={parentRef}>
-        <Box className={s.box} ref={boxRef}>
-          <span className={s.box__text} style={{ background: 'var(--background)' }}>{index}</span>
-        </Box>
-      </div>
-    </>
+    <div ref={parentRef} className={s.parent}>
+      <Box className={s.box} ref={boxRef}>
+        <span className={s.box__text} style={{ background: 'var(--background)' }}>{index}</span>
+      </Box>
+    </div>
   );
 }

@@ -1,5 +1,5 @@
 // global components
-import { H1, H2 } from 'components/heading/Heading';
+import { H1 } from 'components/heading/Heading';
 import { Meta } from 'components/meta/Meta';
 import { Section } from 'components/section/Section';
 

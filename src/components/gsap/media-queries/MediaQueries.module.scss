@@ -1,0 +1,15 @@
+@import 'styles/config';
+
+
+.box {
+  flex:none;
+  width: 20vmin;
+}
+
+.parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+}
