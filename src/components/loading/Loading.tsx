@@ -11,6 +11,17 @@ import s from './Loading.module.scss';
 export const Loading = () => {
   const { uiState, setUIState } = useContext(UIContext);
 
+  // clear loadingscreen if nothing has happened for 10s
+  const loadingFallback = setTimeout(() => {
+    if (uiState.isLoading) {
+      setUIState({ isLoading: false });
+    }
+  }, 10000);
+  
+  useEffect(() => {
+    return () => clearTimeout(loadingFallback);
+  }, []);
+
   const loadingTimer = debounce(() => {
     if (!uiState.isLoading) {
       setUIState({ isLoading: true });
@@ -21,10 +32,12 @@ export const Loading = () => {
   const handleRouteStart = () => {
     loadingTimer();
 
-    if (typeof window === undefined) {
-      return;
-    }
-    
+    // kill loading screen after 20 seconds
+    setTimeout(() => {
+      if (uiState.isLoading) {
+        setUIState({ isLoading: false });
+      }
+    }, 20000);
   }
 
   useEffect(() => {
@@ -33,6 +46,9 @@ export const Loading = () => {
     const handleRouteComplete = () => {
       // cancel start listener loading debounce
       loadingTimer.cancel();
+
+      // clear timout for loading fallback
+      clearTimeout(loadingFallback);
 
       // hide loading screen
       setUIState({ isLoading: false });
