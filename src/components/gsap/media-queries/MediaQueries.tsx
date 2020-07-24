@@ -14,7 +14,7 @@ export const MediaQueries = () => {
   const mobileRef = useRef<HTMLDivElement>(null);
   const boxRef = useRef<HTMLDivElement>(null);
 
-  // set these up and kill individually
+  // set these up and kill individually - this shouldnt really be necessary?
   const mobileTimeline = useRef<GSAPTimeline>(gsap.timeline());
   const desktopTimeline = useRef<GSAPTimeline>(gsap.timeline());
   const allTimeline = useRef<GSAPTimeline>(gsap.timeline());
@@ -28,7 +28,7 @@ export const MediaQueries = () => {
   }
 
   const triggerDefaults: gsap.plugins.ScrollTriggerInstanceVars = {
-    trigger: `.${s.parent}`,
+    trigger: parentRef.current,
     scrub: 1,
     pin: true,
     end: '200%',
