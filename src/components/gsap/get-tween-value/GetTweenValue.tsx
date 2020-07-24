@@ -16,10 +16,10 @@ export const GetTweenValue = () => {
   const parentRef = useRef<HTMLDivElement>(null);
   const boxRef = useRef<HTMLDivElement>(null);
   
-  // timeline instance - should be ref?
-  const [timeline] = useState<GSAPTimeline>(gsap.timeline({ paused: true }));
+  // timeline instance
+  const timeline = useRef<GSAPTimeline>(gsap.timeline({ paused: true }));
 
-  // twwen value to be updated on scroll
+  // tween value to be updated on scroll
   const [index, setIndex] = useState(0);
   
   // blend some volours on scroll
@@ -33,7 +33,7 @@ export const GetTweenValue = () => {
       return;
     }
   
-    timeline.addLabel('start');
+    timeline.current.addLabel('start');
     
     // timeline defaults
     const duration = 1;
@@ -47,7 +47,8 @@ export const GetTweenValue = () => {
     }
 
     ScrollTrigger.create({
-      id: 'od47',
+      // needs id if you want to kill / reference a specific instance
+      id: s.box,
       trigger: parentRef.current,
       start: 'top',
       // end: 'bottom 100%',
@@ -56,7 +57,7 @@ export const GetTweenValue = () => {
       pin: true,
       // animate counter object, parent box css vars and rotation on box
       animation: 
-        timeline
+        timeline.current
           .to(counter, // counter
           {
             duration,
@@ -85,12 +86,8 @@ export const GetTweenValue = () => {
     buildTimeline();
 
     return () => {
-      const unmountTarget = ScrollTrigger.getById('od47');
-
-      if (unmountTarget) {
-        ScrollTrigger.getById('od47').kill(true);
-      }
-      
+      // ScrollTrigger.getAll().forEach(t => t.kill());
+      timeline.current && timeline.current.kill();
     }
   }, []);
 

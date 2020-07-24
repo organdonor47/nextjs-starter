@@ -1,13 +1,13 @@
 @import 'styles/config';
 
 .box {
-  @include fit(fixed);
-
   contain: layout;
 
+  flex: none;
+
   background: transparent;
-  // transform-style: preserve-3d;
-  // transform-origin: center;
+  width: 20vmin;
+  height: 20vmin;
 
   &__text,
   &__bg {
@@ -20,9 +20,6 @@
     justify-content: center;
 
     margin: auto;
-
-    width: 20vmin;
-    height: 20vmin;
 
     font-size: 4vmin;
     font-variant-numeric: tabular-nums;
@@ -43,5 +40,8 @@
 }
 
 .parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
 }

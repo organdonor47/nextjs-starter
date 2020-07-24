@@ -14,7 +14,7 @@ interface ITimelineProps {
 
 export const Effect = () => {
   const divRef = useRef<HTMLDivElement>(null);
-  const [timeline] = useState<GSAPTimeline>(gsap.timeline({ paused: true }));
+  const timeline = useRef<GSAPTimeline>(gsap.timeline({ paused: true }));
   
   const [timelineState, setTimelineState] = useState<ITimelineProps>({
     paused: true,
@@ -41,7 +41,7 @@ export const Effect = () => {
   const buildTimeline = () => {
 
     // timeline complete callbacks
-    timeline.eventCallback('onComplete', onComplete).eventCallback('onReverseComplete', onComplete);
+    timeline.current.eventCallback('onComplete', onComplete).eventCallback('onReverseComplete', onComplete);
 
     // register a reusable effect
     gsap.registerEffect({
@@ -55,35 +55,33 @@ export const Effect = () => {
       extendTimeline: true, // call the effect directly on timeline
     });
 
-    // @ts-ignore (property slideFadeSpin does not exist on timeline)
-    timeline.slideFadeSpin(divRef.current, {});
+    // @ts-ignore (property slideFadeSpin does not exist on timeline). well i know as i just added it
+    timeline.current.slideFadeSpin(divRef.current, {});
     // effect can also be called as `gsap.effects.slideFadeSpin(el, {opts});`
 
     // let component know real duration post-mount
-    updateState({duration: timeline.duration()});
+    updateState({duration: timeline.current.duration()});
   }
 
   // animate based on direction
   const handleDirection = () => {
-    const currentTime = timeline.time();
-
-    console.log('forwards:', forwards);
+    const currentTime = timeline.current.time();
 
     if (forwards) {
       if (currentTime === duration) {
         // has ended, start from beginnning
-        timeline.seek(0).play();
+        timeline.current.seek(0).play();
       } else {
-        timeline.play();
+        timeline.current.play();
       }
     }
     
     else {
       if (currentTime === duration) {
         // has ended, start from end and reverse
-        timeline.reverse();
+        timeline.current.reverse();
         } else {
-        currentTime > 0 ? timeline.reverse() : timeline.seek(duration).reverse();
+        currentTime > 0 ? timeline.current.reverse() : timeline.current.seek(duration).reverse();
       }
     }
   }
@@ -99,10 +97,10 @@ export const Effect = () => {
       hasMounted.current = true;
     }
 
-    paused ? timeline.pause() : handleDirection();
+    paused ? timeline.current.pause() : handleDirection();
 
     return () => {
-      timeline.kill();
+      timeline.current && timeline.current.kill();
     }
     
   }, [paused]);

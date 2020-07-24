@@ -38,25 +38,14 @@ export const Cards = ({ children }: {children: React.ReactNode; }) => {
           ease: 'power1.out' });
       }
     });
-      
-    // gsap.to(listRef.current.childNodes, {
-    //     scrollTrigger: {
-    //       trigger: triggerRef.current,
-    //       toggleActions: 'restart pause resume pause',
-    //       // markers: true,
-    //       scrub: 1,
-    //       refreshPriority: 0,
-    //     },
-    //     y: 0,
-    //     autoAlpha: 1,
-    //     duration: 0.75,
-    //     stagger: 0.15,
-    //     ease: 'power4.inOut',
-    //   });
   };
 
   useEffect(() => {
     animate();
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    }
   }, [uiState.prefersReducedMotion]);
 
   return (

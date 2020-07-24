@@ -1,15 +1,57 @@
 @import 'styles/config';
 
-
-.box {
-  flex:none;
-  width: 20vmin;
+.wrapper {
+  height: 300vh;
 }
 
 .parent {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
   height: 100vh;
+
+  @media (min-width: $min-tablet) {
+    flex-direction: row;
+  }
+}
+
+.box {
+  flex: none;
+
+  position: relative;
+
+  width: 30vmin;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0.5;
+
+  > span {
+    @include fit;
+
+    padding: calc(var(--gutter) / 2);
+
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  &.notMobile {
+    background-color: rgba(204, 153, 0, 0.3);
+  }
+
+  &.notMobile > span {
+    @media (max-width: $max-tablet) {
+      display: none;
+    }
+  }
+
+  &.mobile > span {
+    @media (min-width: $max-tablet) {
+      display: none;
+    }
+  }
 }

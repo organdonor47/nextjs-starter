@@ -15,7 +15,7 @@ export default function ScrollTriggerMQ() {
         <H1>GSAP ScrollTrigger media queries</H1>
       </Section>
 
-      <Section container>
+      <Section>
         <MediaQueries />
       </Section>
       
