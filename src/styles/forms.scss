@@ -55,7 +55,16 @@ input[type=color] {
   }
 }
 
-input[type=search] {
+// reset styles for all text-type inputs
+input[type=email],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=time],
+input[type=week],
+input[list] {
   appearance: none;
 }
 
