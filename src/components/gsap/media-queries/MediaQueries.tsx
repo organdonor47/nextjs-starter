@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -88,6 +88,7 @@ export const MediaQueries = () => {
 
     return () => {
       ScrollTrigger.getAll().forEach(t => t.kill());
+      ScrollTrigger.kill();
 
       // kill specific timelines?
       mobileTimeline.current.kill();
@@ -99,13 +100,13 @@ export const MediaQueries = () => {
   return (
     <div className={s.wrapper}>
       <div className={s.parent} ref={parentRef}>
-        <Box className={`${s.box} ${s.notMobile}`} ref={boxRef}>
+        <div className={`${s.box} ${s.notMobile}`} ref={boxRef}>
           <span>I animate when its not mobile</span>
-        </Box>
+        </div>
 
-        <Box className={`${s.box} ${s.mobile}`} ref={mobileRef}>
+        <div className={`${s.box} ${s.mobile}`} ref={mobileRef}>
           <span>I animate in mobile</span>
-        </Box>
+        </div>
       </div>
     </div>
   );

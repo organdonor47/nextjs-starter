@@ -27,7 +27,7 @@ export const Cards = ({ children }: {children: React.ReactNode; }) => {
     const cards = listRef.current.querySelectorAll(`.${s.card}`);
 
     ScrollTrigger.batch(cards, {
-      interval: 1, // wait for [interval] before starting a new "batch"
+      interval: 0.25, // wait for [interval] before starting a new "batch"
       batchMax: 3, // number of els to be batched
       onEnter: elements => {
         gsap.to(elements, {

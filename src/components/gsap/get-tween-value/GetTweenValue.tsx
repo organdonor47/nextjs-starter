@@ -86,8 +86,7 @@ export const GetTweenValue = () => {
     buildTimeline();
 
     return () => {
-      // ScrollTrigger.getAll().forEach(t => t.kill());
-      timeline.current && timeline.current.kill();
+      ScrollTrigger.getAll().forEach(t => t.kill());
     }
   }, []);
 
