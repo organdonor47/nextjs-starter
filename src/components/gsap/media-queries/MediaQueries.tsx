@@ -100,13 +100,13 @@ export const MediaQueries = () => {
   return (
     <div className={s.wrapper}>
       <div className={s.parent} ref={parentRef}>
-        <div className={`${s.box} ${s.notMobile}`} ref={boxRef}>
+        <Box className={`${s.box} ${s.notMobile}`} ref={boxRef}>
           <span>I animate when its not mobile</span>
-        </div>
+        </Box>
 
-        <div className={`${s.box} ${s.mobile}`} ref={mobileRef}>
+        <Box className={`${s.box} ${s.mobile}`} ref={mobileRef}>
           <span>I animate in mobile</span>
-        </div>
+        </Box>
       </div>
     </div>
   );
