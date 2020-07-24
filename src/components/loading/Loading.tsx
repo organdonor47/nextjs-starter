@@ -43,7 +43,7 @@ export const Loading = () => {
   useEffect(() => {
     // show loading if page not loaded after [debounce] ms
 
-    const handleRouteComplete = () => {
+    const handleRouteComplete = (err?: any, url?: string) => {
       // cancel start listener loading debounce
       loadingTimer.cancel();
 
@@ -52,14 +52,21 @@ export const Loading = () => {
 
       // hide loading screen
       setUIState({ isLoading: false });
+
+      // do something for if action is cancelled?
+      if (err && err.cancelled) {
+        console.log('cancelled');
+      }
     };
   
     Router.events.on('routeChangeStart', handleRouteStart);
     Router.events.on('routeChangeComplete', handleRouteComplete);
+    Router.events.on('routeChangeError', (err) => handleRouteComplete(err));
 
     return () => {
       Router.events.off('routeChangeStart', handleRouteStart);
       Router.events.off('routeChangeComplete', handleRouteComplete);
+      Router.events.off('routeChangeError', handleRouteComplete);
     }
   }, []);
 
