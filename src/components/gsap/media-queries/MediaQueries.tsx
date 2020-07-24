@@ -88,7 +88,7 @@ export const MediaQueries = () => {
 
     return () => {
       ScrollTrigger.getAll().forEach(t => t.kill());
-      ScrollTrigger.kill();
+      // ScrollTrigger.kill();
 
       // kill specific timelines?
       mobileTimeline.current.kill();
