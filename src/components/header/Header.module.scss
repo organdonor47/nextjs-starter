@@ -33,8 +33,6 @@
     align-items: center;
 
     height: 100%;
-    // hmmm. help safari understand what 100% of header is :/
-    height: var(--header-height);
   }
 
   &__nav {
