@@ -38,6 +38,10 @@ export const MediaQueries = () => {
 
   ScrollTrigger.matchMedia({
     '(min-width: 720px)': () => {
+      if (!hasMounted.current) {
+        return;
+      }
+      
       if (!boxRef.current) {
         console.log('this non-mobile query should be firing only on media query demo page'); 
       }
@@ -51,6 +55,9 @@ export const MediaQueries = () => {
     }, 
     
     '(max-width: 719px)': () => {
+      if (!hasMounted.current) {
+        return;
+      }
       if (!mobileRef.current) {
         console.log('this mobile query should be firing only on media query demo page'); 
       }
@@ -65,6 +72,10 @@ export const MediaQueries = () => {
     
     // always happens
     'all': () => {
+      if (!hasMounted.current) {
+        return;
+      }
+
       if (!parentRef.current) {
         console.log('this query is always executed, but should be firing only on media query demo page'); 
       }
@@ -87,13 +98,8 @@ export const MediaQueries = () => {
     
 
     return () => {
+      hasMounted.current = false;
       ScrollTrigger.getAll().forEach(t => t.kill());
-      // ScrollTrigger.kill();
-
-      // kill specific timelines?
-      mobileTimeline.current.kill();
-      desktopTimeline.current.kill();
-      allTimeline.current.kill();
     }
   }, []);
 
