@@ -20,7 +20,7 @@ $section-padding-mobile: 90px;
 $page-width: 1440px;
 
 // mq for page full-width
-$page-limit: 1440px + ($container-gutter-desktop * 2);
+$page-limit: $page-width + ($container-gutter-desktop * 2);
 
 // COMMON BREAKPOINTS: used for consistent measuring breakpoints
 // also used in <Grid /> component breakpoints
