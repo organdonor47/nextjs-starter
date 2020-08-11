@@ -2,17 +2,20 @@
 
 // not all of these are available as css custom properties by default: they can be added @ styles/global.scss
 
-// BLOCK / GRID
+// GRID: defaults to 12 columsn with 30px gap as $gutter;
+
+// grid-gap
 $gutter: 30px;
 
+// grid columns
 $grid-column-count: 12;
 
-// <Container> - spacing either side of content
+// <Container> - spacing either side of content; used in @container mixin
 $container-gutter-mobile: 20px;
 $container-gutter-tablet: 50px;
 $container-gutter-desktop: 70px;
 
-// vertical spacing between <Section>s
+// vertical spacing between <Section>s. used to compute percentage-based values via @section mixin
 $section-padding: 140px;
 $section-padding-mobile: 90px;
 
@@ -20,7 +23,7 @@ $section-padding-mobile: 90px;
 $page-width: 1440px;
 
 // mq for page full-width
-$page-limit: 1440px + ($container-gutter-desktop * 2);
+$page-limit: $page-width + ($container-gutter-desktop * 2);
 
 // COMMON BREAKPOINTS: used for consistent measuring breakpoints
 // also used in <Grid /> component breakpoints
@@ -36,10 +39,10 @@ $max-desktop: $min-desktop - 1px;
 $header-height: 90px;
 $header-height-mobile: 60px;
 
-// STACK
+// Global STACK of elements
 $zindex-header: 1;
 
-// COLORS - these are also generated as :root css variables
+// COLORS - these are also generated as :root css variables in global.scss
 
 // theme
 $color-primary: #297;
@@ -55,7 +58,7 @@ $color-link: $color-font;
 $color-link-dark-mode: $color-font-dark-mode;
 $color-placeholder: #ccc;
 
-// TYPE (locally-hosted set up)
+// TYPE (default is a locally-hosted set up)
 $font-family-serif: 'Gentium Basic', Times, "Times New Roman", serif;
 $font-family-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
 $font-family-monospace: monospace, sans-serif;

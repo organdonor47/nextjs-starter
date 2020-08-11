@@ -1,3 +1,5 @@
+/* global generic form styles */
+
 input,
 textarea,
 select {
@@ -56,6 +58,7 @@ input[type=color] {
 }
 
 // reset styles for all text-type inputs
+input[list],
 input[type=email],
 input[type=number],
 input[type=password],
@@ -63,8 +66,10 @@ input[type=search],
 input[type=tel],
 input[type=text],
 input[type=time],
+input[type=url],
 input[type=week],
-input[list] {
+input[list],
+textarea {
   appearance: none;
 }
 
