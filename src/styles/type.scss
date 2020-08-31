@@ -25,17 +25,21 @@
   // default
   font-size: $min * 1px;
 
-  // clamp font-size
-  @supports (font-size: clamp(1px, 2px, 3px)) {
-    font-size: clamp(#{$min * 1px}, $fluid-size, #{$max * 1px});
-  }
+  // should always be the case
+  @if $min < $max {
+    // clamp font-size
+    @supports (font-size: clamp(1px, 2px, 3px)) {
+      font-size: clamp(#{$min * 1px}, $fluid-size, #{$max * 1px});
+    }
 
-  // if clamp not supported, use max font size at desktop
-  @supports not (font-size: clamp(1px, 2px, 3px)) {
-    @media (min-width: $min-desktop) {
-      font-size: $max * 1px;
+    // if clamp not supported, use max font size at desktop
+    @supports not (font-size: clamp(1px, 2px, 3px)) {
+      @media (min-width: $min-desktop) {
+        font-size: $max * 1px;
+      }
     }
   }
+  
 }
 
 @mixin heading($size-min: $h1-size-min, $size: $h1-size) {
