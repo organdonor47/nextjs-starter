@@ -4,6 +4,7 @@ import { Link } from 'components/link/Link';
 
 import classnames from 'classnames/bind';
 import s from './Button.module.scss';
+const c = classnames.bind(s);
 
 interface IProps {
   to?: string;
@@ -19,7 +20,6 @@ export const Button = ({ to, children, className, disabled, transition, ...props
   const isLink = (typeof to !== 'undefined');
   const isExternal = isLink && /^((https?:)?\/\/|[0-9a-zA-Z]+:)/.test(to || '');
 
-  const c = classnames.bind(s);
   passProps.className = c(className, { button: true, disabled });
 
   if (isExternal) {
