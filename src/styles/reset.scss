@@ -67,6 +67,13 @@ li {
 	list-style: none;
 }
 
+address,
+cite,
+em,
+i {
+	font-style: inherit;
+}
+
 blockquote,
 q {
 	quotes: none;
@@ -139,8 +146,9 @@ input, select, textarea {
 	background: transparent;
 }
 
-strong {
-	font-weight: 700;
+strong,
+b {
+	font-weight: inherit;
 }
 
 td,
