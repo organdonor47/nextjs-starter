@@ -4,7 +4,7 @@ html, body, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, ab
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-weight: normal;
+	font-weight: inherit;
 	vertical-align: baseline;
 	background: transparent;
 }
@@ -62,8 +62,16 @@ video {
 }
 
 ul,
-ol {
+ol,
+li {
 	list-style: none;
+}
+
+address,
+cite,
+em,
+i {
+	font-style: inherit;
 }
 
 blockquote,
@@ -138,8 +146,9 @@ input, select, textarea {
 	background: transparent;
 }
 
-strong {
-	font-weight: 700;
+strong,
+b {
+	font-weight: inherit;
 }
 
 td,

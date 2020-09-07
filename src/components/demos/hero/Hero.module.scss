@@ -84,7 +84,7 @@
     @include grid-item;
     @include label;
 
-    aspect-ratio: 16 / 9;
+    // aspect-ratio: 16 / 9;
     padding: var(--gutter);
 
     background: rgba(#fff, 0.5);
