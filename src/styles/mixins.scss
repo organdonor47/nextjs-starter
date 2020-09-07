@@ -40,17 +40,16 @@
 
 // GRID
 // parent grid to layout items along a grid
-@mixin grid($direction: ltr, $grid-gutter: var(--gutter)) {
+@mixin grid($direction: ltr, $grid-row-gap: var(--gutter), $grid-column-gap: var(--gutter)) {
   // linear until $min-mobile, gives space for gap to not overflow
-
   display: grid;
   align-items: flex-start;
-  gap: $grid-gutter 0;
+  gap: $grid-row-gap 0;
   grid-template-columns: 1fr;
 
   // mq should be more like ($grid-gutter (px value, not custom prop!) * $grid-column-count)
   @media (min-width: $min-mobile) {
-    gap: $grid-gutter;
+    gap: $grid-row-gap $grid-column-gap;
 
     grid-template-columns: repeat($grid-column-count, minmax(0, 1fr));
     grid-template-rows: auto;
