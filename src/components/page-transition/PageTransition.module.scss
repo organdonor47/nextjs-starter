@@ -15,9 +15,18 @@
       pointer-events: none;
     }
 
+    .enter &,
+    .exitActive & {
+      opacity: 0;
+    }
+
+    .exit &,
+    .enterActive & {
+      opacity: 1;
+    }
+
     .enterActive &,
     .exitActive & {
-      pointer-events: none;
       transition: opacity $page-transition-duration $ease-out-quad;
     }
   }
