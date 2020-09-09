@@ -62,9 +62,12 @@ video {
 }
 
 ul,
-ol,
-li {
+ol {
 	list-style: none;
+}
+
+li {
+	list-style: inherit;
 }
 
 address,
