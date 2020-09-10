@@ -66,7 +66,7 @@ export const GetTweenValue = () => {
             totalValue: 99 * sequenceIterations,
             modifiers: {
               totalValue: (value) =>  {
-                var newX = value % 99;
+                const newX = value % 99;
 
                 return gsap.utils.snap(1, newX); // round number
               }
