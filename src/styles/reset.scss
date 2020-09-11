@@ -5,6 +5,7 @@ html, body, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, ab
 	padding: 0;
 	border: 0;
 	font-weight: inherit;
+	font-size: inherit;
 	vertical-align: baseline;
 	background: transparent;
 }
@@ -62,12 +63,9 @@ video {
 }
 
 ul,
-ol {
-	list-style: none;
-}
-
+ol,
 li {
-	list-style: inherit;
+	list-style: none;
 }
 
 address,
@@ -142,6 +140,7 @@ input[type=checkbox] {
 
 input, select, textarea {
 	font-family: inherit;
+	font-weight: inherit;
 	
 	border-radius: 0;
 	
