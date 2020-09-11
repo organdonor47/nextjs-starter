@@ -110,10 +110,10 @@
   }
 
   ul {
+    list-style: disc inside;
     
     li {
       display: list-item;
-      list-style: disc inside;
 
       &:has(> ul) {
         // margin-top: 0.25em;

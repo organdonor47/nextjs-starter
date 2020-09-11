@@ -29,22 +29,6 @@
     .exitActive & {
       transition: opacity $page-transition-duration $ease-out-quad;
     }
-
-
-    .enter &,
-    .exitActive & {
-      opacity: 0;
-    }
-
-    .exit &,
-    .enterActive & {
-      opacity: 1;
-    }
-
-    .enterActive &,
-    .exitActive & {
-      transition: opacity $page-transition-duration $ease-out-quad;
-    }
   }
 
   &__wipe {
