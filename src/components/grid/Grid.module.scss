@@ -16,7 +16,7 @@ $breakpoints: ('mobile': $min-mobile, 'tablet': $min-tablet, 'desktop': $min-des
 @each $name, $breakpoint in $breakpoints {
   @media (min-width: $breakpoint) {
     @for $i from 1 through $grid-column-count {
-      .grid#{$name}#{$i} {
+      .#{$name}#{$i} {
         grid-template-columns: make-columns($i);
       }
     }
