@@ -7,7 +7,6 @@ html, body, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, ab
 	font-weight: inherit;
 	font-size: inherit;
 	vertical-align: baseline;
-	background: transparent;
 }
 
 @-ms-viewport {
@@ -63,9 +62,12 @@ video {
 }
 
 ul,
-ol,
-li {
+ol {
 	list-style: none;
+}
+
+li {
+	list-style: inherit;
 }
 
 address,
@@ -138,16 +140,6 @@ input[type=checkbox] {
 	vertical-align: bottom;
 }
 
-input, select, textarea {
-	font-family: inherit;
-	font-weight: inherit;
-	
-	border-radius: 0;
-	
-	color: inherit;
-	background: transparent;
-}
-
 strong,
 b {
 	font-weight: inherit;
@@ -185,9 +177,15 @@ button {
 
 button, input, select, textarea {
 	margin: 0;
+
+	border-radius: 0;
 	
 	font-family: inherit;
 	font-size: inherit;
+	font-weight: inherit;
+
+	color: inherit;
+	background: transparent;
 }
 
 button,

@@ -11,12 +11,12 @@
   grid-template-columns: make-columns(1);
 }
 
-$breakpoints: ('Mobile': $min-mobile, 'Tablet': $min-tablet, 'Desktop': $min-desktop);
+$breakpoints: ('mobile': $min-mobile, 'tablet': $min-tablet, 'desktop': $min-desktop, 'limit': $page-limit);
 
 @each $name, $breakpoint in $breakpoints {
   @media (min-width: $breakpoint) {
     @for $i from 1 through $grid-column-count {
-      .grid#{$name}#{$i} {
+      .#{$name}#{$i} {
         grid-template-columns: make-columns($i);
       }
     }

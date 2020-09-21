@@ -5,24 +5,25 @@ import s from './Grid.module.scss';
 
 interface IProps {
   as?: HTMLElementList;
-  columnCount?: {mobile?: number, tablet?: number; desktop?: number};
+  columnCount?: {mobile?: number, tablet?: number; desktop?: number, limit?: number};
   children: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
 }
 
-export const Grid = ({children, columnCount = {mobile: 1, tablet: 2, desktop: 3 }, as, className, style }: IProps) => {
+export const Grid = ({children, columnCount = {}, as, className, style }: IProps) => {
   const Wrapper = as ?? 'div';
-  const { mobile, tablet, desktop } = columnCount;
+  const { mobile, tablet, desktop, limit } = columnCount;
 
   return (
     <Wrapper
       className={c(
         s.grid,
         className,
-        s[`gridMobile${mobile}`],
-        s[`gridTablet${tablet}`],
-        s[`gridDesktop${desktop}`]
+        s[`mobile${mobile ?? 1}`],
+        s[`tablet${tablet ?? 2}`],
+        s[`desktop${desktop ?? 3}`],
+        s[`limit${limit ?? desktop ?? 3}`],
       )}
       style={style}
     >
