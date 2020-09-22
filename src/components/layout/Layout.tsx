@@ -27,7 +27,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Loading />
-      <PageTransition route={router.route}>
+      <PageTransition route={router.asPath}>
         <div className={c(s.layout, { [s.navOpen]: uiState.isNavOpen })}>
           <Header>
             <Nav />
