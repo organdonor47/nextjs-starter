@@ -1,5 +1,3 @@
-import s from './Picture.module.scss';
-
 type sizes = {
   x1: string;
   x2?: string; // retina
@@ -13,6 +11,7 @@ interface IProps {
   height: number;
   alt?: string;
   lazy?: boolean;
+  className?: string;
 
   formats?: {
     png?: sizes;
@@ -21,11 +20,11 @@ interface IProps {
   }
 }
 
-export const Picture = ({ src, formats, width, height, alt, lazy = true } : IProps) => {
+export const Picture = ({ src, formats, width, height, alt, lazy = true, className } : IProps) => {
 
   const renderImage = (
     <img
-      className={s.picture__image}
+      className={className}
       src={src}
       width={width}
       height={height}
@@ -67,7 +66,7 @@ export const Picture = ({ src, formats, width, height, alt, lazy = true } : IP
     }
   
   return (
-    <picture className={s.picture}>
+    <picture>
       {setFormats()}
       {renderImage}
     </picture>
