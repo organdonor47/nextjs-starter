@@ -3,7 +3,7 @@
  * some common UI values that can be passed into the app to children via <UIProvider />
  * states include overflow state; navOpen (mobile only by default); page transition opt in / out;
  */
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useCallback } from 'react';
 
 interface IUIState {
   isLoading?: boolean;
@@ -11,6 +11,7 @@ interface IUIState {
   canTransition?: boolean;
   canScroll?: boolean;
   readonly prefersReducedMotion?: boolean;
+  readonly scrollbarWidth?: number;
 }
 
 interface IContext {
@@ -26,6 +27,7 @@ export const UIContext = createContext<IContext>({
     canScroll: true,
     canTransition: false,
     prefersReducedMotion: false,
+    scrollbarWidth: 0,
   },
 
   setUIState: null,
@@ -61,17 +63,17 @@ export const UIProvider = ({ children }: {children: React.ReactNode}) => {
   // create overflow box and return value as scrollbarWidth
   // useful to prevent page jump when toggling overflow,
   // & scrollbars in OS are set to always be visible
-  const getScrollbarWidth = () => {
+  const getScrollbarWidth = useCallback(() => {
     const scrollEl = document.createElement('div');
-    
+
     scrollEl.style.overflow = 'scroll';
     document.body.appendChild(scrollEl);
 
-    setScrollbarWidth(scrollEl.offsetWidth - scrollEl.clientWidth);
-  
+    setUIState({ scrollbarWidth: scrollEl.offsetWidth - scrollEl.clientWidth });
+
     // remove box
     document.body.removeChild(scrollEl);
-  }
+  }, []);
 
   // check user OS preferences for animation & scrollbar width on mount
   // todo: listen to updates rather than just one-hit?
@@ -81,35 +83,33 @@ export const UIProvider = ({ children }: {children: React.ReactNode}) => {
 
   }, []);
 
+    // function for setting overflow on html element (ie navigation open, modal open etc)
+  // classnames are in global.scss
+  const preventScroll = useCallback(
+    (prevent: boolean, isNavOpen?: boolean) => {
+      // nav open distinction is so overflow is only in "mobile"
+      const htmlClassName = isNavOpen ? 'nav-open' : 'scroll-disabled';
+      const rootClasses = document.documentElement.classList;
+      // if a scrollbar exists, add this value to body on overflow hidden
+      if (uiState.scrollbarWidth ?? 0 > 0) {
+        document.body.style.paddingRight = prevent ? `${uiState.scrollbarWidth}px` : '0';
+      }
+
+      prevent ? rootClasses.add(htmlClassName) : rootClasses.remove(htmlClassName);
+    },
+    [uiState.scrollbarWidth],
+  );
+
   // on "canScroll" change, toggle preventScroll()
   useEffect(() => {
     getScrollbarWidth();
     preventScroll(!uiState.canScroll);
-  }, [uiState.canScroll]);
-
-  // function for setting overflow on html element (ie navigation open, modal open etc)
-  // classnames are in global.scss
-  const preventScroll = (prevent: boolean, isNavOpen?: boolean) => {
-    // nav open distinction is so overflow is only in "mobile"
-    const htmlClassName = isNavOpen ? 'nav-open' : 'scroll-disabled';
-    const rootClasses = document.documentElement.classList;
-
-    // if a scrollbar exists, add this value to body on overflow hidden
-    if (scrollbarWidth > 0) {
-      document.body.style.paddingRight = prevent ? `${scrollbarWidth}px` : '0';
-    }
-
-    prevent
-      ? rootClasses.add(htmlClassName)
-      : rootClasses.remove(htmlClassName);
-  };
+  }, [uiState.canScroll, getScrollbarWidth, preventScroll]);
 
   // toggle nav states
   useEffect(() => {
-    
-    preventScroll(uiState.isNavOpen, true);
-
-  }, [uiState.isNavOpen]);
+    preventScroll(uiState.isNavOpen ?? false, true);
+  }, [uiState.isNavOpen, preventScroll]);
 
   return (
     <UIContext.Provider
