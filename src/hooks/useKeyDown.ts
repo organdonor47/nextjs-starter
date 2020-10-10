@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const useKeyDown = () => {
-  const [keys, setKeys] = useState<string[]>([]);
+  const [keys, setKeys] = useState<Array<string>>([]);
 
   const handleKeyDown = ({ key }: KeyboardEvent) => {
     if (keys.includes(key)) {

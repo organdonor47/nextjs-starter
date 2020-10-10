@@ -10,9 +10,10 @@ interface IProps {
   style?: React.CSSProperties;
 }
 
-export const RichText = ({html, children, className, style }: IProps) => {
-
-  if (!html && !children) return null;
+export const RichText = ({ html, children, className, style }: IProps) => {
+  if (!html && !children) {
+    return null;
+  }
 
   const passProps: IProps = {};
   passProps.className = c(s.richText, className);
@@ -20,14 +21,8 @@ export const RichText = ({html, children, className, style }: IProps) => {
 
   // prioritise children
   if (children) {
-    return (
-      <div {...passProps}>
-        {children}
-      </div>
-    );
+    return <div {...passProps}>{children}</div>;
   }
 
-  return (
-    <div {...passProps} dangerouslySetInnerHTML={{ __html: html }} />
-  );
-}
+  return <div {...passProps} dangerouslySetInnerHTML={{ __html: html ?? '' }} />;
+};

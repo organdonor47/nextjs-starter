@@ -3,17 +3,17 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 import { getAllPostIds, getPostData } from 'lib/posts';
 import { H1 } from 'components/heading/Heading';
 import { Section } from 'components/section/Section';
-import { RichText } from 'components/rich-text/RichText';
+import { RichText } from 'components/rich-text/RichTextStatic';
 import { Meta } from 'components/meta/Meta';
 
 export default function Post({
-  postData
+  postData,
 }: {
   postData: {
-    title: string
-    date: string
-    contentHtml: string
-  }
+    title: string;
+    date: string;
+    contentHtml: string;
+  };
 }) {
   return (
     <>
@@ -24,22 +24,23 @@ export default function Post({
         <RichText html={postData.contentHtml} />
       </Section>
     </>
-  )
+  );
 }
 
+// eslint-disable-next-line require-await
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getAllPostIds()
+  const paths = getAllPostIds();
   return {
     paths,
-    fallback: false
-  }
-}
+    fallback: false,
+  };
+};
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const postData = await getPostData(params.id as string)
+  const postData = await getPostData(params?.id as string);
   return {
     props: {
-      postData
-    }
-  }
-}
+      postData,
+    },
+  };
+};
