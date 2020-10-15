@@ -132,6 +132,10 @@
       padding-bottom: $bottom * 1px;
     }
   }
+
+  &:empty {
+    display: none;
+  }
 }
 
 // BUTTON styles. used in input[type="button"] and the <Button /> component
