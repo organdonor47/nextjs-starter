@@ -48,6 +48,7 @@ export const Loading = () => {
       }, 20000);
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     function handleRouteComplete(err?: any) {
       // cancel start listener loading debounce
       loadingTimer.cancel();
