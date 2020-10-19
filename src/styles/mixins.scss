@@ -38,42 +38,6 @@
   bottom: 0;
 }
 
-// GRID
-// parent grid to layout items along a grid
-@mixin grid($direction: ltr, $grid-row-gap: 0, $grid-column-gap: var(--gutter)) {
-  // linear until $min-mobile, gives space for gap to not overflow
-  display: grid;
-  align-items: flex-start;
-  gap: $grid-row-gap 0;
-  grid-template-rows: auto;
-  grid-template-columns: repeat($grid-column-count, minmax(0, 1fr));
-
-  flex: none;
-  width: 100%;
-
-  direction: $direction;
-
-  // mq should be more like ($grid-gutter (px value, not custom prop!) * $grid-column-count)
-  @media (min-width: $min-mobile) {
-    gap: $grid-row-gap $grid-column-gap;
-  }
-}
-
-// individual column. use @include grid-item(5) where number = column span
-@mixin grid-item($col-width: $grid-column-count, $offset: 0) {
-  @if ($col-width > $grid-column-count) {
-    $col-width: $grid-column-count;
-  }
-
-  @if ($offset > 0) {
-    grid-column: ($offset + 1) / span #{$col-width};
-  }
-  
-  @else {
-    grid-column: span $col-width;
-  }
-}
-
 // <Container>: center & left/right pad elements
 @mixin container($fluid: false) {
   flex-grow: 1;
@@ -131,6 +95,10 @@
       padding-top: $top * 1px;
       padding-bottom: $bottom * 1px;
     }
+  }
+
+  &:empty {
+    display: none;
   }
 }
 
