@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const useKeyDown = () => {
-  const [keys, setKeys] = useState<string[]>([]);
+  const [keys, setKeys] = useState<Array<string>>([]);
 
   const handleKeyDown = ({ key }: KeyboardEvent) => {
     if (keys.includes(key)) {
@@ -25,6 +25,7 @@ export const useKeyDown = () => {
       document.removeEventListener('keydown', handleKeyDown, false);
       document.removeEventListener('keyup', handleKeyUp, false);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keys]);
 
   return keys;

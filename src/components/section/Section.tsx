@@ -1,4 +1,4 @@
-import { HTMLElementList } from 'types/html-types';
+import { HTMLElementList } from 'types/html-types';
 
 import { Container } from 'components/container/Container';
 
@@ -12,14 +12,14 @@ interface IProps {
   className?: string;
 }
 
-export const Section = ({children, container = false, as = 'section', className}: IProps) => {
-  
+export const Section = ({
+  children,
+  container = false,
+  as = 'section',
+  className,
+}: IProps) => {
   const SectionEl = as;
   const content = container ? <Container>{children}</Container> : children;
 
-  return (
-    <SectionEl className={c(s.section, className)}>
-      {content}
-    </SectionEl>
-  );
-}
+  return <SectionEl className={c(s.section, className)}>{content}</SectionEl>;
+};

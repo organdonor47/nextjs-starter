@@ -5,6 +5,7 @@
   align-items: stretch;
   justify-items: stretch;
   grid-template-rows: auto 1fr auto;
+  row-gap: var(--gutter);
 
   --card-gutter: 20px;
 }

@@ -10,42 +10,44 @@ export interface ILinkProps {
   as?: string;
   transition?: boolean;
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
-export const Link = ({ children, to, as, transition = true, ...props } :
-  ILinkProps & React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
-
+export const Link = ({
+  children,
+  to,
+  as,
+  transition = true,
+  ...props
+}: ILinkProps & React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
   // prop: transiton = opt in or out of a page transition
   // (i.e tabs might not require a transition)
   // defaults to active page transitions
   const { uiState, setUIState } = useContext(UIContext);
-  const { prefersReducedMotion } = uiState;
+  const { prefersReducedMotion } = uiState;
 
   const isExternal = /^((https?:)?\/\/|[0-9a-zA-Z]+:)/.test(to || '');
 
   if (isExternal) {
-
     return (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href={to}
-        {...props}
-      >
-      {children}
+      <a target="_blank" rel="noopener noreferrer" href={to} {...props}>
+        {children}
       </a>
-    )
+    );
   }
 
   const handleClick = () => {
-    setUIState({ isNavOpen: false, canTransition: prefersReducedMotion ? false : transition });
+    setUIState({
+      isNavOpen: false,
+      canTransition: prefersReducedMotion ? false : transition,
+    });
   };
-  
+
   return (
     <NextLink href={to} as={as} scroll={prefersReducedMotion ? true : !transition}>
-      <a {...props} onClick={handleClick}>{children}</a>
+      <a {...props} onClick={handleClick}>
+        {children}
+      </a>
     </NextLink>
   );
-
-}
+};

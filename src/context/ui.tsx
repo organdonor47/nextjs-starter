@@ -30,16 +30,14 @@ export const UIContext = createContext<IContext>({
     scrollbarWidth: 0,
   },
 
-  setUIState: null,
+  setUIState: () => null,
 });
 
 // exported UIProvider Component
 // wraps _app for children to optionally consume with useContext() hook
-export const UIProvider = ({ children }: {children: React.ReactNode}) => {
-
-  // setup initial values, updated from DOM on mount 
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const [scrollbarWidth, setScrollbarWidth] = useState(0);
+export const UIProvider = ({ children }: { children: React.ReactNode }) => {
+  // setup initial values, updated from DOM on mount
+  const [prefersReducedMotion] = useState(false);
 
   const [uiState, updateUiState] = useState<IUIState>({
     // writable values
@@ -51,14 +49,14 @@ export const UIProvider = ({ children }: {children: React.ReactNode}) => {
     prefersReducedMotion,
   });
 
-  // alias to update uiState 
+  // alias to update uiState
   // stops having to pass previous state back in every time
   const setUIState = (state: IUIState) => {
     updateUiState((prevState) => ({
-    ...prevState,
-    ...state,
+      ...prevState,
+      ...state,
     }));
-  }
+  };
 
   // create overflow box and return value as scrollbarWidth
   // useful to prevent page jump when toggling overflow,
@@ -79,11 +77,10 @@ export const UIProvider = ({ children }: {children: React.ReactNode}) => {
   // todo: listen to updates rather than just one-hit?
   useEffect(() => {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setUIState({ prefersReducedMotion: reducedMotion.matches });
-
+    setUIState({ prefersReducedMotion: reducedMotion.matches });
   }, []);
 
-    // function for setting overflow on html element (ie navigation open, modal open etc)
+  // function for setting overflow on html element (ie navigation open, modal open etc)
   // classnames are in global.scss
   const preventScroll = useCallback(
     (prevent: boolean, isNavOpen?: boolean) => {
@@ -121,4 +118,4 @@ export const UIProvider = ({ children }: {children: React.ReactNode}) => {
       {children}
     </UIContext.Provider>
   );
-}
+};

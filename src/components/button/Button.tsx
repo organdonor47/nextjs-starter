@@ -16,21 +16,25 @@ interface IProps {
   transition?: boolean;
 }
 
-export const Button = ({ to, as, children, className, disabled, transition, ...props }: IProps) => {
-  const passProps: React.ButtonHTMLAttributes<HTMLButtonElement> & React.AnchorHTMLAttributes<HTMLAnchorElement>  = { ...props };
-  const isLink = (typeof to !== 'undefined');
+export const Button = ({
+  to,
+  as,
+  children,
+  className,
+  disabled,
+  transition,
+  ...props
+}: IProps) => {
+  const passProps: React.ButtonHTMLAttributes<HTMLButtonElement> &
+    React.AnchorHTMLAttributes<HTMLAnchorElement> = { ...props };
+  const isLink = typeof to !== 'undefined';
   const isExternal = isLink && /^((https?:)?\/\/|[0-9a-zA-Z]+:)/.test(to || '');
 
   passProps.className = c(className, { button: true, disabled });
 
   if (isExternal) {
     return (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href={to}
-        {...passProps}
-      >
+      <a target="_blank" rel="noopener noreferrer" href={to} {...passProps}>
         {children}
       </a>
     );
@@ -38,16 +42,15 @@ export const Button = ({ to, as, children, className, disabled, transition, ...p
 
   if (isLink) {
     return (
-      <Link
-        to={to || '#'}
-        as={as}
-        transition={transition}
-        {...passProps}
-      >
+      <Link to={to || '#'} as={as} transition={transition} {...passProps}>
         {children}
       </Link>
     );
   }
 
-  return <button {...passProps} disabled={disabled} aria-disabled={disabled}>{children}</button>;
+  return (
+    <button {...passProps} disabled={disabled} aria-disabled={disabled}>
+      {children}
+    </button>
+  );
 };

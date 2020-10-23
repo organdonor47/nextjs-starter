@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 type TValue = string | boolean | object;
 
@@ -6,34 +6,25 @@ type TValue = string | boolean | object;
  * Custom hooks to get and set items in localstorage. useLocalStorage
  * returns a value and a setter that is synced with localstorage.
  */
-export const useLocalStorage = (key: string, initialValue?: TValue) => {
-  if (typeof window === undefined) {
-    return [initialValue, undefined];
-  }
-
-  const [state, setState] = useState(() => {
+export const useLocalStorage = (key: string, initialValue: TValue) => {
+  const [storedValue, setStoredValue] = useState(() => {
     try {
-      const local = localStorage.getItem(key);
-
-      if (typeof local !== 'string') {
-        localStorage.setItem(key, JSON.stringify(initialValue));
-
-        return initialValue;
-      } else {
-        return JSON.parse(local);
-      }
-    } catch {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
       return initialValue;
     }
   });
 
-  useEffect(() => {
+  const setValue = (value: TValue) => {
     try {
-      localStorage.setItem(key, JSON.stringify(state));
-    } catch {
-      // Noop
+      const valueToStore = value instanceof Function ? value(storedValue) : value;
+      setStoredValue(valueToStore);
+      window.localStorage.setItem(key, JSON.stringify(valueToStore));
+    } catch (error) {
+      // noop
     }
-  }, [state]);
+  };
 
-  return [state, setState];
+  return [storedValue, setValue];
 };
