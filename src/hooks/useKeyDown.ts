@@ -25,6 +25,7 @@ export const useKeyDown = () => {
       document.removeEventListener('keydown', handleKeyDown, false);
       document.removeEventListener('keyup', handleKeyUp, false);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keys]);
 
   return keys;
