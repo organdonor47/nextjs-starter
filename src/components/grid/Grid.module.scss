@@ -6,7 +6,7 @@
 
 // wrapper for grid items
 .grid {
-  @include grid;
+  @include grid($grid-row-gap: var(--gutter));
 
   grid-template-columns: make-columns(1);
 }
