@@ -47,7 +47,7 @@ export const Effect = () => {
     // register a reusable effect
     gsap.registerEffect({
       name: 'slideFadeSpin',
-      effect: (targets: any, config: { duration: number }) => {
+      effect: (targets: any, config: { duration: any }) => {
         return gsap.to(targets, {
           duration: config.duration,
           opacity: 1,
