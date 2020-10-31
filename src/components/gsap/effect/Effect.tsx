@@ -22,7 +22,7 @@ export const Effect = () => {
     duration: 0,
   });
 
-  const { paused, forwards, duration } = timelineState;
+  const { paused, forwards, duration = 0 } = timelineState;
 
   // shorthand alias to update misc states
   const updateState = (items: ITimelineProps) => {
@@ -47,7 +47,7 @@ export const Effect = () => {
     // register a reusable effect
     gsap.registerEffect({
       name: 'slideFadeSpin',
-      effect: (targets: any, config: { duration: any }) => {
+      effect: (targets: any, config: { duration: number | string }) => {
         return gsap.to(targets, {
           duration: config.duration,
           opacity: 1,
