@@ -1,4 +1,4 @@
-/* eslint-disable require-await */
+import Image from 'next/image';
 import { GetStaticProps } from 'next';
 
 import { getSortedPostsData } from 'lib/posts';
@@ -20,17 +20,6 @@ import { Hero } from 'components/demos/hero/Hero';
 
 // import SVG as component using `next-react-svg`
 import Circle from 'assets/svg/temp/circle.svg';
-
-//import image files using `next-images`
-import sunsetJpg from 'assets/images/temp/sunset.jpg';
-import sunsetJpg2x from 'assets/images/temp/sunset@2x.jpg';
-import sunsetWebp from 'assets/images/temp/sunset.webp';
-import sunsetWebp2x from 'assets/images/temp/sunset@2x.webp';
-import sunsetMobile from 'assets/images/temp/sunset-mobile.jpg';
-import sunsetMobileWebp from 'assets/images/temp/sunset-mobile.webp';
-
-// import video using `next-videos`
-import video from 'assets/video/temp/temp.mp4';
 
 export default function Elements({
   allPostsData,
@@ -134,17 +123,17 @@ export default function Elements({
           Import images and add to <code>&lt;Picture&gt;</code> component
         </H3>
         <Picture
-          src={sunsetJpg}
+          src="/images/temp/sunset@2x.jpg"
           formats={{
             webp: {
-              x1: sunsetWebp,
-              x2: sunsetWebp2x,
-              mobile: sunsetMobileWebp,
+              x1: '/images/temp/sunset.webp',
+              x2: '/images/temp/sunset@2x.webp',
+              mobile: '/images/temp/sunset-mobile.webp',
             },
             jpg: {
-              x1: sunsetJpg,
-              x2: sunsetJpg2x,
-              mobile: sunsetMobile,
+              x1: '/images/temp/sunset.jpg',
+              x2: '/images/temp/sunset@2x.jpg',
+              mobile: '/images/temp/sunset-mobile.jpg',
             },
           }}
           alt="picture of a sunset"
@@ -154,8 +143,23 @@ export default function Elements({
       </Section>
 
       <Section container>
+        <H3>
+          Using the <code>&lt;Image&gt;</code> component from next/image
+        </H3>
+        <Image
+          src="/images/temp/sunset.jpg"
+          alt=""
+          width="1200"
+          height="900"
+          priority
+          loading="eager"
+          quality={50}
+        />
+      </Section>
+
+      <Section container>
         <H3 as="h2">Import video</H3>
-        <video src={video} controls />
+        <video src="/video/temp/temp.mp4" controls />
       </Section>
     </>
   );

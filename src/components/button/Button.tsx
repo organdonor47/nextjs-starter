@@ -8,7 +8,6 @@ const c = classnames.bind(s);
 
 interface IProps {
   to?: string;
-  as?: string;
   disabled?: boolean;
   children: React.ReactNode;
   className?: string;
@@ -18,7 +17,6 @@ interface IProps {
 
 export const Button = ({
   to,
-  as,
   children,
   className,
   disabled,
@@ -42,7 +40,7 @@ export const Button = ({
 
   if (isLink) {
     return (
-      <Link to={to || '#'} as={as} transition={transition} {...passProps}>
+      <Link to={to || '#'} transition={transition} {...passProps}>
         {children}
       </Link>
     );
