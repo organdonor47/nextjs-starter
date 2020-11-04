@@ -84,7 +84,7 @@ export default function Elements({
           </Card>
 
           {allPostsData.slice(0, 5).map(({ id, date, title, description }) => (
-            <Card key={id} heading={<Link to="/posts/[id]">{title}</Link>} date={date}>
+            <Card key={id} heading={<Link to={`/posts/${id}`}>{title}</Link>} date={date}>
               <div>{description}</div>
             </Card>
           ))}
