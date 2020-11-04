@@ -76,6 +76,10 @@
   }
 
   @each $heading in $heading-types {
+    #{$heading} {
+      margin-bottom: $block-margin;
+    }
+    
     &:empty {
       display: none;
     }

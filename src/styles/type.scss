@@ -51,21 +51,14 @@
 
 @mixin h1 {
   @include heading($h1-size-min, $h1-size);
-
-  margin-bottom: clamp(20px, 0.5em, 60px);
 }
 
 @mixin h2 {
   @include heading($h2-size-min, $h2-size);
-
-  margin-bottom: clamp(20px, 0.5em, 40px);
-
 }
 
 @mixin h3 {
   @include heading($h3-size-min, $h3-size);
-
-  margin-bottom: clamp(20px, 0.5em, 30px);
 }
 
 @mixin h4 {

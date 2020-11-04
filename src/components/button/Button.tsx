@@ -12,7 +12,7 @@ interface IProps {
   disabled?: boolean;
   children: React.ReactNode;
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
   transition?: boolean;
 }
 
