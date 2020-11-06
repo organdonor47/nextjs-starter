@@ -8,17 +8,15 @@ const c = classnames.bind(s);
 
 interface IProps {
   to?: string;
-  as?: string;
   disabled?: boolean;
   children: React.ReactNode;
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
   transition?: boolean;
 }
 
 export const Button = ({
   to,
-  as,
   children,
   className,
   disabled,
@@ -27,8 +25,7 @@ export const Button = ({
 }: IProps) => {
   const passProps: React.ButtonHTMLAttributes<HTMLButtonElement> &
     React.AnchorHTMLAttributes<HTMLAnchorElement> = { ...props };
-  const isLink = typeof to !== 'undefined';
-  const isExternal = isLink && /^((https?:)?\/\/|[0-9a-zA-Z]+:)/.test(to || '');
+  const isExternal = to && /^((https?:)?\/\/|[0-9a-zA-Z]+:)/.test(to || '');
 
   passProps.className = c(className, { button: true, disabled });
 
@@ -40,9 +37,9 @@ export const Button = ({
     );
   }
 
-  if (isLink) {
+  if (to) {
     return (
-      <Link to={to || '#'} as={as} transition={transition} {...passProps}>
+      <Link to={to} transition={transition} {...passProps}>
         {children}
       </Link>
     );

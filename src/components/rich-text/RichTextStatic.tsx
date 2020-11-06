@@ -10,7 +10,7 @@ interface IProps {
   style?: React.CSSProperties;
 }
 
-export const RichText = ({ html, children, className, style }: IProps) => {
+export const RichTextStatic = ({ html, children, className, style }: IProps) => {
   if (!html && !children) {
     return null;
   }

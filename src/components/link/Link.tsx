@@ -7,7 +7,6 @@ import { UIContext } from 'context/ui';
 export interface ILinkProps {
   children: React.ReactNode;
   to: string;
-  as?: string;
   transition?: boolean;
   className?: string;
   [key: string]: unknown;
@@ -16,7 +15,6 @@ export interface ILinkProps {
 export const Link = ({
   children,
   to,
-  as,
   transition = true,
   ...props
 }: ILinkProps & React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
@@ -44,7 +42,7 @@ export const Link = ({
   };
 
   return (
-    <NextLink href={to} as={as} scroll={prefersReducedMotion ? true : !transition}>
+    <NextLink href={to} scroll={prefersReducedMotion ? true : !transition}>
       <a {...props} onClick={handleClick}>
         {children}
       </a>

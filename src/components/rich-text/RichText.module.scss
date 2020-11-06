@@ -76,6 +76,12 @@
   }
 
   @each $heading in $heading-types {
+    @if index('h1' 'h2' 'h3', $heading) {
+      #{$heading} {
+        margin-bottom: $block-margin;
+      }
+    }
+    
     &:empty {
       display: none;
     }

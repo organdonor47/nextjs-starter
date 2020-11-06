@@ -51,12 +51,12 @@ export const UIProvider = ({ children }: { children: React.ReactNode }) => {
 
   // alias to update uiState
   // stops having to pass previous state back in every time
-  const setUIState = (state: IUIState) => {
+  const setUIState = useCallback((state: IUIState) => {
     updateUiState((prevState) => ({
       ...prevState,
       ...state,
     }));
-  };
+  }, []);
 
   // create overflow box and return value as scrollbarWidth
   // useful to prevent page jump when toggling overflow,
@@ -71,14 +71,14 @@ export const UIProvider = ({ children }: { children: React.ReactNode }) => {
 
     // remove box
     document.body.removeChild(scrollEl);
-  }, []);
+  }, [setUIState]);
 
   // check user OS preferences for animation & scrollbar width on mount
   // todo: listen to updates rather than just one-hit?
   useEffect(() => {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     setUIState({ prefersReducedMotion: reducedMotion.matches });
-  }, []);
+  }, [setUIState]);
 
   // function for setting overflow on html element (ie navigation open, modal open etc)
   // classnames are in global.scss
