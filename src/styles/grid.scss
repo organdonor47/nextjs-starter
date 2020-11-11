@@ -46,7 +46,7 @@
   margin-left: -($grid-gutter/2);
   margin-right: -($grid-gutter/2);
 
-  @supports (css: --variables) {
+  @supports (--css: variables) {
     margin-left: calc(var(--gutter) * -0.5);
     margin-right: calc(var(--gutter) * -0.5);
   }
@@ -70,7 +70,7 @@
 
   width: make-percentage($width);
 
-  @supports (css: --variables) {
+  @supports (--css: variables) {
     padding-left: calc(var(--gutter) * 0.5);
     padding-right: calc(var(--gutter) * 0.5);
   }
