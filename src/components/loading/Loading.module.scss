@@ -5,16 +5,19 @@
 @keyframes interwind {
   0% {
     transform:rotate(0) translate3d(0, -20px, 0) scale(0);
+
     animation-timing-function: cubic-bezier(0.2, 0, 0.8, 1);
   }
 
   50% {
     transform: rotate(180deg) translate3d(0, -20px, 0) scale(1);
+
     animation-timing-function: cubic-bezier(0, 0.2, 1, 0.8);
   }
 
   100% {
     transform: rotate(360deg) translate3d(0, -20px, 0) scale(0);
+    
     animation-timing-function: cubic-bezier(0.2, 0, 0.8, 1);
   }
 }
@@ -29,10 +32,12 @@
   contain: strict;
 
   z-index: $zindex-header + 1;
-  
-  opacity: 0;
+
   pointer-events: none;
   user-select: none;
+  
+  opacity: 0;
+
 
   background: var(--color-background);
 
@@ -57,28 +62,30 @@
 
 
   &__inner {
+    contain: strict;
+
     position: relative;
   
     width: 201px;
     height: 200px;
-
-    contain: strict;
+    overflow: hidden;
 
     // hide loading
     text-indent: 201px;
     white-space: nowrap;
-    overflow: hidden;
 
     @media (prefers-reduced-motion: reduce) {
       display: flex;
       align-items: flex-end;
       justify-content: center;
+
       text-indent: 0;
     }
   
     &::before,
     &::after {
       content: '';
+
       position: absolute;
       top: 70px;
       left: 70px;
@@ -99,6 +106,7 @@
   
     &::after {
       background: var(--color-font);
+
       animation-delay: -700ms;
     }
 

@@ -37,7 +37,10 @@
     "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-react-hooks": "^2.4.0",
     "prettier": "^1.19.1",
-    "stylint": "^2.0.0",
+    "stylelint": "^13.7.2",
+    "stylelint-config-recommended-scss": "^4.2.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-scss": "^3.18.0",
     "typescript": "^3.9.5"
   },
   "hxmstyle": {
@@ -60,8 +63,7 @@
       "eslint-plugin-prettier",
       "eslint-plugin-react",
       "eslint-plugin-react-hooks",
-      "prettier",
-      "stylint"
+      "prettier"
     ]
   }
 }

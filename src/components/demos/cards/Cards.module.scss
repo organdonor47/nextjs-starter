@@ -2,12 +2,13 @@
 
 // grid
 .cards {
+  --card-gutter: 20px;
+
   align-items: stretch;
   justify-items: stretch;
   grid-template-rows: auto 1fr auto;
   row-gap: var(--gutter);
 
-  --card-gutter: 20px;
 }
 
 // grid-item
@@ -39,6 +40,7 @@
   &__heading {
     display: flex;
     align-items: center;
+
     padding-bottom: var(--card-gutter);
     margin-bottom: var(--card-gutter);
 

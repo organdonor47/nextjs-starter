@@ -67,14 +67,6 @@
 
 html {
   @include responsive-font($font-size-min, $font-size);
-
-  font-family: $font-family;
-  line-height: $line-height;
-
-  color: var(--color-font, $color-font);
-  background: var(--color-background, $color-background);
-
-
   @mixin html-overflow-hidden {
     overflow-y: hidden;
 
@@ -82,6 +74,12 @@ html {
       touch-action: none;
     }
   }
+
+  font-family: $font-family;
+  line-height: $line-height;
+
+  color: var(--color-font, $color-font);
+  background: var(--color-background, $color-background);
   
   &.scroll-disabled {
     // if nav is open
@@ -109,6 +107,7 @@ hr {
 
 a {
   text-decoration: underline;
+  
   color: var(--color-link, inherit);
 
   @media (pointer: fine) {
