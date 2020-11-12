@@ -72,7 +72,14 @@
             "grid-template",
             "grid-template-areas",
             "grid-template-columns",
-            "grid-template-rows"
+            "grid-template-rows",
+            "inset",
+            "inset-block",
+            "inset-block-end",
+            "inset-block-start",
+            "inset-inline",
+            "inset-inline-end",
+            "inset-inline-start"
           ]
         },
         {
@@ -115,6 +122,15 @@
           "order": "flexible",
           "emptyLineBefore": "always",
           "properties": [
+            "float",
+            "clear",
+            "shape-outside"
+          ]
+        },
+        {
+          "order": "flexible",
+          "emptyLineBefore": "always",
+          "properties": [
             "clip-path",
             "clip",
             "border",
@@ -127,7 +143,10 @@
             "border-top-right-radius",
             "border-bottom-right-radius",
             "border-bottom-left-radius",
-            "outline"
+            "outline",
+            "box-decoration-break",
+            "object-fit",
+            "object-position"
           ]
         },
         {
@@ -180,7 +199,10 @@
             "text-underline-position",
             "letter-spacing",
             "white-space",
-            "vertical-align"
+            "vertical-align",
+            "word-break",
+            "hyphens"
+
           ]
         },
         {
@@ -203,7 +225,9 @@
             "background-size",
             "color",
             "fill",
-            "filter"
+            "filter",
+            "mix-blend-mode",
+            "isolation"
           ]
         },
 
@@ -234,7 +258,14 @@
             "transition-delay",
             "transition-duration",
             "transition-property",
-            "transition-timing-function"
+            "transition-timing-function",
+            "offset",
+            "offset-anchor",
+            "offset-distance",
+            "offset-path",
+            "offset-position",
+            "offset-rotate"
+
           ]
         }
       ],
