@@ -1,5 +1,5 @@
-@import 'styles/config';
 /* stylelint-disable no-descending-specificity */
+@import 'styles/config';
 
 .richText {
   > :first-child {
@@ -115,7 +115,7 @@
     }
 
   }
-  /* stylelint-disable no-descending-specificity */
+
   ul {
     list-style: disc inside;
     
@@ -170,10 +170,10 @@
     border-radius: 3px;
     border: 1px solid var(--color-border);
 
+    font-family: $font-family-monospace;
+
     background-color: lighten(#000, 90%);
     color: #e01e5a;
-
-    font-family: $font-family-monospace;
   }
 
   code {
@@ -189,6 +189,7 @@
       padding: 0;
   
       border: 0;
+
       background: none;
     }
   }
