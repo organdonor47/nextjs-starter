@@ -1,30 +1,28 @@
 {
   "extends": "stylelint-config-recommended-scss",
-  "plugins": [
-		"stylelint-order"
-	],
+  "plugins": ["stylelint-order"],
   "rules": {
     "string-quotes": "single",
     "max-empty-lines": 2,
     "selector-class-pattern": null,
     "order/order": [
       "dollar-variables",
-			{
-				"type": "at-rule",
-				"name": "extend"
-			},
-			{
-				"type": "at-rule",
-				"name": "include"
-			},
-			{
-				"type": "at-rule",
-				"name": "mixin"
+      {
+        "type": "at-rule",
+        "name": "extend"
       },
       {
-				"type": "at-rule",
-				"name": "function"
-			},
+        "type": "at-rule",
+        "name": "include"
+      },
+      {
+        "type": "at-rule",
+        "name": "mixin"
+      },
+      {
+        "type": "at-rule",
+        "name": "function"
+      },
       "custom-properties",
       "declarations"
     ],
@@ -33,9 +31,7 @@
         {
           "order": "flexible",
           "emptyLineBefore": "always",
-          "properties": [
-            "content"
-          ]
+          "properties": ["content"]
         },
         {
           "order": "flexible",
@@ -82,14 +78,7 @@
         {
           "order": "flexible",
           "emptyLineBefore": "always",
-          "properties": [
-            "position",
-            "top",
-            "right",
-            "bottom",
-            "left",
-            "z-index"
-          ]
+          "properties": ["position", "top", "right", "bottom", "left", "z-index"]
         },
         {
           "order": "flexible",
@@ -144,19 +133,12 @@
         {
           "order": "flexible",
           "emptyLineBefore": "always",
-          "properties": [
-            "cursor",
-            "user-select",
-            "pointer-events"
-          ]
+          "properties": ["cursor", "user-select", "pointer-events"]
         },
         {
           "order": "flexible",
           "emptyLineBefore": "always",
-          "properties": [
-            "opacity",
-            "visibility"
-          ]
+          "properties": ["opacity", "visibility"]
         },
         {
           "order": "flexible",

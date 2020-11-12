@@ -167,8 +167,10 @@
 
   code,
   pre {
-    border-radius: 3px;
     border: 1px solid var(--color-border);
+    border-radius: 3px;
+
+    font-family: $font-family-monospace;
 
     font-family: $font-family-monospace;
 
