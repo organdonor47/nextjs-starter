@@ -63,7 +63,7 @@ export const Loading = () => {
 
       // do something for if action is cancelled?
       if (err && err.cancelled) {
-        console.log('cancelled');
+        console.info('cancelled');
       }
     }
 

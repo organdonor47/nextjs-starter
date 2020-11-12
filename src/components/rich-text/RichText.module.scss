@@ -115,7 +115,7 @@
     }
 
   }
-  /* stylelint-disable no-descending-specificity */
+
   ul {
     list-style: disc inside;
     
@@ -167,13 +167,13 @@
 
   code,
   pre {
-    border-radius: 3px;
     border: 1px solid var(--color-border);
+    border-radius: 3px;
+
+    font-family: $font-family-monospace;
 
     background-color: lighten(#000, 90%);
     color: #e01e5a;
-
-    font-family: $font-family-monospace;
   }
 
   code {
@@ -189,6 +189,7 @@
       padding: 0;
   
       border: 0;
+
       background: none;
     }
   }
