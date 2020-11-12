@@ -20,6 +20,7 @@
       // trans-x for mobile open close 
       .navOpen & {
         transform: translate3d(calc(var(--gutter) * -2), 0, 0);
+
         transition: transform var(--transition-duration) var(--default-ease);
       }
     }

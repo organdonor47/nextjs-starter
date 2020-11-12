@@ -44,11 +44,11 @@
 
   height: 1px;
   width: 1px;
+  overflow: hidden;
 
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
-  
-  overflow: hidden;
+
   white-space: nowrap;
 }
 
@@ -82,13 +82,13 @@
   $padding-bottom: $section-padding,
   $padding-top-mobile: $section-padding-mobile,
   $padding-bottom-mobile: $section-padding-mobile) {
-  flex: none;
-
   // Set up unitless values
   $top-mobile: strip-unit($padding-top-mobile);
   $bottom-mobile: strip-unit($padding-bottom-mobile);
   $top: strip-unit($padding-top);
   $bottom: strip-unit($padding-bottom);
+
+  flex: none;
 
   padding-top: $top-mobile * 1px;
   padding-bottom: $bottom-mobile * 1px;
@@ -144,10 +144,10 @@
   line-height: 1.1;
   text-decoration: none;
 
-  appearance: none;
-
   background-color: var(--color-primary);
   color: #fff;
+
+  appearance: none;
 
   &.disabled,
   &:disabled {

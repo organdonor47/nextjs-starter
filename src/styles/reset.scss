@@ -3,7 +3,9 @@
 html, body, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, details, summary {
 	margin: 0;
 	padding: 0;
+	
 	border: 0;
+	
 	font-weight: inherit;
 	font-size: inherit;
 	vertical-align: baseline;
@@ -22,14 +24,14 @@ html, body, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, ab
 }
 
 html {
-  -webkit-overflow-scrolling: touch;
-  overflow-x: hidden;
-  overflow-y: scroll;
+	box-sizing: border-box;
 
+	overflow-x: hidden;
+	overflow-y: scroll;
+
+  -webkit-overflow-scrolling: touch;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  box-sizing: border-box;
 }
 
 html,
@@ -57,6 +59,7 @@ iframe,
 embed,
 video {
 	display: block;
+
 	max-width: 100%;
 	height: auto;
 }
@@ -79,12 +82,9 @@ i {
 
 blockquote,
 q {
-	quotes: none;
-}
-
-blockquote,
-q {
-	&::before,
+  quotes: none;
+  
+  &::before,
 	&::after {
 		content: '';
 		content: none;
@@ -99,7 +99,8 @@ del {
 abbr[title],
 dfn[title] {
 	border-bottom: 1px dotted currentColor;
-	cursor: help;
+  
+  cursor: help;
 }
 
 /* tables still need cellspacing="0" in the markup */
@@ -114,11 +115,12 @@ th {
 }
 
 hr {
-	display: block;
-	height: 1px;
-
-	margin: 1em 0;
+  display: block;
+  
+  margin: 1em 0;
 	padding: 0;
+  
+  height: 1px;
 
 	border: 0;
 	border-top: 1px solid currentColor;
@@ -153,7 +155,8 @@ td img {
 /* Make sure sup and sub don't mess with your line-heights http://gist.github.com/413930 */
 sub, sup {
 	position: relative;
-	line-height: 0;
+  
+  line-height: 0;
 }
 sup {
 	top: -0.5em;
@@ -178,13 +181,13 @@ button {
 button, input, select, textarea {
 	margin: 0;
 
-	border-radius: 0;
+  border-radius: 0;
 	
 	font-family: inherit;
 	font-size: inherit;
 	font-weight: inherit;
-
-	color: inherit;
+	  
+  color: inherit;
 	background: transparent;
 }
 

@@ -10,9 +10,9 @@
   grid-template-columns: repeat($grid-column-count, minmax(0, 1fr));
 
   flex: none;
-  width: 100%;
-
   direction: $direction;
+  
+  width: 100%;
 
   // mq should be more like ($grid-gutter (px value, not custom prop!) * $grid-column-count)
   @media (min-width: $min-mobile) {
