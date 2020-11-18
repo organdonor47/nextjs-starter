@@ -1,30 +1,28 @@
 {
   "extends": "stylelint-config-recommended-scss",
-  "plugins": [
-		"stylelint-order"
-	],
+  "plugins": ["stylelint-order"],
   "rules": {
     "string-quotes": "single",
     "max-empty-lines": 2,
     "selector-class-pattern": null,
     "order/order": [
       "dollar-variables",
-			{
-				"type": "at-rule",
-				"name": "extend"
-			},
-			{
-				"type": "at-rule",
-				"name": "include"
-			},
-			{
-				"type": "at-rule",
-				"name": "mixin"
+      {
+        "type": "at-rule",
+        "name": "extend"
       },
       {
-				"type": "at-rule",
-				"name": "function"
-			},
+        "type": "at-rule",
+        "name": "include"
+      },
+      {
+        "type": "at-rule",
+        "name": "mixin"
+      },
+      {
+        "type": "at-rule",
+        "name": "function"
+      },
       "custom-properties",
       "declarations"
     ],
@@ -33,9 +31,7 @@
         {
           "order": "flexible",
           "emptyLineBefore": "always",
-          "properties": [
-            "content"
-          ]
+          "properties": ["content"]
         },
         {
           "order": "flexible",
@@ -76,20 +72,20 @@
             "grid-template",
             "grid-template-areas",
             "grid-template-columns",
-            "grid-template-rows"
+            "grid-template-rows",
+            "inset",
+            "inset-block",
+            "inset-block-end",
+            "inset-block-start",
+            "inset-inline",
+            "inset-inline-end",
+            "inset-inline-start"
           ]
         },
         {
           "order": "flexible",
           "emptyLineBefore": "always",
-          "properties": [
-            "position",
-            "top",
-            "right",
-            "bottom",
-            "left",
-            "z-index"
-          ]
+          "properties": ["position", "top", "right", "bottom", "left", "z-index"]
         },
         {
           "order": "flexible",
@@ -126,6 +122,15 @@
           "order": "flexible",
           "emptyLineBefore": "always",
           "properties": [
+            "float",
+            "clear",
+            "shape-outside"
+          ]
+        },
+        {
+          "order": "flexible",
+          "emptyLineBefore": "always",
+          "properties": [
             "clip-path",
             "clip",
             "border",
@@ -138,25 +143,21 @@
             "border-top-right-radius",
             "border-bottom-right-radius",
             "border-bottom-left-radius",
-            "outline"
+            "outline",
+            "box-decoration-break",
+            "object-fit",
+            "object-position"
           ]
         },
         {
           "order": "flexible",
           "emptyLineBefore": "always",
-          "properties": [
-            "cursor",
-            "user-select",
-            "pointer-events"
-          ]
+          "properties": ["cursor", "user-select", "pointer-events"]
         },
         {
           "order": "flexible",
           "emptyLineBefore": "always",
-          "properties": [
-            "opacity",
-            "visibility"
-          ]
+          "properties": ["opacity", "visibility"]
         },
         {
           "order": "flexible",
@@ -198,7 +199,10 @@
             "text-underline-position",
             "letter-spacing",
             "white-space",
-            "vertical-align"
+            "vertical-align",
+            "word-break",
+            "hyphens"
+
           ]
         },
         {
@@ -221,7 +225,9 @@
             "background-size",
             "color",
             "fill",
-            "filter"
+            "filter",
+            "mix-blend-mode",
+            "isolation"
           ]
         },
 
@@ -252,7 +258,16 @@
             "transition-delay",
             "transition-duration",
             "transition-property",
-            "transition-timing-function"
+            "transition-timing-function",
+            "offset",
+            "offset-anchor",
+            "offset-distance",
+            "offset-path",
+            "offset-position",
+            "offset-rotate",
+            "backface-visibility",
+            "will-change"
+
           ]
         }
       ],

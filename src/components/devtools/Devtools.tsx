@@ -21,6 +21,7 @@ export const Devtools = () => {
     if (keys.includes('Control') && keys.includes('k')) {
       setVisible(!isVisible);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keys]);
 
   return isVisible ? <GridOverlay /> : null;
