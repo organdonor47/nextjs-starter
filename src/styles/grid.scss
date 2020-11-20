@@ -1,13 +1,13 @@
 // GRID as css grid
 
 // parent grid to layout items along a grid
-@mixin grid($direction: ltr, $grid-row-gap: 0, $grid-column-gap: var(--gutter)) {
+@mixin grid($direction: ltr, $grid-row-gap: 0, $grid-column-gap: var(--gutter), $column-count: $grid-column-count) {
   // linear until $min-mobile, gives space for gap to not overflow
   display: grid;
   align-items: flex-start;
   gap: $grid-row-gap 0;
   grid-template-rows: auto;
-  grid-template-columns: repeat($grid-column-count, minmax(0, 1fr));
+  grid-template-columns: repeat($column-count, minmax(0, 1fr));
 
   flex: none;
   direction: $direction;
@@ -22,9 +22,9 @@
 
 // individual column. use @include grid-item(5) where number = column span
 @mixin grid-item($col-width: $grid-column-count, $offset: 0) {
-  @if ($col-width > $grid-column-count) {
-    $col-width: $grid-column-count;
-  }
+  // @if ($col-width > $grid-column-count) {
+  //   $col-width: $grid-column-count;
+  // }
 
   @if ($offset > 0) {
     grid-column: ($offset + 1) / span #{$col-width};
