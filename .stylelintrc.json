@@ -246,6 +246,7 @@
           "order": "flexible",
           "emptyLineBefore": "always",
           "properties": [
+            "animation",
             "animation-name",
             "animation-duration",
             "animation-timing-function",
@@ -267,7 +268,6 @@
             "offset-rotate",
             "backface-visibility",
             "will-change"
-
           ]
         }
       ],
