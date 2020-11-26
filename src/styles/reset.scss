@@ -134,22 +134,9 @@ input, select {
 	vertical-align: middle;
 }
 
-input[type=radio] {
-		vertical-align: text-bottom;
-}
-
-input[type=checkbox] {
-	vertical-align: bottom;
-}
-
 strong,
 b {
 	font-weight: inherit;
-}
-
-td,
-td img {
-	vertical-align: top;
 }
 
 /* Make sure sup and sub don't mess with your line-heights http://gist.github.com/413930 */
