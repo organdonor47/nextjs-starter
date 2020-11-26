@@ -1,7 +1,7 @@
 // GRID as css grid
 
 // parent grid to layout items along a grid
-@mixin grid($direction: ltr, $grid-row-gap: 0, $grid-column-gap: var(--gutter), $column-count: $grid-column-count) {
+@mixin grid($grid-count: $grid-column-count, $direction: ltr, $grid-row-gap: 0, $grid-column-gap: var(--gutter)) {
   // linear until $min-mobile, gives space for gap to not overflow
   display: grid;
   align-items: flex-start;
