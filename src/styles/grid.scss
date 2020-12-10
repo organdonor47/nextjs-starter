@@ -7,7 +7,7 @@
   align-items: flex-start;
   gap: $grid-row-gap 0;
   grid-template-rows: auto;
-  grid-template-columns: repeat($column-count, minmax(0, 1fr));
+  grid-template-columns: repeat($grid-count, minmax(0, 1fr));
 
   flex: none;
   direction: $direction;
