@@ -61,7 +61,7 @@
 }
 
 // flex-grid item
-@mixin flex-grid-item($width: 100%, $align: stretch, $grid-gutter: $gutter) {
+@mixin flex-grid-item($width: $grid-column-count, $align: stretch, $grid-gutter: $gutter) {
   flex: none;
   align-self: $align;
 
