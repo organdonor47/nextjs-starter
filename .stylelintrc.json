@@ -85,7 +85,14 @@
         {
           "order": "flexible",
           "emptyLineBefore": "always",
-          "properties": ["position", "top", "right", "bottom", "left", "z-index"]
+          "properties": [
+            "position",
+            "top",
+            "right",
+            "bottom",
+            "left",
+            "z-index"
+          ]
         },
         {
           "order": "flexible",
@@ -121,11 +128,7 @@
         {
           "order": "flexible",
           "emptyLineBefore": "always",
-          "properties": [
-            "float",
-            "clear",
-            "shape-outside"
-          ]
+          "properties": ["float", "clear", "shape-outside"]
         },
         {
           "order": "flexible",
@@ -205,7 +208,6 @@
             "vertical-align",
             "word-break",
             "hyphens"
-
           ]
         },
         {
@@ -228,6 +230,12 @@
             "background-size",
             "color",
             "fill",
+            "stroke",
+            "stroke-width",
+            "stroke-dasharray",
+            "stroke-dashoffset",
+            "stroke-linecap",
+            "stroke-linejoin",
             "filter",
             "mix-blend-mode",
             "isolation"
